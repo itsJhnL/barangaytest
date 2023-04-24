@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <title>Certificate of Good Moral</title>
 <html id="clearance">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="../css/form.css">
 <style>
     @media print {
         .noprint {
