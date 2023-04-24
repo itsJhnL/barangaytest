@@ -39,12 +39,6 @@
             </div>       
 
             <div>
-                <?php
-                    //   $id = $_POST['id'];
-                    $sql = "SELECT * FROM tblresident where id = 5";
-                    $result = $con->query($sql);
-                    $row = $result->fetch_assoc();
-                ?>
 
 
                 <?php 
@@ -63,7 +57,7 @@
                             {
                                 ?>
                                     <p style="font-size: 20px; margin-top: 180px; "><b>SA KINAUUKULAN:</p></b>
-                                    <p class="intro2">Ito ay isang patunay na si <b>JERIC ANTALAN SABATE,</b> ay lehitimong naninirahan sa Barangay Collado, Talavera, Nueva Ecija at mula sa pamilyang walang pirmihang hanap buhay kung kaya't kabilang sa talaan ng mahihirap na naninirahan sa barangay.<br></p>
+                                    <p class="intro2">Ito ay isang patunay na si <b><?php echo $row['firstname']; ?>, <?php echo $row['middlename']; ?> <?php echo $row['lastname']; ?>. </b> ay lehitimong naninirahan sa Barangay Collado, Talavera, Nueva Ecija at mula sa pamilyang walang pirmihang hanap buhay kung kaya't kabilang sa talaan ng mahihirap na naninirahan sa barangay.<br></p>
                                     <p class="intro2">Ang pagpapatunay na ito ay ginagawad kay <b>EDITHA SABATE</b> na kanyang <b>MAGULANG</b> upang gamitin sa pagkuha ng mga serbisyong nauukol sa kanyang pangangailangan.</p></br>
                                     <p class="intro2">Iginagawad ngayong ika- <b>7th</b> ng <b>February 2023</b> dito sa <b>Tanggapan ng Punong Barangay ng Barangay Collado, Talavera, Nueva Ecija.</b></p></br></br></br></br>
                                 <?php
