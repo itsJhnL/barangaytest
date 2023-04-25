@@ -9,9 +9,9 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Building Permit</title>
 <html id="clearance">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="../css/form.css">
 <style>
     @media print {
         .noprint {
@@ -34,7 +34,7 @@
                     Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF BUILDING PERMIT</b><p>
                 </div>
             </div>       
 
@@ -62,9 +62,10 @@
                             foreach($query_run as $row)
                             {
                                 ?>
-                                    <p style="font-size: 20px; margin-top: 180px;"><b>SA KINAUUKULAN:</p></b>
-                                    <p class="intro2"><b>ITO AY ISANG PAGPAPATUNAY</b> na si <b>JERIC ANTALAN SABATE</b> ay lehitimo at pirmihang naninirahan dito sa <b>PUROK 5</b> ng Barangay na ito sa loob ng <b>29</b> taon simula noong <b>1994.</b><br></p>
-                                    <p class="intro">Ang pagpapatunay na ito ay iginawad upang maging batayan at gamitin sa pagkuha ng kaukulang serbisyong kanyang kinakailangan. Iginawad ngayong ika- <b>7th ng February 2023,</b> dito sa Tanggapan ng Punong Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
+                                    <p style="font-size: 20px; margin-top: 180px;"><b>TO WHOM IT MAY CONCERN:</p></b>
+                                    <p class="intro"><b>This is to certify</b> that<b> <?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?> <?php echo $row['lastname']; ?></b> a resident of <b>PUROK 4</b> of this Barangay had applied and been granted a <b>BARANGAY BUILDING PERMIT</b> as a requirement prior to the construction of the proposed building applied for.<br></p>
+                                    <p class="intro">This Barangay Building Permit is subject to all existing law, rules and regulations appertaining to the Building Code of the Philippines and building construction activity. Any violation of which shall automatically render this permit null and void.</p></br>
+                                    <p class="intro">Issued this <b>7th day of February 2023,</b> hereat the Office of the Punong Barangay of Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
 
                                 <?php
                             }
@@ -79,7 +80,7 @@
 
                 
                 <div>
-                    <label style="padding-bottom: 10px">Nagpapatunay ni:</label>
+                    <label style="padding-bottom: 10px">Certified by:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials");
                             while($row=mysqli_fetch_array($qry)){
@@ -97,7 +98,7 @@
 
                 
                 <div style="margin-top: -102px; margin-left: 38em;">
-                    <label style="padding-bottom: 10px">Inihanda ni:</label>
+                    <label style="padding-bottom: 10px">Prepared by:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials ");
                             while($row=mysqli_fetch_array($qry)){

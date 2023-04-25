@@ -9,7 +9,7 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Residency</title>
 <html id="clearance">
 <link rel="stylesheet" href="form.css">
 <style>
@@ -34,7 +34,7 @@
                     Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF RESIDENCY</b><p>
                 </div>
             </div>       
 
@@ -62,10 +62,9 @@
                             foreach($query_run as $row)
                             {
                                 ?>
-                                    <p style="font-size: 20px; margin-top: 180px;"><b>TO WHOM IT MAY CONCERN:</p></b>
-                                    <p class="intro"><b>THIS IS TO CERTIFY THAT</b> as per records of this office the names <b>CRISTINE JOY SANTOS</b> and <b>CATHERINE JOY PABLO SANTOS</b> pertain to ONE AND THE SAME PERSON, with Ms. CATHERINE JOY PABLO SANTOS using the name involving transactions with his barangay office and other government offices.<br></p>
-                                    <p class="intro"><b>THIS CERTIFICATION</b> is being issued upon the request of the aboved name person for whatever legal purposes it may serve him/her best.</p></br>
-                                    <p class="intro">Issued this <b>7th day of February 2023</b> hereat of the Office of the Punong Barangay of Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
+                                    <p style="font-size: 20px; margin-top: 180px;"><b>SA KINAUUKULAN:</p></b>
+                                    <p class="intro2"><b>ITO AY ISANG PAGPAPATUNAY</b> na si <b><?php echo $row['firstname']; ?> <?php echo $row['middlename'];?><?php echo $row['lastname'];?></b> ay lehitimo at pirmihang naninirahan dito sa <b>PUROK 5</b> ng Barangay na ito sa loob ng <b>29</b> taon simula noong <b>1994.</b><br></p>
+                                    <p class="intro">Ang pagpapatunay na ito ay iginawad upang maging batayan at gamitin sa pagkuha ng kaukulang serbisyong kanyang kinakailangan. Iginawad ngayong ika- <b>7th ng February 2023,</b> dito sa Tanggapan ng Punong Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
 
                                 <?php
                             }
@@ -80,7 +79,7 @@
 
                 
                 <div>
-                    <label style="padding-bottom: 10px">Certified by:</label>
+                    <label style="padding-bottom: 10px">Nagpapatunay ni:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials");
                             while($row=mysqli_fetch_array($qry)){
@@ -98,7 +97,7 @@
 
                 
                 <div style="margin-top: -102px; margin-left: 38em;">
-                    <label style="padding-bottom: 10px">Prepared by:</label>
+                    <label style="padding-bottom: 10px">Inihanda ni:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials ");
                             while($row=mysqli_fetch_array($qry)){

@@ -5,78 +5,6 @@
 
 <?php include '../connection.php'; ?>
 
-<style>
-    .switch {
-    position: relative;
-    display: inline-block;
-    width: 85px;
-    height: 34px;
-   }
-   
-   .switch input {
-    display: none;
-   }
-   
-   .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #3C3C3C;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 34px;
-   }
-   
-   .slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 6px;
-    bottom: 7px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 50%;
-   }
-   
-   input:checked + .slider {
-    background-color: #0E6EB8;
-   }
-   
-   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-   }
-   
-   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(55px);
-   }
-   
-   /*------ ADDED CSS ---------*/
-   .slider:after {
-    content: 'Not Active';
-    color: white;
-    display: block;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    font-size: 10px;
-    font-family: Verdana, sans-serif;
-   }
-   
-   input:checked + .slider:after {
-    content: 'Active';
-   }
-   
-   /*--------- END --------*/
-</style>
-
     <div class="container px-4">
         <div class="row">
             <div class="col-md-12">
@@ -109,13 +37,13 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $squery = mysqli_query($con, "SELECT * FROM tblofficials");
+                                    $squery = mysqli_query($con, "SELECT * , concat(firstname,' ',lastname) as fullname FROM tblofficials;");
                                     while($row = mysqli_fetch_array($squery))
                                     {
                                         echo '
                                         <tr class="text-center">
                                             <td> '.strtoupper($row['position']).' </td>
-                                            <td> '.strtoupper($row['lastname']).', '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'. </td>
+                                            <td> '.strtoupper($row['fullname']).' </td>
                                             <td> '.strtoupper($row['address']).' </td>
                                             <td> '.strtoupper($row['contactNo']).' </td>
                                             ';
@@ -144,7 +72,7 @@
                                                                     '.($row['status']).'
                                                                 </button>
                                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                                <form action="statuschange.php" method="POST">
+                                                                <form action="function.php" method="POST">
                                                                     
                                                                     <button class="dropdown-item" type="submit" name="active" value="Inactive">Inactive</button>
                                                                 </form>
@@ -162,7 +90,7 @@
                                                                     '.($row['status']).'
                                                                 </button>
                                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                                    <form action="statuschange.php" method="POST">
+                                                                    <form action="function.php" method="POST">
                                                                         
                                                                         <button class="dropdown-item" type="submit" name="inactive" value="Active">Active</button>
                                                                     </form>

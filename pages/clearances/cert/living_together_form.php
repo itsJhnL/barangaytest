@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <title>Certificate of Living Together</title>
 <html id="clearance">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="../css/form.css">
 <style>
     @media print {
         .noprint {
@@ -63,7 +63,7 @@
                             {
                                 ?> 
                                     <p style="font-size: 20px; margin-top: 180px;"><b>SA KINAUUKULAN:</p></b>
-                                    <p class="intro">Ito ay isang pagpapatunay na sina <b>JOMAR NAVARRO at AZALEA MAGNO,</b> naninirahan sa <b>PUROK 4</b> ng Barangay Collado, Talavera, Nueva Ecija ay nagsasama na bilang mag asawa sa loob ng 19 taon.<br><br></p>
+                                    <p class="intro">Ito ay isang pagpapatunay na sina <b><?php echo $row['firstname'];?><?php echo $row['lastname']; ?> at <?php echo $row['firstname']; ?> <?php echo $row['lastname']; ?>,</b> naninirahan sa <b>PUROK 4</b> ng Barangay Collado, Talavera, Nueva Ecija ay nagsasama na bilang mag asawa sa loob ng 19 taon.<br><br></p>
                                     <p class="intro">Ito rin ay nagpapatunay na ang mga sumusunod ay kanilang mga anak:</p></br></br>
                                     <p class="intro"><b>FAITH MARJORIE</b></p></br>
                                     <p class="intro"><b>AEZEL</b></p></br></br></br>

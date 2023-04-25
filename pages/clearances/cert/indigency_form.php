@@ -9,7 +9,7 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Indigency</title>
 <html id="clearance">
 <link rel="stylesheet" href="../css/form.css">
 <style>
@@ -34,7 +34,7 @@
                     Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF INDIGENCY</b><p>
                 </div>
             </div>       
 

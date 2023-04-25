@@ -28,27 +28,27 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link collapsed <?= $page == 'business_permit.php' || $page == 'indigency.php' || $page == 'solo_parent.php' || $page == 'goodmoral.php' || $page == 'business_closure.php' || $page == 'deceased_person.php' || $page == 'kuryente.php' ? 'active':''?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTransaction" aria-expanded="false" aria-controls="collapseTransaction">
+                    <a class="nav-link collapsed <?= $page == 'barangay_clearance.php' || $page == 'business_permit.php' || $page == 'indigency.php' || $page == 'residency.php' || $page == 'solo_parent.php' || $page == 'goodmoral.php' || $page == 'building_permit.php' || $page == 'business_closure.php' || $page == 'late_registration.php' || $page == 'deceased_person.php' || $page == 'living_together.php' || $page == 'same_person.php' || $page == 'patunay_sa_kuryente.php' || $page == 'proof_of_income.php' ? 'active':''?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTransaction" aria-expanded="false" aria-controls="collapseTransaction">
                         <div class="sb-nav-link-icon"><i class="fas fa-file-alt"></i></div>
                         Transactions
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse <?= $page == 'business_permit.php' || $page == 'indigency.php' || $page == 'solo_parent.php' || $page == 'goodmoral.php' || $page == 'business_closure.php' || $page == 'deceased_person.php' || $page == 'kuryente.php' ? 'show':''?>" id="collapseTransaction" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse <?= $page == 'barangay_clearance.php' || $page == 'business_permit.php' || $page == 'indigency.php' || $page == 'residency.php' || $page == 'solo_parent.php' || $page == 'goodmoral.php' || $page == 'building_permit.php' || $page == 'business_closure.php' || $page == 'late_registration.php' || $page == 'deceased_person.php' || $page == 'living_together.php' || $page == 'same_person.php' || $page == 'patunay_sa_kuryente.php' || $page == 'proof_of_income.php' ? 'show':''?>" id="collapseTransaction" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link <?= $page == '#' ? 'active':''?>" href="#">Barangay Clearance</a>
-                            <a class="nav-link <?= $page == 'business_permit.php' ? 'active':''?>" href="../clearances/business_permit/business_permit.php">Business Permit</a>
-                            <a class="nav-link <?= $page == 'indigency.php' ? 'active':''?>" href="../clearances/indigency.php">Certificate of Indigency</a>
-                            <a class="nav-link <?= $page == '#' ? 'active':''?>" href="#">Certificate of Residency</a>
-                            <a class="nav-link <?= $page == 'solo_parent.php' ? 'active':''?>" href="../clearances/solo_parent.php">Certificate of Solo Parent</a>
-                            <a class="nav-link <?= $page == 'goodmoral.php' ? 'active':''?>" href="../clearances/goodmoral.php">Certificate of Good Moral</a>
-                            <a class="nav-link <?= $page == '#' ? 'active':''?>" href="#">Certificate of Building Permit</a>
-                            <a class="nav-link <?= $page == 'business_closure.php' ? 'active':''?>" href="../clearances/business_closure.php">Certificate of Business Closure</a>
-                            <a class="nav-link <?= $page == '#' ? 'active':''?>" href="#">Certificate of Late Registration</a>
-                            <a class="nav-link <?= $page == 'deceased_person.php' ? 'active':''?>" href="../clearances/deceased_person.php">Certifcate of Deceased Person</a>
-                            <a class="nav-link <?= $page == '#' ? 'active':''?>" href="#">Certificate of Living Together</a>
-                            <a class="nav-link <?= $page == '#' ? 'active':''?>" href="#">Certifcate of Same Person</a>
-                            <a class="nav-link <?= $page == 'kuryente.php' ? 'active':''?>" href="../clearances/kuryente.php">Patunay sa Kuryente</a>
-                            <a class="nav-link <?= $page == '#' ? 'active':''?>" href="#">Proof of Income</a>
+                            <a class="nav-link <?= $page == 'barangay_clearance.php' ? 'active':''?>" href="../clearances/barangay_clearance.php">Barangay Clearance</a>
+                            <a class="nav-link <?= $page == 'business_permit.php' ? 'active':''?>" href="../clearances/business_permit.php">Business Permit</a>
+                            <a class="nav-link <?= $page == 'indigency.php' ? 'active':''?>" href="../clearances/indigency.php">OKCertificate of Indigency</a>
+                            <a class="nav-link <?= $page == 'residency.php' ? 'active':''?>" href="../clearances/residency.php">OKCertificate of Residency</a>
+                            <a class="nav-link <?= $page == 'solo_parent.php' ? 'active':''?>" href="../clearances/solo_parent.php">OKCertificate of Solo Parent</a>
+                            <a class="nav-link <?= $page == 'goodmoral.php' ? 'active':''?>" href="../clearances/goodmoral.php">OKCertificate of Good Moral</a>
+                            <a class="nav-link <?= $page == 'building_permit.php' ? 'active':''?>" href="../clearances/building_permit.php">OKCertificate of Building Permit</a>
+                            <a class="nav-link <?= $page == 'business_closure.php' ? 'active':''?>" href="../clearances/business_closure.php">OKCertificate of Business Closure</a>
+                            <a class="nav-link <?= $page == 'late_registration.php' ? 'active':''?>" href="../clearances/late_registration.php">OKCertificate of Late Registration</a>
+                            <a class="nav-link <?= $page == 'deceased_person.php' ? 'active':''?>" href="../clearances/deceased_person.php">OKCertifcate of Deceased Person</a>
+                            <a class="nav-link <?= $page == 'living_together.php' ? 'active':''?>" href="../clearances/living_together.php">OKCertificate of Living Together</a>
+                            <a class="nav-link <?= $page == 'same_person.php' ? 'active':''?>" href="../clearances/same_person.php">OKCertifcate of Same Person</a>
+                            <a class="nav-link <?= $page == 'patunay_sa_kuryente.php' ? 'active':''?>" href="../clearances/patunay_sa_kuryente.php">OKPatunay sa Kuryente</a>
+                            <a class="nav-link <?= $page == 'proof_of_income.php' ? 'active':''?>" href="../clearances/proof_of_income.php">OKProof of Income</a>
                         </nav>
                     </div>
                 </li>

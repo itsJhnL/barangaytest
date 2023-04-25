@@ -61,16 +61,19 @@ if(isset($_POST['save_resident']))
     $user_id = mysqli_real_escape_string($con, $_POST['id']);
     $firstname = mysqli_real_escape_string($con, $_POST['firstname']);
     $lastname = mysqli_real_escape_string($con, $_POST['lastname']);
-    $address = mysqli_real_escape_string($con, $_POST['address']);
+    $houseNo = mysqli_real_escape_string($con, $_POST['houseNo']);
+    $purok = mysqli_real_escape_string($con, $_POST['purok']);
+    $barangay = mysqli_real_escape_string($con, $_POST['barangay']);
+    $city = mysqli_real_escape_string($con, $_POST['city']);
+    $province = mysqli_real_escape_string($con, $_POST['province']);
     $contactNo = mysqli_real_escape_string($con, $_POST['contactNo']);
     $gender = mysqli_real_escape_string($con, $_POST['gender']);
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
-    $status = mysqli_real_escape_string($con, $_POST['status']);
     $middlename = mysqli_real_escape_string($con, $_POST['middlename']);
  
     // query to update the data
-    $query_run = mysqli_query($con, "UPDATE `tblresident` SET `firstname` = '$firstname', `lastname` = '$lastname', `address` = '$address', `contactNo` = '$contactNo', `gender` = '$gender', `username` = '$username', `password` = '$password', `status` = '$status', `middlename` = '$middlename' WHERE `id` = '$user_id'");
+    $query_run = mysqli_query($con, "UPDATE `tblresident` SET `firstname` = '$firstname', `lastname` = '$lastname', `houseNo` = '$houseNo', `purok` = '$purok', `barangay` = '$barangay', `city` = '$city', `province` = '$province', `contactNo` = '$contactNo', `gender` = '$gender', `username` = '$username', `password` = '$password', `middlename` = '$middlename' WHERE `id` = '$user_id'");
 
     if($query_run)
     {

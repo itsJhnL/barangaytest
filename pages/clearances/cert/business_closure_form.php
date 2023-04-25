@@ -9,9 +9,9 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Business Closure</title>
 <html id="clearance">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="../css/form.css">
 <style>
     @media print {
         .noprint {
@@ -34,7 +34,7 @@
                     Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF BUSINESS CLOSURE</b><p>
                 </div>
             </div>       
 
@@ -63,10 +63,9 @@
                             {
                                 ?>
                                     <p style="font-size: 20px; margin-top: 180px;"><b>TO WHOM IT MAY CONCERN:</p></b>
-                                    <p class="intro"><b>This is to certify</b> that<b> CATHERINE JOY PABLO SANTOS,</b> a resident of <b>PUROK 4</b> of this Barangay had applied and been granted a <b>BARANGAY BUILDING PERMIT</b> as a requirement prior to the construction of the proposed building applied for.<br></p>
-                                    <p class="intro">This Barangay Building Permit is subject to all existing law, rules and regulations appertaining to the Building Code of the Philippines and building construction activity. Any violation of which shall automatically render this permit null and void.</p></br>
-                                    <p class="intro">Issued this <b>7th day of February 2023,</b> hereat the Office of the Punong Barangay of Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
-
+                                    <p class="intro"><b>THIS IS TO CERTIFY</b> that<b> <?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?>. <?php echo $row['lastname'];?>, <?php echo $row['age']; ?> years old,</b> Filipino and a bonafide resisdent of this Barangay is a law abiding citizen with no degregatory record nor any pending case filed before the Barangay Peace and Order Council of this Barangay, <b><?php echo $row['gender']; ?></b> is known to me of having a good moral character.<br></p>
+                                    <p class="intro">This certification is issued upon the request of the above mention person for reference whatever legal intent or purpose it may serve.</p></br>
+                                    <p class="intro">Issued this <b>7th</b> day of <b>February 2023,</b> hereat the Office of The Punong Barangay of Barangay Collado, Talavera, Nueva Ecija, Republic of the Philippines.</p></br></br></br></br>
                                 <?php
                             }
                         }

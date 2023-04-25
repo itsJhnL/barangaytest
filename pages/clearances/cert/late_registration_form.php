@@ -9,7 +9,7 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Late Registration</title>
 <html id="clearance">
 <link rel="stylesheet" href="form.css">
 <style>
@@ -34,7 +34,7 @@
                     Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF LATE REGISTRATION</b><p>
                 </div>
             </div>       
 
@@ -62,10 +62,10 @@
                             foreach($query_run as $row)
                             {
                                 ?>
-                                    <p style="font-size: 20px; margin-top: 180px;"><b>TO WHOM IT MAY CONCERN:</p></b>
-                                    <p class="intro"><b>THIS IS TO CERTIFY</b> that<b> <?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?>. <?php echo $row['lastname'];?>, <?php echo $row['age']; ?> years old,</b> Filipino and a bonafide resisdent of this Barangay is a law abiding citizen with no degregatory record nor any pending case filed before the Barangay Peace and Order Council of this Barangay, <b><?php echo $row['gender']; ?></b> is known to me of having a good moral character.<br></p>
-                                    <p class="intro">This certification is issued upon the request of the above mention person for reference whatever legal intent or purpose it may serve.</p></br>
-                                    <p class="intro">Issued this <b>7th</b> day of <b>February 2023,</b> hereat the Office of The Punong Barangay of Barangay Collado, Talavera, Nueva Ecija, Republic of the Philippines.</p></br></br></br></br>
+                                    <p style="font-size: 20px; margin-top: 180px;"><b>SA KINAUUKULAN:</p></b>
+                                    <p class="intro2"><b>ITO AY ISANG PAGPAPATUNAY</b> na si <b><?php echo $row['firstname']; ?><?php echo $row['middlename']; ?> <?php echo $row['lastname'];?></b> ay anak ni <b>CONSOLACION SANTOS</b> na ipinanganak sa Barangay na ito noong ika- <b>6th ng December ng taong 2001.</b><br></p>   
+                                    <p class="intro">Ang pagpapatunay na ito ay iginawad upang maging batayan at gamitin sa pagkuha ng serbisyong kanyang kinakailangan.</p></br>
+                                    <p class="intro">Iginawad ngayong ika- <b>7th ng February 2023,</b> dito sa Tanggapan ng Punong Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
                                 <?php
                             }
                         }
@@ -79,7 +79,7 @@
 
                 
                 <div>
-                    <label style="padding-bottom: 10px">Certified by:</label>
+                    <label style="padding-bottom: 10px">Nagpapatunay ni:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials");
                             while($row=mysqli_fetch_array($qry)){
@@ -97,7 +97,7 @@
 
                 
                 <div style="margin-top: -102px; margin-left: 38em;">
-                    <label style="padding-bottom: 10px">Prepared by:</label>
+                    <label style="padding-bottom: 10px">Inihanda ni:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials ");
                             while($row=mysqli_fetch_array($qry)){

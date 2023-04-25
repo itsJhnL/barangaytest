@@ -1,5 +1,4 @@
 <?php
-    /* session_start(); */
     include '../connection.php';
     include '../../includes/scripts.php';
     
@@ -16,7 +15,7 @@ include '../../includes/header.php';
         <div class="row">
             <div class="col-md-12">
 
-                <h1>Certificate of Indigency</h1>
+                <h1>Certificate of Same Person</h1>
                 <hr>
 
                 <div class="card">
@@ -59,13 +58,14 @@ include '../../includes/header.php';
                                     while($row = $result->fetch_assoc()) {
                                         echo "
                                         <tr>
+                                            
                                             <td>$row[lastname] $row[firstname] $row[middlename]</td>
                                             <td>$row[age]</td>
                                             <td>$row[gender]</td>
                                             <td>$row[houseNo] $row[purok] $row[barangay] $row[city] $row[province]</td>";
                                         ?>
                                             <td class="text-center">
-                                                <form action="cert/indigency_form.php" target="_blank" id="option" method="GET" class="d-inline">
+                                                <form action="cert/same_person_form.php" target="_blank" id="option" method="GET" class="d-inline">
                                                     <input type="hidden" name="id" value="<?php if(isset($_GET['id']))/* {echo $_GET['id'];} */ ?>" class="form-control">
                                                     <button type="submit" class="btn btn-primary btn-sm" title="Print" name="id" form="option" value='<?php echo $row['id'];?>'>Generate</button>
                                                 </form>
@@ -76,8 +76,10 @@ include '../../includes/header.php';
                                         <?php
                                     }
                                 ?>
+                                
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>

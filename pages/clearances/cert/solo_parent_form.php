@@ -9,7 +9,7 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Solo Parent</title>
 <html id="clearance">
 <link rel="stylesheet" href="form.css">
 <style>
@@ -34,7 +34,7 @@
                     Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF SOLO PARENT</b><p>
                 </div>
             </div>       
 
@@ -62,11 +62,10 @@
                             foreach($query_run as $row)
                             {
                                 ?>
-                                    <p style="font-size: 20px; margin-top: 180px;"><b>SA KINAUUKULAN:</p></b>
-                                    <p class="intro"><b>ITO AY ISANG PAGPAPATUNAY</b> na ang linya ng kuryente na nasa pangalan ni <b>Bb. CATHERINE JOY PABLO SANTOS</b> na ang Account Number ay 98765 ay ginagamit sa kasalukuyan ni <b>Bb. CATHERINE JOY PABLO SANTOS</b> naninirahan sa <b>PUROK 4</b> ng Barangay Collado, Talavera, Nueva Ecija.<br></p>
-                                    <p class="intro">Ang pagpapatunay na ito ay ginagawad kay <b>Bb. CATHERINE JOY PABLO SANTOS</b> upang maging batayan at gamitin sa pagkuha ng kaukulang serbisyo na kanyang kinakailangan.</p></br>
-                                    <p class="intro">Iginagawad ngayong ika- <b>7th ng February 2023</b> dito sa Tanggapan ng Punong Barangay ng Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
-
+                                    <p style="font-size: 20px; margin-top: 180px;"><b>TO WHOM IT MAY CONCERN:</p></b>
+                                    <p class="intro2"><b>THIS IS TO CERTIFY</b> that <b><?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?> <?php echo $row['lastname']; ?>,</b> is a bonafide resident of <b>PUROK 4,</b> of this Barangay having <b>1</b> children on her custody and living with her as a solo parent.<br></p>
+                                    <p class="intro2">This certification has been issued upon request of  <b>MARY JANE NAVARRO VERCELES</b> for reference and for whatever legal purpose that it may serve.</p></br>
+                                    <p class="intro2">Issued this <b>7th</b> day of <b>February 2023</b> hereat the Office of the Punong Barangay.</p></br></br></br></br>
                                 <?php
                             }
                         }

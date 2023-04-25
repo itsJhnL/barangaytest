@@ -9,9 +9,9 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Same Person</title>
 <html id="clearance">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="../css/form.css">
 <style>
     @media print {
         .noprint {
@@ -34,7 +34,7 @@
                     Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF SAME PERSON</b><p>
                 </div>
             </div>       
 
@@ -63,9 +63,10 @@
                             {
                                 ?>
                                     <p style="font-size: 20px; margin-top: 180px;"><b>TO WHOM IT MAY CONCERN:</p></b>
-                                    <p class="intro2"><b>THIS IS TO CERTIFY</b> that <b>MARY JANE NAVARRO VERCELES,</b> is a bonafide resident of <b>PUROK 4,</b> of this Barangay having <b>1</b> children on her custody and living with her as a solo parent.<br></p>
-                                    <p class="intro2">This certification has been issued upon request of  <b>MARY JANE NAVARRO VERCELES</b> for reference and for whatever legal purpose that it may serve.</p></br>
-                                    <p class="intro2">Issued this <b>7th</b> day of <b>February 2023</b> hereat the Office of the Punong Barangay.</p></br></br></br></br>
+                                    <p class="intro"><b>THIS IS TO CERTIFY THAT</b> as per records of this office the names <b><?php echo $row['firstname'];?><?php echo $row['lastname']; ?></b> and <b>CATHERINE JOY PABLO SANTOS</b> pertain to ONE AND THE SAME PERSON, with Ms. CATHERINE JOY PABLO SANTOS using the name involving transactions with his barangay office and other government offices.<br></p>
+                                    <p class="intro"><b>THIS CERTIFICATION</b> is being issued upon the request of the aboved name person for whatever legal purposes it may serve him/her best.</p></br>
+                                    <p class="intro">Issued this <b>7th day of February 2023</b> hereat of the Office of the Punong Barangay of Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
+
                                 <?php
                             }
                         }

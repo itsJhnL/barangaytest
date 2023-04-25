@@ -9,9 +9,9 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Proof of Income</title>
 <html id="clearance">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="../css/form.css">
 <style>
     @media print {
         .noprint {
@@ -34,7 +34,7 @@
                     Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF PROOF OF INCOME</b><p>
                 </div>
             </div>       
 
@@ -63,9 +63,10 @@
                             {
                                 ?>
                                     <p style="font-size: 20px; margin-top: 180px;"><b>SA KINAUUKULAN:</p></b>
-                                    <p class="intro2"><b>ITO AY ISANG PAGPAPATUNAY</b> na si <b>CATHERINE JOY PABLO SANTOS</b> ay anak ni <b>CONSOLACION SANTOS</b> na ipinanganak sa Barangay na ito noong ika- <b>6th ng December ng taong 2001.</b><br></p>   
-                                    <p class="intro">Ang pagpapatunay na ito ay iginawad upang maging batayan at gamitin sa pagkuha ng serbisyong kanyang kinakailangan.</p></br>
-                                    <p class="intro">Iginawad ngayong ika- <b>7th ng February 2023,</b> dito sa Tanggapan ng Punong Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
+                                    <p class="intro"><b>ITO AY ISANG PAGPAPATUNAY</b> na si <b><?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?>. <?php echo $row['lastname'];?>, <?php echo $row['age'];?></b> taong gulang, walang asawa at naninirahan sa PUROK 4 ng Barangay na ito ay pinatutunayang naghahanap-buhay bilang isang TINDERA at kumikita ng halagang <b>(P 4,000.00)</b> sa loob ng isang buwan.<br></p>
+                                    <p class="intro">Ang pagpapatunay na ito ay ginagawad kay <b><?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?>. <?php echo $row['lastname'];?></b> upang maging batayan ng kaniyang hanap-buhay at gamitin sa pagkuha ng serbisyong kaniyang kinakailangan.</p></br>
+                                    <p class="intro">Iginagawad ngayong ika- <b>7th ng February 2023</b> dito sa Tanggapan ng Punong Barangay ng Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
+
                                 <?php
                             }
                         }

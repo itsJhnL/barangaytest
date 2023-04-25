@@ -9,9 +9,9 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Deceased Person</title>
 <html id="clearance">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="../css/form.css">
 <style>
     @media print {
         .noprint {
@@ -34,7 +34,7 @@
                     Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF DECEASED PERSON</b><p>
                 </div>
             </div>       
 
@@ -63,7 +63,7 @@
                             {
                                 ?>
                                     <p style="font-size: 20px; margin-top: 180px;"><b>SA KINAUUKULAN:</p></b>
-                                    <p class="intro">Ito ay isang patunay na si <b> CATHERINE JOY PABLO, 21 years old </b> taong gulang na naninirahan sa <b> PUROK 4</b> ng Barangay na ito ay pumanaw na noong ika-7th ng February ng taong ito sa ganap na ika-7:28 pm sa kanilang tahanan.<br></p>   
+                                    <p class="intro">Ito ay isang patunay na si <b> <?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?> <?php echo $row['lastname']; ?>, 21 years old </b> taong gulang na naninirahan sa <b> PUROK 4</b> ng Barangay na ito ay pumanaw na noong ika-7th ng February ng taong ito sa ganap na ika-7:28 pm sa kanilang tahanan.<br></p>   
                                     <p class="intro">Ang pagpapatunay na ito ay iginawad dahil sa kahilingan ni CATHERINE JOY SANTOS na KAPATID ng pumanaw upang maging batayan at gamitin sa pagkuha ng kaukulang serbisyong kanilang kinakailangan. Iginawad ngayong ika-7th ng February 2023 dito sa Tanggapan ng Punong Barangay ng Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
                                 <?php
                             }
