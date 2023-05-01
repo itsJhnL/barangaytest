@@ -86,12 +86,13 @@ if(isset($_POST['delete_official']))
 
 //Status set Active/Inactive function
 
-if(isset($_POST['active']))
+  if(isset($_POST['Active']))
   {
-    $id = mysqli_real_escape_string($con, $_POST['id']);
-    $status = mysqli_real_escape_string($con, $_POST['status']);
+    $id = $_POST['id'];
+    // $status = $_POST['status'];
+    
 
-    $query_run = mysqli_query($con, "UPDATE `tblofficials` SET status='Inactive' ");
+    $query_run = mysqli_query($con, "UPDATE `tblofficials` SET status='Inactive' where id=$id ") or die(mysqli_error());
 
     if($query_run)
     {
@@ -100,12 +101,13 @@ if(isset($_POST['active']))
     }
   }
 
-  elseif(isset($_POST['inactive']))
+  if(isset($_POST['Inactive']))
   {
-    $id = mysqli_real_escape_string($con, $_POST['id']);
-    $status = mysqli_real_escape_string($con, $_POST['status']);
+    $id = $_POST['id'];
+    // $status = $_POST['status'];
+    
 
-    $query_run = mysqli_query($con, "UPDATE `tblofficials` SET status='Active' ");
+    $query_run = mysqli_query($con, "UPDATE `tblofficials` SET status='Active' where id=$id ") or die(mysqli_error());
 
     if($query_run)
     {

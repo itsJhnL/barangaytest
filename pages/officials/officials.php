@@ -58,55 +58,34 @@
                                             </td>
 
                                             <td class="col">
-                                                <div class="col mb-3">
-                                                    <?php 
+                                                <?php
 
-                                                    
-
-                                                        if($row['status'] == "Active")
-                                                        {
-                                                            echo '
-                                                            <div class="dropdown">
-                                                            
-                                                                <button class="btn-sm btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    '.($row['status']).'
-                                                                </button>
-                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                                <form action="function.php" method="POST">
-                                                                    
-                                                                    <button class="dropdown-item" type="submit" name="active" value="Inactive">Inactive</button>
-                                                                </form>
-                                                                </ul>
-                                                            </div>
+                                                    if($row['status'] == "Active")
+                                                    {
+                                                        echo '
+                                                            <form action="function.php" method="POST">
+                                                                <button type="button" class="btn btn-success" title="select to change" data-bs-toggle="modal" data-bs-target="#setInactive'.$row['id'].'">'.$row['status'].'</button>
+                                                            </form>
                                                         ';
-                                                        }
+                                                    }
 
-                                                        elseif($row['status'] == "Inactive")
-                                                        {
-                                                            echo '
-                                                            <div class="dropdown">
-                                                            
-                                                                <button class="btn-sm btn-danger dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    '.($row['status']).'
-                                                                </button>
-                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                                    <form action="function.php" method="POST">
-                                                                        
-                                                                        <button class="dropdown-item" type="submit" name="inactive" value="Active">Active</button>
-                                                                    </form>
-                                                                </ul>
-                                                            </div>
-                                                            ';
-                                                        }
-
-                                                        else {
-                                                        echo"";
-                                                        }
-                                                    ?>
-                                                </div>
+                                                    if($row['status'] == "Inactive")
+                                                    {
+                                                        echo '
+                                                            <form action="function.php" method="POST">
+                                                                <button type="button" class="btn btn-danger" title="select to change" data-bs-toggle="modal" data-bs-target="#setActive'.$row['id'].'">'.$row['status'].'</button>
+                                                            </form>
+                                                        ';
+                                                    }
+                                                    echo'
+                                                    <form action="function.php">
+                                                    </form>';
+                                                ?>
                                             </td>
                                         </tr>
                                         <?php
+                                        include 'Inactive.php';
+                                        include 'Active.php';
                                         include 'view_official.php';
                                         include 'edit_official.php';
                                         include 'delete_official.php';

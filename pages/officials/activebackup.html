@@ -1,0 +1,44 @@
+<?php 
+
+                                                    
+
+    if($row['status'] == "Active")
+    {
+        echo '
+        <div class="dropdown">
+        
+            <button class="btn-sm btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                '.($row['status']).'
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <form action="function.php" method="POST">
+                
+                <button class="dropdown-item" type="submit" name="active" value="Inactive">Inactive</button>
+            </form>
+            </ul>
+        </div>
+    ';
+    }
+
+    elseif($row['status'] == "Inactive")
+    {
+        echo '
+        <div class="dropdown">
+        
+            <button class="btn-sm btn-danger dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                '.($row['status']).'
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <form action="function.php" method="POST">
+                    
+                    <button class="dropdown-item" type="submit" name="inactive" value="Active">Active</button>
+                </form>
+            </ul>
+        </div>
+        ';
+    }
+
+    else {
+    echo"";
+    }
+    ?>
