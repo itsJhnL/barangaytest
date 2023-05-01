@@ -86,36 +86,59 @@ if(isset($_POST['delete_official']))
 
 //Status set Active/Inactive function
 
-  if(isset($_POST['Active']))
-  {
-    $id = $_POST['id'];
-    // $status = $_POST['status'];
+  // if(isset($_POST['Active']))
+  // {
+  //   $id = mysqli_real_escape_string($con, $_POST['id']);
+  //   // $status = $_POST['status'];
     
 
-    $query_run = mysqli_query($con, "UPDATE `tblofficials` SET status='Inactive' where id=$id ") or die(mysqli_error());
+  //   $query_run = mysqli_query($con, "UPDATE `tblofficials` SET status='Inactive' where id=$id ") or die(mysqli_error());
 
-    if($query_run)
-    {
-      header("Location: officials.php");
-      exit(0);
-    }
-  }
+  //   if($query_run)
+  //   {
+  //     header("Location: officials.php");
+  //     exit(0);
+  //   }
+  // }
 
-  if(isset($_POST['Inactive']))
-  {
-    $id = $_POST['id'];
-    // $status = $_POST['status'];
+  // if(isset($_POST['Inactive']))
+  // {
+  //   $id = mysqli_real_escape_string($con, $_POST['id']);
+  //   // $status = $_POST['status'];
     
 
-    $query_run = mysqli_query($con, "UPDATE `tblofficials` SET status='Active' where id=$id ") or die(mysqli_error());
+  //   $query_run = mysqli_query($con, "UPDATE `tblofficials` SET status='Active' where id=$id ") or die(mysqli_error());
 
-    if($query_run)
-    {
-      header("Location: officials.php");
-      exit(0);
+  //   if($query_run)
+  //   {
+  //     header("Location: officials.php");
+  //     exit(0);
+  //   }
+  // }
+
+  if(isset($_POST['Active'])) {
+    $id = $_POST['id'];
+    $status = "Active";
+    $sql = "UPDATE tblofficials SET status = 'Inactive'";
+    if($result = $con->query($sql)) {
+      $sql2 = "UPDATE tblofficials SET status = '$status' WHERE id = '$id'";
+      if($result2 = $con->query($sql2)) {
+        header("location:officials.php");
+      }
     }
   }
+  
 
-
+/*   if(isset($_POST['Inactive'])) {
+    $id = $_POST['id'];
+    $status = "Inactive";
+    $sql = "UPDATE tblofficials SET status = 'Active'";
+    if($result = $con->query($sql)) {
+      $sql2 = "UPDATE tblofficials SET status = '$status' WHERE id = '$id'";
+      if($result2 = $con->query($sql2)) {
+        header("location:officials.php");
+      }
+    }
+  } */
 
 ?>
