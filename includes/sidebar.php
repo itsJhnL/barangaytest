@@ -37,18 +37,18 @@
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link <?= $page == 'barangay_clearance.php' ? 'active':''?>" href="../clearances/barangay_clearance.php">Barangay Clearance</a>
                             <a class="nav-link <?= $page == 'business_permit.php' ? 'active':''?>" href="../clearances/business_permit.php">Business Permit</a>
-                            <a class="nav-link <?= $page == 'indigency.php' ? 'active':''?>" href="../clearances/indigency.php">OKCertificate of Indigency</a>
-                            <a class="nav-link <?= $page == 'residency.php' ? 'active':''?>" href="../clearances/residency.php">OKCertificate of Residency</a>
-                            <a class="nav-link <?= $page == 'solo_parent.php' ? 'active':''?>" href="../clearances/solo_parent.php">OKCertificate of Solo Parent</a>
-                            <a class="nav-link <?= $page == 'goodmoral.php' ? 'active':''?>" href="../clearances/goodmoral.php">OKCertificate of Good Moral</a>
-                            <a class="nav-link <?= $page == 'building_permit.php' ? 'active':''?>" href="../clearances/building_permit.php">OKCertificate of Building Permit</a>
-                            <a class="nav-link <?= $page == 'business_closure.php' ? 'active':''?>" href="../clearances/business_closure.php">OKCertificate of Business Closure</a>
-                            <a class="nav-link <?= $page == 'late_registration.php' ? 'active':''?>" href="../clearances/late_registration.php">OKCertificate of Late Registration</a>
-                            <a class="nav-link <?= $page == 'deceased_person.php' ? 'active':''?>" href="../clearances/deceased_person.php">OKCertifcate of Deceased Person</a>
-                            <a class="nav-link <?= $page == 'living_together.php' ? 'active':''?>" href="../clearances/living_together.php">OKCertificate of Living Together</a>
-                            <a class="nav-link <?= $page == 'same_person.php' ? 'active':''?>" href="../clearances/same_person.php">OKCertifcate of Same Person</a>
-                            <a class="nav-link <?= $page == 'patunay_sa_kuryente.php' ? 'active':''?>" href="../clearances/patunay_sa_kuryente.php">OKPatunay sa Kuryente</a>
-                            <a class="nav-link <?= $page == 'proof_of_income.php' ? 'active':''?>" href="../clearances/proof_of_income.php">OKProof of Income</a>
+                            <a class="nav-link <?= $page == 'indigency.php' ? 'active':''?>" href="../clearances/indigency.php">Certificate of Indigency</a>
+                            <a class="nav-link <?= $page == 'residency.php' ? 'active':''?>" href="../clearances/residency.php">Certificate of Residency</a>
+                            <a class="nav-link <?= $page == 'solo_parent.php' ? 'active':''?>" href="../clearances/solo_parent.php">Certificate of Solo Parent</a>
+                            <a class="nav-link <?= $page == 'goodmoral.php' ? 'active':''?>" href="../clearances/goodmoral.php">Certificate of Good Moral</a>
+                            <a class="nav-link <?= $page == 'building_permit.php' ? 'active':''?>" href="../clearances/building_permit.php">Certificate of Building Permit</a>
+                            <a class="nav-link <?= $page == 'business_closure.php' ? 'active':''?>" href="../clearances/business_closure.php">Certificate of Business Closure</a>
+                            <a class="nav-link <?= $page == 'late_registration.php' ? 'active':''?>" href="../clearances/late_registration.php">Certificate of Late Registration</a>
+                            <a class="nav-link <?= $page == 'deceased_person.php' ? 'active':''?>" href="../clearances/deceased_person.php">Certifcate of Deceased Person</a>
+                            <a class="nav-link <?= $page == 'living_together.php' ? 'active':''?>" href="../clearances/living_together.php">Certificate of Living Together</a>
+                            <a class="nav-link <?= $page == 'same_person.php' ? 'active':''?>" href="../clearances/same_person.php">Certifcate of Same Person</a>
+                            <a class="nav-link <?= $page == 'patunay_sa_kuryente.php' ? 'active':''?>" href="../clearances/patunay_sa_kuryente.php">Patunay sa Kuryente</a>
+                            <a class="nav-link <?= $page == 'proof_of_income.php' ? 'active':''?>" href="../clearances/proof_of_income.php">Proof of Income</a>
                         </nav>
                     </div>
                 </li>
@@ -59,19 +59,20 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link collapsed <?= $page == 'user-account.php' || $page == 'log-history.php' || $page == 'officials.php' || $page == 'maintenance.php' ? 'active':''?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSetting" aria-expanded="false" aria-controls="collapseSetting">
+                    <a class="nav-link collapsed <?= $page == 'user-account.php' || $page == 'log-history.php' || $page == 'officials.php' || $page == 'maintenance.php' || $page == 'archive.php' ? 'active':''?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSetting" aria-expanded="false" aria-controls="collapseSetting">
                         <div class="sb-nav-link-icon"><i class="fa fa-fw fa-wrench"></i></div>
                         Settings
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                 </li>
                 <li>
-                    <div class="collapse <?= $page == 'user-account.php' || $page == 'log-history.php' || $page == 'officials.php' || $page == 'maintenance.php' ? 'show':''?>" id="collapseSetting" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse <?= $page == 'user-account.php' || $page == 'log-history.php' || $page == 'officials.php' || $page == 'maintenance.php' || $page == 'archive.php' ? 'show':''?>" id="collapseSetting" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                             <a class="nav-link" href="#">User Account</a>
                             <a class="nav-link" href="#">Log History</a>
                             <a class="nav-link <?= $page == 'officials.php' ? 'active':''?> " href="../officials/officials.php">Barangay Officials</a>
                             <a class="nav-link" href="#">Maintenace</a>
+                            <a class="nav-link <?= $page == 'archive.php' ? 'active':''?> " href="../officials/archive.php">Officials Archive</a>
                         </nav>
                     </div>
                 </li>

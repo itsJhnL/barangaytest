@@ -119,17 +119,14 @@ if(isset($_POST['delete_official']))
   if(isset($_POST['Active'])) {
     $id = $_POST['id'];
     $status = "Active";
-    $sql = "UPDATE tblofficials SET status = 'Inactive'";
-    if($result = $con->query($sql)) {
       $sql2 = "UPDATE tblofficials SET status = '$status' WHERE id = '$id'";
       if($result2 = $con->query($sql2)) {
         header("location:officials.php");
-      }
     }
   }
   
 
-/*   if(isset($_POST['Inactive'])) {
+  if(isset($_POST['Inactive'])) {
     $id = $_POST['id'];
     $status = "Inactive";
     $sql = "UPDATE tblofficials SET status = 'Active'";
@@ -139,6 +136,6 @@ if(isset($_POST['delete_official']))
         header("location:officials.php");
       }
     }
-  } */
+  }
 
 ?>

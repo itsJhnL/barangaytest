@@ -29,14 +29,11 @@
                         <table class="table table-bordered table-hover table-striped" id="myTable">
                             <thead>
                                 <tr class="col text-center">
-                                    <th class="col">#</th>
+                                    <!-- <th class="col">#</th> -->
                                     <th class="col">Image</th> 
                                     <th class="col">Name</th> 
                                     <th class="col">Address</th>
-                                    <th class="col">Contact No.</th>
                                     <th class="col">Gender</th> 
-                                    <th class="col">Username</th>
-                                    <th class="col">Password</th>
                                     <th class="col">Action</th>
                                 </tr>
                             </thead>
@@ -49,14 +46,10 @@
                                     {
                                     echo '
                                         <tr class="text-center">
-                                        <td> check box </td>
-                                        <td> Image here </td>
+                                        <td style="width:70px;"><image src="img/image.jpg" style="width:60px;height:60px;"/></td>
                                         <td> '.strtoupper($row['lastname']).', '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'. </td>
                                         <td>#'.strtoupper($row['houseNo']).', PUROK '.strtoupper($row['purok']).', '.strtoupper($row['barangay']).' '.strtoupper($row['city']).' '.strtoupper($row['province']).'</td>
-                                        <td> '.strtoupper($row['contactNo']).' </td>
                                         <td> '.strtoupper($row['gender']).' </td>
-                                        <td> '.strtoupper($row['username']).' </td>
-                                        <td> ••••• </td>
                                         ';
                                 ?>
                                         <td class="col-2">

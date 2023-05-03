@@ -95,7 +95,7 @@
             </div>
 
             <!-- Status -->
-            <input type="hidden" name="status" value="Inactive">
+            <input type="hidden" name="status" value="Active">
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
               <button type="submit" name="add_official" class="btn btn-primary">Submit</button>
