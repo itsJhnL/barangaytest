@@ -34,7 +34,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $squery = mysqli_query($con, "SELECT * , concat(firstname,' ',lastname) as fullname FROM tbl_archive;");
+                                    $squery = mysqli_query($con, "SELECT * , concat(firstname,' ',lastname) as fullname FROM tbl_archives;");
                                     while($row = mysqli_fetch_array($squery))
                                     {
                                         echo '
@@ -49,14 +49,14 @@
                                             <td>
                                                 <form action="function.php" method="POST" class="d-inline">
                                                     <button type="button" class="btn btn-info btn-sm" title="View" data-bs-toggle="modal" data-bs-target="#View_Official<?php echo $row['id']; ?>"><i class="bi bi-eye-fill"></i></button>
-                                                    <button type="button" class="btn btn-danger btn-sm" title="Delete" data-bs-toggle="modal" data-bs-target="#Delete_Official<?php echo $row['id']; ?>"><i class="bi bi-trash-fill"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-sm" title="Delete" data-bs-toggle="modal" data-bs-target="#Delete_Official_Archive<?php echo $row['id']; ?>"><i class="bi bi-trash-fill"></i></button>
                                                 </form>
                                             </td>
 
                                             <td class="col">
                                                 <?php
 
-                                                    $query = mysqli_query($con, "SELECT status FROM tbl_archive where status='Inactive'");
+                                                    $query = mysqli_query($con, "SELECT status FROM tbl_archives where status='Inactive'");
 
                                                     if($query)
                                                     {
@@ -73,19 +73,15 @@
                                             </td>
                                         </tr>
                                         <?php
-                                        include 'Inactive.php';
                                         include 'Active.php';
                                         include 'view_official.php';
-                                        include 'edit_official.php';
-                                        include 'delete_official.php';
+                                        include 'delete_official_archive.php';
                                         
                                     }
                                 ?>
                             </tbody>
                         </table>
                     </div>
-                    <!-- add modal-->
-                    <?php include ('add_official.php'); ?>
                 </div>
             </div>
         </div>
