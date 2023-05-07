@@ -20,7 +20,7 @@
                     </div>
                     
                     <div class="card-body">
-                        <table class="table table-bordered table-hover table-striped">
+                        <table class="table table-bordered table-hover table-striped text-center">
                             <thead>
                                 <tr class="col text-center my-auto">
                                     <th class="col-2">Position</th> 
@@ -62,18 +62,15 @@
                                                     {
                                                         echo '
                                                             <form action="function.php" method="POST">
-                                                                <button type="button" class="btn btn-info" title="select to change" data-bs-toggle="modal" data-bs-target="#setActive'.$row['id'].'">Restore</button>
+                                                                <button type="button" class="btn btn-info" title="Set Active" data-bs-toggle="modal" data-bs-target="#setActive'.$row['id'].'">Restore</button>
                                                             </form>
                                                         ';
                                                     }
-                                                    echo'
-                                                    <form action="function.php">
-                                                    </form>';
                                                 ?>
                                             </td>
                                         </tr>
                                         <?php
-                                        include 'Active.php';
+                                        include 'active.php';
                                         include 'view_official.php';
                                         include 'delete_official_archive.php';
                                         

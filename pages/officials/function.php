@@ -95,6 +95,56 @@ if(isset($_POST['Active'])) {
   }
 }
 
+// Restore function
+if(isset($_POST['Active']))
+{
+  $id = $_POST['id'];
+
+  $position = mysqli_real_escape_string($con, $_POST['position']);
+  $lastname = mysqli_real_escape_string($con, $_POST['lastname']);
+  $firstname = mysqli_real_escape_string($con, $_POST['firstname']);
+  $middlename = mysqli_real_escape_string($con, $_POST['middlename']);
+  $contactNo = mysqli_real_escape_string($con, $_POST['contactNo']);
+  $address = mysqli_real_escape_string($con, $_POST['address']);
+  $start_date = mysqli_real_escape_string($con, $_POST['start_date']);
+  $end_date = mysqli_real_escape_string($con, $_POST['end_date']);
+  $status = mysqli_real_escape_string($con, $_POST['status']);
+  $email = mysqli_real_escape_string($con, $_POST['email']);
+  $gender = mysqli_real_escape_string($con, $_POST['gender']);
+
+  $query_run = "INSERT INTO `tblofficials` (`position`, `lastname`, `firstname`, `middlename`, `contactNo`, `address`, `start_date`, `end_date`, `status`,  `email`,`gender`)
+   VALUES 
+    ('$position',
+    '$lastname',
+    '$firstname',
+    '$middlename',
+    '$contactNo',
+    '$address',
+    '$start_date',
+    '$end_date',
+    '$status',
+    '$email',
+    '$gender')";
+    
+    if($result2 = $con->query($query_run)) {
+      header("Location: officials.php");
+    }
+}
+
+// Restore delete function
+if(isset($_POST['Active']))
+{
+  $id = mysqli_real_escape_string($con, $_POST['id']);
+
+  // query to delete a record
+  $query = "DELETE FROM tbl_archives WHERE id=$id";
+
+  if (mysqli_query($con, $query)) {
+    header("Location: officials.php");
+      exit(0);
+  }
+}
+
 // Inactive function
 if(isset($_POST['Inactive'])) {
   $id = $_POST['id'];
@@ -140,9 +190,8 @@ if(isset($_POST['Inactive']))
     '$email',
     '$gender')";
     
-    // "SELECT position, lastname, firstname, middlename, contactNo, address, start_date, end_date, status, email, gender FROM tblofficials where id=$id" ;
     if($result2 = $con->query($query_run)) {
-      header("location:officials.php");
+      header("Location: officials.php");
     }
 }
 

@@ -11,6 +11,18 @@
             <form action="function.php" method="POST">
 
               <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
+              <input type="hidden" name="position" value="<?php echo $row['position']?>"/>
+              <input type="hidden" name="lastname" value="<?php echo $row['lastname']?>"/>
+              <input type="hidden" name="firstname" value="<?php echo $row['firstname']?>"/>
+              <input type="hidden" name="middlename" value="<?php echo $row['middlename']?>"/>
+              <input type="hidden" name="contactNo" value="<?php echo $row['contactNo']?>"/>
+              <input type="hidden" name="address" value="<?php echo $row['address']?>"/>
+              <input type="hidden" name="start_date" value="<?php echo $row['start_date']?>"/>
+              <input type="hidden" name="end_date" value="<?php echo $row['end_date']?>"/>
+              <input type="hidden" name="status" value="<?php echo $row['status']?>"/>
+              <input type="hidden" name="email" value="<?php echo $row['email']?>"/>
+              <input type="hidden" name="gender" value="<?php echo $row['gender']?>"/>
+              
 
               <div class="modal-body text-center" style="margin-top: -20px">
                 <i class="bi bi-exclamation-circle fa-8x" style="color: #facea8"></i>
