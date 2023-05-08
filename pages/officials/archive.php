@@ -48,7 +48,7 @@
                                             
                                             <td>
                                                 <form action="function.php" method="POST" class="d-inline">
-                                                    <button type="button" class="btn btn-info btn-sm" title="View" data-bs-toggle="modal" data-bs-target="#View_Official<?php echo $row['id']; ?>"><i class="bi bi-eye-fill"></i></button>
+                                                    <button type="button" class="btn btn-info btn-sm" title="View" data-bs-toggle="modal" data-bs-target="#Archive_View<?php echo $row['id']; ?>"><i class="bi bi-eye-fill"></i></button>
                                                     <button type="button" class="btn btn-danger btn-sm" title="Delete" data-bs-toggle="modal" data-bs-target="#Delete_Official_Archive<?php echo $row['id']; ?>"><i class="bi bi-trash-fill"></i></button>
                                                 </form>
                                             </td>
@@ -71,7 +71,7 @@
                                         </tr>
                                         <?php
                                         include 'active.php';
-                                        include 'view_official.php';
+                                        include 'archive_view.php';
                                         include 'delete_official_archive.php';
                                         
                                     }

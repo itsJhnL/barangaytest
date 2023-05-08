@@ -1,38 +1,37 @@
 <?php include 'function.php'; ?>
 
-<div class="modal fade" id="Edit_Resident<?php echo $row['id']; ?>" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-  <div class="modal-dialog modal-dialog-scrollable modal-xl">
+<div class="modal fade" id="Add_Resident" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-      <h5 class="modal-title" id="staticBackdropLabel">Resident's Personal Information</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form action="function.php" class="" method="post">
+        <h5 class="modal-title" id="staticBackdropLabel">Resident's Personal Information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <form action="function.php" class="" method="post">
                 <div class="row g-2">
                     <div class="text-center d.flex pb-12">
-                    <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
                     </div>
                     <label class="mb-2"><b>Resident Name</b></label>
                     <div class="col mb-3">
                       <label>Last Name</label>
-                      <input type="text" class="form-control" autocomplete="off" name="lastname" value="<?php echo $row['lastname']?>">
+                      <input type="text" class="form-control" autocomplete="off" name="lastname">
                         
                     </div>
                     <div class="col mb-3">
                       <label>First Name</label>
-                      <input type="text" class="form-control" autocomplete="off" name="firstname" value="<?php echo $row['firstname']?>">
+                      <input type="text" class="form-control" autocomplete="off" name="firstname">
                         
                     </div>
                     <div class="col mb-3">
                       <label>Middle Name</label>
-                      <input type="text" class="form-control" autocomplete="off" name="middlename" value="<?php echo $row['middlename']?>">
+                      <input type="text" class="form-control" autocomplete="off" name="middlename">
                       
                     </div>
                     <div class="col mb-3">
                     <label for="nameExtension">Name Extension</label>
                     <select class="form-select" id="nameExtension" aria-label="Name Extension" autocomplete="off" name="suffixname">
-                        <option selected disabled></option>
+                        <option selected></option>
                         <option>Jr.</option>
                         <option>Sr.</option>
                         <option>I</option>
@@ -53,16 +52,16 @@
                 <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="birthday"><b>Birthdate</b></label>
-                    <input type="date" class="form-control" id="birthday" autocomplete="off" name="birthdate" required onchange="calculateAge()" value="<?php echo $row['birthdate']?>">
+                    <input type="date" class="form-control" id="birthday" autocomplete="off" name="birthdate" required onchange="calculateAge()">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="age"><b>Age</b></label>
-                    <input type="text" class="form-control" id="age" autocomplete="off" name="age" readonly value="<?php echo $row['age']?>"> 
+                    <input type="text" class="form-control" id="age" autocomplete="off" name="age" readonly> 
 
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="gender"><b>Gender</b></label>
-                    <select class="form-select" id="gender" autocomplete="off" name="gender" value="<?php echo $row['gender']?>">
+                    <select class="form-select" id="gender" autocomplete="off" name="gender">
                         <option value="MALE">Male</option>
                         <option value="FEMALE">Female</option>
                     </select>
@@ -70,46 +69,46 @@
             </div>
 
             <script>
-              function calculateAge() {
-              // Get the birthdate input field
-              const birthdayInput = document.getElementById("birthday");
-              
-              // Get the age input field
-              const ageInput = document.getElementById("age");
-              
-              // Calculate the age based on the birthdate
-              const birthdate = new Date(birthdayInput.value);
-              const now = new Date();
-              const diff = now.getTime() - birthdate.getTime();
-              const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-              
-              // Update the age input field
-              ageInput.value = age;
-              }
-            </script>
+                function calculateAge() {
+                // Get the birthdate input field
+                const birthdayInput = document.getElementById("birthday");
+                
+                // Get the age input field
+                const ageInput = document.getElementById("age");
+                
+                // Calculate the age based on the birthdate
+                const birthdate = new Date(birthdayInput.value);
+                const now = new Date();
+                const diff = now.getTime() - birthdate.getTime();
+                const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+                
+                // Update the age input field
+                ageInput.value = age;
+                }
+                </script>
 
                 <div class="row">
                   <div class="col-md-12 mb-3">
                     <label for="address"><b>Address</b></label>
                   </div>
                   <div class="col-md-4 mb-3">
-                    <input type="text" class="form-control" id="house-number" name="houseNo" placeholder="House Number" value="<?php echo $row['houseNo']?>">
+                    <input type="text" class="form-control" id="house-number" name="houseNo" placeholder="House Number">
                   </div>
                   <div class="col-md-4 mb-3">
-                    <input type="text" class="form-control" id="purok-number" name="purok" placeholder="Purok Number" value="<?php echo $row['purok']?>">
+                    <input type="text" class="form-control" id="purok-number" name="purok" placeholder="Purok Number">
                   </div>
                   <div class="col-md-4 mb-3">
-                    <input class="form-control" id="barangay" name="barangay" placeholder="barangay" value="<?php echo $row['barangay']?>">         
+                    <input class="form-control" id="barangay" name="barangay" placeholder="barangay"></input>         
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-4 mb-3">
-                    <input class="form-control" id="town-city" name="city" placeholder="Town/City" value="<?php echo $row['city']?>">
+                    <input class="form-control" id="town-city" name="city" placeholder="Town/City"></input>
                      
                               
                   </div>
                   <div class="col-md-4 mb-3">
-                    <input class="form-control" id="province" name="province" placeholder="Province" value="<?php echo $row['province']?>"> 
+                    <input class="form-control" id="province" name="province" placeholder="Province"></input> 
                   </div>
                 </div>
 
@@ -118,7 +117,7 @@
                       <label for="contact-info"><b>Contact Information</b></label>
                   </div>
                   <div class="col-md-6 mb-3">
-                      <input type="text" class="form-control" id="contact-number" autocomplete="off" name="contactNo" maxlength="11" placeholder="Your Contact Number" value="<?php echo $row['contactNo']?>">
+                      <input type="text" class="form-control" id="contact-number" autocomplete="off" name="contactNo" maxlength="11" placeholder="Your Contact Number">
                   </div>
                  <!--  <div class="col-md-6 mb-3">
                       <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address (Optional)">
@@ -127,11 +126,11 @@
                 <div class="row">
                   <div class="col-md-6 mb-3">
                       <label>Username</label>
-                      <input type="text" class="form-control" autocomplete="off" name="username" value="<?php echo $row['username']?>">
+                      <input type="text" class="form-control" autocomplete="off" name="username" >
                   </div>
                   <div class="col-md-6 mb-3">
                     <label>Password</label>
-                      <input type="password" class="form-control" autocomplete="off" name="password" value="<?php echo $row['password']?>">
+                      <input type="password" class="form-control" autocomplete="off" name="password" >
                   </div>
                 </div>
                 
@@ -211,8 +210,8 @@
     }
   </script> -->
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>  
-                <button type="submit" class="btn btn-primary" name="update_resident">Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  
+                <button type="submit" class="btn btn-primary" name="save_resident">Submit</button>
               </div>
     
             </form>
