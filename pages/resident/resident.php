@@ -46,7 +46,7 @@
                                     {
                                     echo '
                                         <tr class="text-center">
-                                        <td style="width:70px;"><image src="img/image.jpg" style="width:60px;height:60px;"/></td>
+                                        <td style="width:70px;"><image src="images/'.basename($row['capturedImage']).'" style="width:60px;height:60px;"/></td>
                                         <td> '.strtoupper($row['lastname']).', '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'. </td>
                                         <td>#'.strtoupper($row['houseNo']).', PUROK '.strtoupper($row['purok']).', '.strtoupper($row['barangay']).' '.strtoupper($row['city']).' '.strtoupper($row['province']).'</td>
                                         <td> '.strtoupper($row['gender']).' </td>

@@ -1,6 +1,29 @@
         
         <!-- Camera -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.24/webcam.js"></script>
+        <!-- Alert -->
+        <script src="../../includes/js/sweetalert.min.js"></script>
+        <?php 
+            // session_start();
+            
+            if(isset($_SESSION['status']) && $_SESSION['status'] !="")
+            {
+                ?>
+                <script>
+                    swal(
+                    {
+                        title: "<?php echo $_SESSION['status']; ?>",
+                        // text: "You clicked the button!",
+                        icon: "<?php echo $_SESSION['status_code']; ?>",
+                        button: "Ok!",
+                    });
+                </script>
+                <?php 
+                unset($_SESSION['status']);
+            }
+
+        ?>
+
         <!-- Bootstrap 5.1.3 bundle -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- jquery CDN link -->

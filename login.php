@@ -64,8 +64,8 @@ if(isset($_POST['LogIn'])) {
     $staff = mysqli_query($con, "SELECT * FROM tblstaff WHERE username='$username' AND password='$password'");
     $result_staff = mysqli_num_rows($staff);
 
-    $resident = mysqli_query($con, "SELECT * FROM tblresident WHERE username='$username' AND password='$password'");
-    $result_resident = mysqli_num_rows($resident);
+    /* $resident = mysqli_query($con, "SELECT * FROM tblresident WHERE username='$username' AND password='$password'");
+    $result_resident = mysqli_num_rows($resident); */
 
     // Check the query result
     if ($result_admin > 0) 

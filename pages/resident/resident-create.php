@@ -1,4 +1,5 @@
 <?php include ('function.php'); ?>
+<?php include_once ('../../includes/scripts.php'); ?>
 
 <form action="function.php" method="POST">
   <!-- 1st modal Resident Information -->
@@ -26,7 +27,7 @@
               <div class="col-md-2">
                 <label><b>Suffix</b></label>
                 <select class="form-select mt-2" name="suffixname" aria-label="Name Extension">
-                  <option selected></option>
+                  <option selected>NaN</option>
                   <option>Jr.</option>
                   <option>Sr.</option>
                   <option>I</option>
@@ -47,11 +48,11 @@
               </div>
               <div class="col-md-4 mb-3">
                 <label><b>Birthdate</b></label>
-                <input type="date" class="form-control" id="bdate" name="birthdate"  onchange="calculateAge()">
+                <input type="date" class="form-control" id="bday" name="birthdate"  onchange="calculateAge()">
               </div>
               <div class="col-md-2 mb-3">
                 <label><b>Age</b></label>
-                <input type="text" class="form-control" id="Myage" name="age" readonly>
+                <input type="text" class="form-control" id="age" name="age" readonly>
               </div>
             </div>
 
@@ -131,7 +132,7 @@
               <div class="col" id="spouse-children-fields" style="display: none;">
                 <div class="col-md-6 mb-3">
                   <label><b>Number of Children</b></label>
-                  <input type="number" class="form-control" id="num-children" name="childrenName" onchange="showChildNameFields()">
+                  <input type="number" class="form-control" id="num-children" onchange="showChildNameFields()">
                 </div>
               </div>
               <div id="child-name-fields"></div>
@@ -160,16 +161,16 @@
               <label for="additional-info"><b>College</b></label>
           </div>
           <div class="col-md-6">
-              <input type="text" class="form-control" id="Ccourse" name="course" placeholder="Course">
+              <input type="text" class="form-control" name="course" placeholder="Course">
           </div>
           <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" id="Cschoolname" name="CSchoolName" placeholder="School Name">
+              <input type="text" class="form-control" name="CSchoolName" placeholder="School Name">
           </div>
           <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" id="Caddress" name="CSchoolAddress" placeholder="School Address">
+              <input type="text" class="form-control" name="CSchoolAddress" placeholder="School Address">
           </div>
           <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" id="Cyear" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016">
           </div>
           </div>
 
@@ -178,13 +179,13 @@
               <label for="additional-info"><b>High School</b></label>
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" id="Hschoolname" name="HSchoolName" placeholder="School Name">
+              <input type="text" class="form-control" name="HSchoolName" placeholder="School Name">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" id="Haddress" name="HSchoolAddress" placeholder="School Address">
+              <input type="text" class="form-control" name="HSchoolAddress" placeholder="School Address">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" id="Hyear" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016">
           </div>
           </div>
 
@@ -193,13 +194,13 @@
               <label for="additional-info"><b>Elementary</b></label>
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" id="Eschoolname" name="ESchoolName" placeholder="School Name">
+              <input type="text" class="form-control" name="ESchoolName" placeholder="School Name">
           </div>  
           <div class="col mb-3">
-              <input type="text" class="form-control" id="Eaddress" name="ESchoolAddress" placeholder="School Address">
+              <input type="text" class="form-control" name="ESchoolAddress" placeholder="School Address">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" id="Eyear" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016">
           </div>
           </div>
           </div>
@@ -223,20 +224,19 @@
         </div>
         <div class="modal-body d-flex flex-column align-items-center text-center">
           <label>Capture live photo</label>
-          <div id="my_camera" class="pre_capture_frame border border-dark rounded">
-            <img style="width: 100%; " name="image" class="after_capture_frame border border-dark rounded" src="img/template.png" >
-          </div>
-          <!-- <div id="results" >
-            <img style="width: 100%; " name="image" class="after_capture_frame border border-dark rounded" src="img/template.png" >
-          </div> -->
+          <div id="my_camera" class="pre_capture_frame border border-dark rounded"></div>
           <input type="hidden" name="captured_image_data" id="captured_image_data">
+          <div class="mt-3 col-md-4">
+            <label for="">or</label>
+            <input name="txt_image" class="form-control input-sm" type="file" />
+          </div>
           <br>
           <div class="row g-2">
             <div class="col">
-              <input type="button" id="captureBtn" class="btn btn-info" value="Take Snapshot" >
+              <input type="button" id="captureBtn" class="btn btn-success" value="Capture">
             </div>
             <div class="col">
-              <input type=button id="takepicture1" class="btn btn-info"  value="Reset" onClick="Webcam.reset()">
+              <input type=button id="takepicture1" class="btn btn-danger"  value="Reset" onClick="Webcam.reset()">
             </div>
           </div>
         </div>
@@ -260,57 +260,59 @@
         <div class="modal-body">
           <div class="container">
             <div class="row g-2">
-            <div class="col-md-12 mb-3">
-                <label for="additional-info"><b>College</b></label>
-            </div>
-            <div class="col">
-                <input type="text" class="form-control" id="Ccourse" name="course" placeholder="Course">
-            </div>
-            <div class="col mb-3">
-                <input type="text" class="form-control" id="Cschoolname" name="CSchoolName" placeholder="School Name">
-            </div>
-            <div class="col mb-3">
-                <input type="text" class="form-control" id="Caddress" name="CSchoolAddress" placeholder="School Address">
-            </div>
-            <div class="col mb-3">
-                <input type="text" class="form-control" id="Cyear" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016">
-            </div>
-            </div>
-
-            <div class="row g-2">
-            <div class="col-md-12 mb-3">
-                <label for="additional-info"><b>High School</b></label>
-            </div>
-            <div class="col mb-3">
-                <input type="text" class="form-control" id="Hschoolname" name="HSchoolName" placeholder="School Name">
-            </div>
-            <div class="col mb-3">
-                <input type="text" class="form-control" id="Haddress" name="HSchoolAddress" placeholder="School Address">
-            </div>
-            <div class="col mb-3">
-                <input type="text" class="form-control" id="Hyear" name="HSchoolYear" placeholder="Year Attended Ex: 2012-2016">
-            </div>
-            </div>
-
-            <div class="row g-2">
-            <div class="col-md-12 mb-3">
-                <label for="additional-info"><b>Elementary</b></label>
-            </div>
-            <div class="col mb-3">
-                <input type="text" class="form-control" id="Eschoolname" name="ESchoolName" placeholder="School Name">
-            </div>
-            <div class="col mb-3">
-                <input type="text" class="form-control" id="Eaddress" name="ESchoolAddress" placeholder="School Address">
-            </div>
-            <div class="col mb-3">
-                <input type="text" class="form-control" id="Eyear" name="ESchoolAttended" placeholder="Year Attended Ex: 2012-2016">
-            </div>
+              <div class="col-md-6">
+                <label for="">Business ID</label>
+                <input type="text" class="form-control" name="BusinessID">
+              </div>
+              <div class="col-md-6">
+                <label for="">Business Nature</label>
+                <input type="text" class="form-control" name="BusinessNature">
+              </div>
+              <div class="col-md-6">
+                <label for="">Business Name</label>
+                <input type="text" class="form-control" name="BusinessName">
+              </div>
+              <div class="col-md-6">
+                <label for="">Business Owner</label>
+                <input type="text" class="form-control" name="BusinessOwner">
+              </div>
+              <div class="col-md-6">
+                <label for="">Owner Address</label>
+                <input type="text" class="form-control" name="BusinessOwnerAddress">
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="">Contact Number</label>
+                <input type="text" class="form-control" name="BusinessContactNumber">
+              </div>
+              <div class="col-md-12">
+                <label for="">Business Address</label>
+              </div>
+              <div class="col-md-3">
+                <label for="">Building No.</label>
+                <input type="text" class="form-control" name="BusinessBldgNo">
+              </div>
+              <div class="col-md-3">
+                <label for="">Purok No.</label>
+                <input type="text" class="form-control" name="BusinessPurokNo">
+              </div>
+              <div class="col-md-6">
+                <label for="">Barangay</label>
+                <input type="text" class="form-control" name="BusinessBarangay">
+              </div>
+              <div class="col-md-6">
+                <label for="">Municipality</label>
+                <input type="text" class="form-control" name="BusinessMunicipality">
+              </div>
+              <div class="col-md-6">
+                <label for="">Province</label>
+                <input type="text" class="form-control" name="BusinessProvince">
+              </div>
             </div>
           </div>
         </div>
         <div class="modal-footer float-end">
           <button type="button" class="btn btn-secondary" id="takepicture2" data-bs-target="#takepictureModal" data-bs-toggle="modal">Previous</button>
-          <button type="submit" name="save_resident" class="btn btn-primary">Submit</button>
+          <button type="submit" name="save_resident" class="btn btn-primary" onclick="saveSnap()">Submit</button>
         </div>
       </div>
     </div>
@@ -340,7 +342,7 @@
       var childNameField = `
         <div class="col-md-6">
           <div class="col mb-2">
-            <input type="text" class="form-control" placeholder="Child ${i} Name" id="child-${i}-name" name="child-${i}-name">
+            <input type="text" class="form-control" name="childrenName" placeholder="Child ${i} Name" id="child-${i}-name" name="child-${i}-name">
           </div>
           <div class="col mb-3"></div>
         </div>
@@ -355,10 +357,10 @@
 <script>
   function calculateAge() {
   // Get the birthdate input field
-  const birthdayInput = document.getElementById("bdate");
+  const birthdayInput = document.getElementById("bday");
   
   // Get the age input field
-  const ageInput = document.getElementById("Myage");
+  const ageInput = document.getElementById("age");
   
   // Calculate the age based on the birthdate
   const birthdate = new Date(birthdayInput.value);
@@ -376,7 +378,7 @@
 	 // Configure a few settings and attach camera 250x187
 	 Webcam.set({
 	  width: 250,
-	  height: 250,
+	  height: 180,
 	  image_format: 'jpeg',
 	  jpeg_quality: 90
 	 });	 
@@ -397,7 +399,7 @@
         Webcam.snap( function(data_uri) {
         // display results in page
         document.getElementById('my_camera').innerHTML = 
-        '<img class="after_capture_frame" src="'+data_uri+'"/>';
+        '<img id="after_capture_frame" src="'+data_uri+'"/>';
         $("#captured_image_data").val(data_uri);
         $("#imageval").val(data_uri);
         });	
@@ -412,4 +414,17 @@
     document.getElementById('closeCam2').addEventListener('click', function() {
         Webcam.reset();
     });
+
+  function saveSnap(){
+	var base64data = $("#captured_image_data").val();
+	 $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: "image_upload.php",
+    data: {image: base64data},
+    success: function(data) { 
+    alert(data);
+    }
+  });
+	}
 </script>
