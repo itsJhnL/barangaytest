@@ -1,7 +1,7 @@
 <?php include ('function.php'); ?>
 
 <form action="function.php" method="POST">
-<!-- 1st modal Resident Information -->
+  <!-- 1st modal Resident Information -->
   <div class="modal fade" id="Add_Resident" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
       <div class="modal-content">
@@ -13,15 +13,15 @@
             <div class="row g-2 mb-2">
               <div class="col">
                 <label class="form-label"><b>Last Name</b></label>
-                <input type="text" class="form-control" name="lastname" autocomplete="off" required>
+                <input type="text" class="form-control" name="lastname" autocomplete="off" >
               </div>
               <div class="col">
                 <label class="form-label"><b>First Name</b></label>
-                <input type="text" class="form-control" name="firstname"  autocomplete="off" required>
+                <input type="text" class="form-control" name="firstname"  autocomplete="off" >
               </div>
               <div class="col">
                 <label class="form-label"><b>Middle Name</b></label>
-                <input type="text" class="form-control" name="middlename"  autocomplete="off" required>
+                <input type="text" class="form-control" name="middlename"  autocomplete="off" >
               </div>
               <div class="col-md-2">
                 <label><b>Suffix</b></label>
@@ -47,7 +47,7 @@
               </div>
               <div class="col-md-4 mb-3">
                 <label><b>Birthdate</b></label>
-                <input type="date" class="form-control" id="bdate" name="birthdate" required onchange="calculateAge()">
+                <input type="date" class="form-control" id="bdate" name="birthdate"  onchange="calculateAge()">
               </div>
               <div class="col-md-2 mb-3">
                 <label><b>Age</b></label>
@@ -117,7 +117,7 @@
             <div class="row g-2">
               <div class="col-md-6 mb-3">
                 <label><b>Civil Status</b></label>
-                <select class="form-select" name="civil-status" id="civilStatus" onchange="showSpouseChildrenFields()">
+                <select class="form-select" name="civilStatus" id="civilStatus" onchange="showSpouseChildrenFields()">
                   <option value="single">Single</option>
                   <option value="married">Married</option>
                   <option value="divorced">Divorced</option>
@@ -184,7 +184,7 @@
               <input type="text" class="form-control" id="Haddress" name="HSchoolAddress" placeholder="School Address">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" id="Hyear" name="HSchoolYear" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" id="Hyear" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016">
           </div>
           </div>
 
@@ -194,12 +194,12 @@
           </div>
           <div class="col mb-3">
               <input type="text" class="form-control" id="Eschoolname" name="ESchoolName" placeholder="School Name">
-          </div>
+          </div>  
           <div class="col mb-3">
               <input type="text" class="form-control" id="Eaddress" name="ESchoolAddress" placeholder="School Address">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" id="Eyear" name="ESchoolAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" id="Eyear" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016">
           </div>
           </div>
           </div>
@@ -215,7 +215,7 @@
 
   <!-- 3rd modal Capture -->
   <div class="modal fade" id="takepictureModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Take Picture</h5>
@@ -224,19 +224,26 @@
         <div class="modal-body d-flex flex-column align-items-center text-center">
           <label>Capture live photo</label>
           <div id="my_camera" class="pre_capture_frame border border-dark rounded">
-            <img style="width: 100%; " name="image" class="after_capture_frame border border-dark rounded" src="img/template.png" required>
+            <img style="width: 100%; " name="image" class="after_capture_frame border border-dark rounded" src="img/template.png" >
           </div>
           <!-- <div id="results" >
-            <img style="width: 100%; " name="image" class="after_capture_frame border border-dark rounded" src="img/template.png" required>
+            <img style="width: 100%; " name="image" class="after_capture_frame border border-dark rounded" src="img/template.png" >
           </div> -->
           <input type="hidden" name="captured_image_data" id="captured_image_data">
           <br>
-          <input type="button" id="captureBtn" class="btn btn-info" value="Take Snapshot" >
+          <div class="row g-2">
+            <div class="col">
+              <input type="button" id="captureBtn" class="btn btn-info" value="Take Snapshot" >
+            </div>
+            <div class="col">
+              <input type=button id="takepicture1" class="btn btn-info"  value="Reset" onClick="Webcam.reset()">
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-target="#Add_Residents2" data-bs-toggle="modal">Previous</button>
-          <button class="btn btn-secondary">Skip</button>
-          <button class="btn btn-primary" data-bs-target="#Add_Residents3" data-bs-toggle="modal">Next</button>
+          <button type="button" class="btn btn-secondary" id="closeCam1" data-bs-target="#Add_Residents2" data-bs-toggle="modal">Previous</button>
+          <button type="button" class="btn btn-secondary">Skip</button>
+          <button type="button" class="btn btn-primary" id="closeCam2" data-bs-target="#Add_Residents3" data-bs-toggle="modal">Next</button>
         </div>
       </div>
     </div>
@@ -302,13 +309,13 @@
           </div>
         </div>
         <div class="modal-footer float-end">
-          <button type="button" class="btn btn-secondary" data-bs-target="#takepictureModal" data-bs-toggle="modal">Previous</button>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" id="takepicture2" data-bs-target="#takepictureModal" data-bs-toggle="modal">Previous</button>
+          <button type="submit" name="save_resident" class="btn btn-primary">Submit</button>
         </div>
       </div>
     </div>
   </div>
-
+</form>
 <!-- Script for Civil status -->
 <script>
   function showSpouseChildrenFields() {
@@ -377,6 +384,12 @@
      document.getElementById('takepicture').addEventListener('click', function() {
         Webcam.attach( '#my_camera' );
     });
+    document.getElementById('takepicture1').addEventListener('click', function() {
+        Webcam.attach( '#my_camera' );
+    });
+    document.getElementById('takepicture2').addEventListener('click', function() {
+        Webcam.attach( '#my_camera' );
+    });
 
 
     document.getElementById('captureBtn').addEventListener('click', function() {
@@ -393,17 +406,10 @@
     document.getElementById('closeCam').addEventListener('click', function() {
         Webcam.reset();
     });
-
-	function saveSnap(){
-	var base64data = $("#captured_image_data").val();
-	 $.ajax({
-			type: "POST",
-			dataType: "json",
-			url: "enrollmentmodule.php",
-			data: {image: base64data},
-			success: function(data) { 
-				alert(data);
-			}
-		});
-	}
+    document.getElementById('closeCam1').addEventListener('click', function() {
+        Webcam.reset();
+    });
+    document.getElementById('closeCam2').addEventListener('click', function() {
+        Webcam.reset();
+    });
 </script>

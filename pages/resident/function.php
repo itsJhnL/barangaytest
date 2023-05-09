@@ -10,8 +10,6 @@ if(isset($_POST['save_resident']))
   $contactNo = mysqli_real_escape_string($con, $_POST['contactNo']);
   $suffixname = mysqli_real_escape_string($con, $_POST['suffixname']);
   $gender = mysqli_real_escape_string($con, $_POST['gender']);
-/*   $username = mysqli_real_escape_string($con, $_POST['username']);
-  $password = mysqli_real_escape_string($con, $_POST['password']); */
   $age = mysqli_real_escape_string($con, $_POST['age']);
   $birthdate = mysqli_real_escape_string($con, $_POST['birthdate']);
   $houseNo = mysqli_real_escape_string($con, $_POST['houseNo']);
@@ -20,20 +18,31 @@ if(isset($_POST['save_resident']))
   $city = mysqli_real_escape_string($con, $_POST['city']);
   $province = mysqli_real_escape_string($con, $_POST['province']);
   $middlename = mysqli_real_escape_string($con, $_POST['middlename']);
-  $email = mysqli_real_escape_string($con, $_POST['email']);
+  $emailAddress = mysqli_real_escape_string($con, $_POST['emailAddress']);
   $motherName = mysqli_real_escape_string($con, $_POST['motherName']);
   $fatherName = mysqli_real_escape_string($con, $_POST['fatherName']);
   $motherContactNo = mysqli_real_escape_string($con, $_POST['motherContactNo']);
   $fatherContactNo = mysqli_real_escape_string($con, $_POST['fatherContactNo']);
   $height = mysqli_real_escape_string($con, $_POST['height']);
-  $weigth = mysqli_real_escape_string($con, $_POST['weigth']);
+  $weight = mysqli_real_escape_string($con, $_POST['weight']);
   $nationality = mysqli_real_escape_string($con, $_POST['nationality']);
   $civilStatus = mysqli_real_escape_string($con, $_POST['civilStatus']);
   $spouseName = mysqli_real_escape_string($con, $_POST['spouseName']);
   $childrenName = mysqli_real_escape_string($con, $_POST['childrenName']);
+  $course = mysqli_real_escape_string($con, $_POST['course']);
+  $CSchoolName = mysqli_real_escape_string($con, $_POST['CSchoolName']);
+  $CSchoolAddress = mysqli_real_escape_string($con, $_POST['CSchoolAddress']);
+  $CYearAttended = mysqli_real_escape_string($con, $_POST['CYearAttended']);
+  $HSchoolName = mysqli_real_escape_string($con, $_POST['HSchoolName']);
+  $HSchoolAddress = mysqli_real_escape_string($con, $_POST['HSchoolAddress']);
+  $HYearAttended = mysqli_real_escape_string($con, $_POST['HYearAttended']);
+  $ESchoolName = mysqli_real_escape_string($con, $_POST['ESchoolName']);
+  $ESchoolAddress = mysqli_real_escape_string($con, $_POST['ESchoolAddress']);
+  $EYearAttended = mysqli_real_escape_string($con, $_POST['EYearAttended']);
+  $captured_image_data = mysqli_real_escape_string($con, $_POST['captured_image_data']);
 
   //quert to add the new data
-  $query = "INSERT INTO `tblresident` (`firstname`, `lastname`, `gender`, `age`, `middlename`, `suffixname`, `birthdate`, `houseNo`, `purok`, `barangay`, `city`, `province`, `contactNo`,`username`, `password`) VALUES 
+  $query = "INSERT INTO `tblresident` (`firstname`, `lastname`, `gender`, `age`, `middlename`, `suffixname`, `birthdate`, `houseNo`, `purok`, `barangay`, `city`, `province`, `contactNo`, `emailAddress`, `motherName`, `fatherName`, `motherContactNo`, `fatherContactNo`, `height`, `weight`, `nationality`, `civilStatus`, `spouseName`, `childrenName`, `course`, `CSchoolName`, `CYearAttended`, `HSchoolName`, `HSchoolAddress`, `HYearAttended`, `ESchoolName`, `ESchoolAddress`, `EYearAttended`, `captured_image_data`) VALUES 
   (
   '$firstname',
   '$lastname',
@@ -48,20 +57,33 @@ if(isset($_POST['save_resident']))
   '$city',
   '$province',
   '$contactNo',
-  '$username',
-  '$password')";
+  '$emailAddress',
+  '$motherName',
+  '$fatherName',
+  '$motherContactNo',
+  '$fatherContactNo',
+  '$height',
+  '$weight',
+  '$nationality',
+  '$civilStatus',
+  '$spouseName',
+  '$childrenName',
+  '$course',
+  '$CSchoolName',
+  '$CYearAttended',
+  '$HSchoolName',
+  '$HSchoolAddress',
+  '$HYearAttended',
+  '$ESchoolName',
+  '$ESchoolAddress',
+  '$EYearAttended',
+  '$captured_image_data')";
 
   $query_run = mysqli_query($con, $query);
 
   if($query_run)
   {
       //$_SESSION['messageCreate'] = " Created Successfully";
-      header("Location: resident.php");
-      exit(0);
-  }
-  else
-  {
-      //$_SESSION['messageCreate'] = " Not Created";
       header("Location: resident.php");
       exit(0);
   }
@@ -78,8 +100,6 @@ if(isset($_POST['save_resident']))
     $province = mysqli_real_escape_string($con, $_POST['province']);
     $contactNo = mysqli_real_escape_string($con, $_POST['contactNo']);
     $gender = mysqli_real_escape_string($con, $_POST['gender']);
-/*     $username = mysqli_real_escape_string($con, $_POST['username']);
-    $password = mysqli_real_escape_string($con, $_POST['password']); */
     $middlename = mysqli_real_escape_string($con, $_POST['middlename']);
  
     // query to update the data
