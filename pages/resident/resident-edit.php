@@ -53,11 +53,11 @@
                 <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="birthday"><b>Birthdate</b></label>
-                    <input type="date" class="form-control" id="birthday" autocomplete="off" name="birthdate" required onchange="calculateAge()" value="<?php echo $row['birthdate']?>">
+                    <input type="date" class="form-control" id="editBday" autocomplete="off" name="birthdate" required onchange="calculateAge()" value="<?php echo $row['birthdate']?>">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="age"><b>Age</b></label>
-                    <input type="text" class="form-control" id="age" autocomplete="off" name="age" readonly value="<?php echo $row['age']?>"> 
+                    <input type="text" class="form-control" id="editAge" autocomplete="off" name="age" readonly value="<?php echo $row['age']?>"> 
 
                 </div>
                 <div class="col-md-4 mb-3">
@@ -72,10 +72,10 @@
             <script>
               function calculateAge() {
               // Get the birthdate input field
-              const birthdayInput = document.getElementById("birthday");
+              const birthdayInput = document.getElementById("editBday");
               
               // Get the age input field
-              const ageInput = document.getElementById("age");
+              const ageInput = document.getElementById("editAge");
               
               // Calculate the age based on the birthdate
               const birthdate = new Date(birthdayInput.value);

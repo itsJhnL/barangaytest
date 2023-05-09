@@ -1,5 +1,6 @@
         
-        
+        <!-- Camera -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.24/webcam.js"></script>
         <!-- Bootstrap 5.1.3 bundle -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- jquery CDN link -->
