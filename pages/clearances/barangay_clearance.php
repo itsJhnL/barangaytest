@@ -65,7 +65,7 @@ include '../../includes/header.php';
                                             <td>$row[houseNo] $row[purok] $row[barangay] $row[city] $row[province]</td>";
                                         ?>
                                             <td class="text-center">
-                                                <form action="cert/barangay_clearance_form.php" target="_blank" id="option" method="GET" class="d-inline">
+                                                <form action="cert/business_form.php" target="_blank" id="option" method="GET" class="d-inline">
                                                     <input type="hidden" name="id" value="<?php if(isset($_GET['id']))/* {echo $_GET['id'];} */ ?>" class="form-control">
                                                     <button type="submit" class="btn btn-primary btn-sm" title="Print" name="id" form="option" value='<?php echo $row['id'];?>'>Generate</button>
                                                 </form>

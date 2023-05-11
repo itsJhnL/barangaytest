@@ -42,8 +42,8 @@
               <div class="col-md-6 mb-3">
                 <label><b>Gender</b></label>
                 <select class="form-select" name="gender">
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                  <option value="he">Male</option>
+                  <option value="she">Female</option>
                 </select>
               </div>
               <div class="col-md-4 mb-3">
@@ -377,8 +377,8 @@
   <script language="JavaScript">
 	 // Configure a few settings and attach camera 250x187
 	 Webcam.set({
-	  width: 250,
-	  height: 180,
+	  width: 600,
+	  height: 600,
 	  image_format: 'jpeg',
 	  jpeg_quality: 90
 	 });	 

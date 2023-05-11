@@ -20,7 +20,7 @@ include '../../includes/header.php';
 
                         <!-- search bar -->
                         <div class="col-4  ms-auto">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Type to search" aria-label="Search" aria-describeby="btnNavbarSearch" id="myInput" onkeyup="myFunction()">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search Name" aria-label="Search" aria-describeby="btnNavbarSearch" id="myInput" onkeyup="myFunction()">
                         </div>
                     </div>
                     

@@ -3,11 +3,16 @@
 include '../../includes/header.php';
 include '../../includes/scripts.php';
 
-$query = "SELECT * from tblofficials";
+$query = "SELECT * from dashboard";
 $result = mysqli_query ($con,$query);
 
-$male = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'Male';");
-$female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'Female';");
+$about = mysqli_query($con, "SELECT about FROM dashboard WHERE id='id'");
+
+$query1 = "SELECT * from tblofficials";
+$result = mysqli_query ($con,$query1);
+
+$male = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'he';");
+$female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'she';");
 ?>
 
 
@@ -21,23 +26,29 @@ $female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'Female';
     <!-- <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Dashboard</li>
     </ol> -->
-    <div class="row">
-      <div class="col my-auto pb-3">
+    <div class="row pb-5 g-2">
+      <div class="col-sm-2 ps-5 pt-2">
         <img src="talavera_logo.png" alt="" class="w-auto" height="150">
       </div>
-      <div class="col-md-auto">
+      <div class="col-sm-10">
         <div class="input-group">
           <div class="card bg-light my-3">
             <div class="card-body">
-              <p>
-              Talavera, officially the Municipality of Talavera (Ilocano: Ili ti Talavera; Tagalog: Bayan ng Talavera), is a 1st class municipality[5] in the province of Nueva Ecija, Philippines. According to the PSA Census of Housing and Population for 2020, it has a population of 132,388.
-
-              Talavera is part of Cabanatuan conurbation as adjacent urban center in the heart of Nueva Ecija. It is dubbed as the "Milk Capital" and "Food basket in Inland Luzon".
-              </p>
+              <?php 
+                $squery = mysqli_query($con, "SELECT * FROM dashboard");
+                while($row = mysqli_fetch_array($squery))
+                {
+                echo '
+                  <p>'.$row['about'].'</p>
+                  ';
+                }
+              ?>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="row">
       <div class="col-xl-4 col-md-6">
         <div class="card bg-primary text-white mb-4">
           <div class="card-body"><h4>Total Residents</h4></div>

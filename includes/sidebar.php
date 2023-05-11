@@ -69,9 +69,9 @@
                     <div class="collapse <?= $page == 'user-account.php' || $page == 'log-history.php' || $page == 'officials.php' || $page == 'maintenance.php' || $page == 'archive.php' ? 'show':''?>" id="collapseSetting" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                             <a class="nav-link" href="#">User Account</a>
-                            <a class="nav-link" href="#">Log History</a>
+                            <a class="nav-link <?= $page == 'log-history.php' ? 'active':''?> " href="../settings/log-history.php">Log History</a>
                             <a class="nav-link <?= $page == 'officials.php' ? 'active':''?> " href="../officials/officials.php">Barangay Officials</a>
-                            <a class="nav-link" href="#">Maintenace</a>
+                            <a class="nav-link <?= $page == 'maintenance.php' ? 'active':''?> " href="../settings/maintenance.php">Maintenace</a>
                             <a class="nav-link <?= $page == 'archive.php' ? 'active':''?> " href="../officials/archive.php">Officials Archive</a>
                         </nav>
                     </div>

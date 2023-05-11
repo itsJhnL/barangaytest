@@ -5,25 +5,18 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Resident's Personal Information</h5>
-          <button type="button" class="btn-close" id="exitCam" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row g-2 mb-2">
-            <div class="d-flex flex-column align-items-center text-center p-3" >                            
-              <div id="camera">
-                <a href="<?php echo $row['captured_image'];?>" target="_blank">
-                  <img src="images/<?php echo basename($row['captured_image']); ?>" class="capture_frame border border-dark rounded" class="w-auto" height="150" alt="Picture">
-                </a>
+            <div class="d-flex flex-column align-items-center text-center p-3">                            
+              <div id="result" >
+                <!-- <img style="width: 100%; " name="image" class="capture_frame border border-dark rounded" src="images/template.png" required> -->
+                <img src="images/<?php echo basename($row['captured_image']); ?>" name="image" class="capture_frame border border-dark rounded" src="img/template.png" class="w-auto" height="150" alt="Picture">
               </div>
             </div>
             <div class="text-center d.flex pb-3">
-              <button type="button" class="btn btn-info btn-sm" title="Change" id="reuploadPic">Change Profile</button>
-              <button type="button" class="btn btn-success btn-sm" title="Change" id="retake">Retake</button>
-              <button type="button" class="btn btn-success btn-sm" title="Change" id="capture">Take Photo</button>
-              <!-- <br>
-              <label for="">or</label>
-              <input id="image_upload" name="" class="form-control input-sm" type="file" /> -->
-              <input class="col-md-4" type="hidden" name="captured_image" id="newCaptured">
+              <button type="button"  class="btn btn-info btn-sm" title="Change" id="ChangePicture" data-bs-toggle="modal" data-bs-target="#ChangeImage">Change Profile</button>
             </div>
 
             <div class="col">
@@ -297,10 +290,39 @@
       </div>
     </div>
   </div>
+  <!-- Change Capture -->
+  <div class="modal fade" id="ChangeImage" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Change Picture</h5>
+        </div>
+        <div class="modal-body d-flex flex-column align-items-center text-center">
+          <label>Capture live photo</label>
+          <div id="camera" class="pre_capture_frame border border-dark rounded"></div>
+          <input type="hidden" name="captured_image" id="newCaptured">
+          <div class="mt-3 col-md-4">
+            <label for="">or</label>
+            <input id="newCaptured" name="captured_image" class="form-control input-sm" type="file" />
+          </div>
+          <br>
+          <div class="row g-2">
+            <div class="col">
+              <input type="button" id="replace" class="btn btn-success" value="Capture">
+            </div>
+            <div class="col">
+              <input type=button id="ChangePicture1" class="btn btn-danger"  value="Reset" onClick="Webcam.reset()">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="exitCam" data-bs-target="#Edit_Resident" data-bs-toggle="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="exitCam1" data-bs-target="#Edit_Resident<?php echo $row['id']?>" data-bs-toggle="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
-
-<!-- <script src="js/scripts.js"></script> -->
-
 <!-- Script for Civil status -->
 <script>
   function showSpouseChildrenFields() {
@@ -354,25 +376,47 @@
   // Update the age input field
   ageInput.value = age;
   }
-</script>
+  </script>
 
-<!-- Capture -->
-<script>
-    document.getElementById('reuploadPic').addEventListener('click', function() {
-      Webcam.attach( '#camera' );
-  });
+  <!-- Capture -->
+  <script language="JavaScript">
+	 // Configure a few settings and attach camera 250x187
+	 Webcam.set({
+	  width: 250,
+	  height: 250,
+	  image_format: 'jpeg',
+	  jpeg_quality: 90
+	 });	 
 
-  document.getElementById('capture').addEventListener('click', function() {
-      // take snapshot and get image data
-      Webcam.snap( function(data_uri) {
-      // display preview
-      document.getElementById('camera').innerHTML = 
-      '<img id="capture_frame" src="'+data_uri+'"/>';
-      $("#newCaptured").val(data_uri);
-      });	
-      
-  });
+     document.getElementById('ChangePicture').addEventListener('click', function() {
+        Webcam.attach( '#camera' );
+    });
+    document.getElementById('ChangePicture1').addEventListener('click', function() {
+        Webcam.attach( '#camera' );
+    });
 
+    document.getElementById('replace').addEventListener('click', function() {
+        // take snapshot and get image data
+        Webcam.snap( function(data_uri) {
+        // display preview
+        document.getElementById('camera').innerHTML = 
+        '<img id="capture_frame" src="'+data_uri+'"/>';
+        $("#newCaptured").val(data_uri);
+
+        // Display result
+        document.getElementById('result').innerHTML = 
+        '<img id="capture_frame" src="'+data_uri+'"/>';
+        $("#newCaptured").val(data_uri);
+        });	
+        
+    });
+
+    document.getElementById('exitCam').addEventListener('click', function() {
+        Webcam.reset();
+    });
+    document.getElementById('exitCam1').addEventListener('click', function() {
+        Webcam.reset();
+    });
 
   function changeSnap(){
 	var base64data = $("#newCaptured").val();

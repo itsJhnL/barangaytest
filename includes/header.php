@@ -19,7 +19,7 @@
             }
     </style>
 
-<body class="sb-nav-fixed container-fluid"  onload = "configure();">
+<body class="sb-nav-fixed container-fluid">
 
     <!-- to keep show dropdown list -->
     <?php include ('active.php') ?>

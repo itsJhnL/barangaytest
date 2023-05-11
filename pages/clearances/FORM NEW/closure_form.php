@@ -9,9 +9,9 @@
 
 
 <!DOCTYPE html>
-<title>Certificate of Good Moral</title>
+<title>Certificate of Business Closure</title>
 <html id="clearance">
-<link rel="stylesheet" href="../css/form.css">
+<link rel="stylesheet" href="form.css">
 <style>
     @media print {
         .noprint {
@@ -29,14 +29,24 @@
                 <div class="topleft"><img src="talavera.png"  style="width:230px; height: 230px;"/></div>
                 <div class="topright"><img src="talavera.png"  style="width:230px; height: 230px;"/></div>
                 <div style="font-size: 25px; margin-top: -450px;">                
-                    Republic of the Philippines<br>Province of Nueva Ecija<br>Municipality of Talavera<br>
+                    Republic of the Philippines<br>
+                    Province of Nueva Ecija<br>
+                    Municipality of Talavera<br>
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
-                    <p style="font-size: 45px;"><b>CERTIFICATE OF GOOD MORAL</b><p>
+                    <p style="font-size: 45px;"><b>CERTIFICATE OF BUSINESS CLOSURE</b><p>
+                    <p style="font-size: 20px; right: -320px; position: relative;"><b><?php date_default_timezone_set('Asia/Tokyo'); $currentDateTime = date('F j, Y - g:i:A'); echo $currentDateTime;?></p></b>
                 </div>
             </div>       
 
             <div>
+                <?php
+                    //   $id = $_POST['id'];
+                    $sql = "SELECT * FROM tblresident where id = 5";
+                    $result = $con->query($sql);
+                    $row = $result->fetch_assoc();
+                ?>
+
 
                 <?php 
                     $con = mysqli_connect("localhost","root","admin","barangay_system_db");
@@ -54,7 +64,7 @@
                             {
                                 ?>
                                     <p style="font-size: 20px; margin-top: 180px;"><b>TO WHOM IT MAY CONCERN:</p></b>
-                                    <p class="intro"><b>THIS IS TO CERTIFY</b> that<b> <?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?>. <?php echo $row['lastname'];?>, <?php echo $row['age']; ?> years old,</b> Filipino and a bonafide resisdent of this Barangay is a law abiding citizen with no degregatory record nor any pending case filed before the Barangay Peace and Order Council of this Barangay, <b><?php echo $row['gender']; ?></b> is known to me of having a good moral character.<br></p>
+                                    <p class="intro"><b>THIS IS TO CERTIFY</b> thet <b>RITA STORE</b> owned by <b>RITA TERMINEZ</b>, resident of open and started its business operation on <b>April 18, 2022</b> at <b>P1001</b> of this Barangay had closed and stop its business operation on <b>July 2, 2022.</b><br></p>
                                     <p class="intro">This certification is issued upon the request of the above mention person for reference whatever legal intent or purpose it may serve.</p></br>
                                     <p class="intro">Issued this <b>7th</b> day of <b>February 2023,</b> hereat the Office of The Punong Barangay of Barangay Collado, Talavera, Nueva Ecija, Republic of the Philippines.</p></br></br></br></br>
                                 <?php
@@ -68,47 +78,46 @@
                     
                 ?>
 
+                
                 <div>
-                    <div>
-                        <label style="padding-bottom: 10px">Certified by:</label>
-                        <?php   
-                            $qry = mi_queysqlry($con,"SELECT * from tblofficials WHERE status='ACTIVE' ");
-                                while($row=mysqli_fetch_array($qry)){
-                                    if($row['position'] == "Secretary"){
-                                    echo '
-                                        <p style="font-size: 18px; margin-top: 50px">
-                                            <b>'.strtoupper($row['lastname']).', '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'.<br></b>
-                                            <span style="text-align: center;">BARANGAY SECRETARY</span>
-                                        </p>
-                                    ';
-                                }
+                    <label style="padding-bottom: 10px">Certified by:</label>
+                    <?php   
+                        $qry = mysqli_query($con,"SELECT * from tblofficials");
+                            while($row=mysqli_fetch_array($qry)){
+                                if($row['position'] == "Barangay Secretary"){
+                                echo '
+                                    <p style="font-size:18px;">
+                                        <b>'.strtoupper($row['lastname']).' , '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'.<br></b>
+                                        <span style="text-align: center;">BARANGAY SECRETARY</span>
+                                    </p>
+                                ';
                             }
-                        ?>
-                    </div>
-                    
-                    <div style="margin-top: -135px; margin-left: 38em;">
-                        <label style="padding-bottom: 10px">Prepared by:</label>
-                        <?php   
-                            $qry = mysqli_query($con,"SELECT * from tblofficials WHERE status='ACTIVE'  ");
-                                while($row=mysqli_fetch_array($qry)){
-                                    if($row['position'] == "Barangay Captain"){
-                                    echo '
-                                        <p style="font-size: 18px; margin-top: 50px">
-                                            <b>'.strtoupper($row['lastname']).', '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'.<br></b>
-                                            <span style="text-align: center;">PUNONG BARANGAY</span>
-                                        </p>
-                                    ';
-                                }
-                                
-                            }
-                        ?>
-                    </div>
+                        }
+                    ?>
                 </div>
+
+                
+                <div style="margin-top: -102px; margin-left: 38em;">
+                    <label style="padding-bottom: 10px">Prepared by:</label>
+                    <?php   
+                        $qry = mysqli_query($con,"SELECT * from tblofficials ");
+                            while($row=mysqli_fetch_array($qry)){
+                                if($row['position'] == "Barangay Captain"){
+                                echo '
+                                    <p style="font-size:18px;">
+                                        <b>'.strtoupper($row['lastname']).' , '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'.<br></b>
+                                        <span style="text-align: center;">PUNONG BARANGAY</span>
+                                    </p>
+                                ';
+                            }
+                        }
+                    ?>
+                </div>
+
             </div>  
         </div>
     </div>
-    
-    <button class="noprint" id="printpagebutton" onclick="PrintElem('#clearance')" style="position: fixed">Print</button>
+    <button class="btn btn-primary noprint" id="printpagebutton" onclick="PrintElem('#clearance')">Print</button>
 
 
 </body>
