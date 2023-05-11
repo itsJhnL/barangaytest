@@ -46,7 +46,7 @@
                                     {
                                     echo '
                                         <tr class="text-center">
-                                        <td style="width:70px;"><image src="images/'.basename($row['capturedImage']).'" style="width:60px;height:60px;"/></td>
+                                        <td style="width:70px;"><image src="images/'.basename($row['captured_image']).'" style="width:60px;height:60px;"/></td>
                                         <td> '.strtoupper($row['lastname']).', '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'. </td>
                                         <td>#'.strtoupper($row['houseNo']).', PUROK '.strtoupper($row['purok']).', '.strtoupper($row['barangay']).' '.strtoupper($row['city']).' '.strtoupper($row['province']).'</td>
                                         <td> '.strtoupper($row['gender']).' </td>
@@ -54,9 +54,9 @@
                                 ?>
                                         <td class="col-2">
                                             <form action="code.php" method="POST" class="d-inline">
-                                                <button type="button" class="btn btn-info btn-sm" title="View" data-bs-toggle="modal" data-bs-target="#View_Resident<?php echo $row['id']; ?>"><i class="fa-solid fa-eye"></i></button>
-                                                <button type="button" class="btn btn-primary btn-sm" title="Edit" data-bs-toggle="modal" data-bs-target="#Edit_Resident<?php echo $row['id']; ?>"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></button>
-                                                <button type="button" class="btn btn-danger btn-sm" title="Delete" data-bs-toggle="modal" data-bs-target="#Delete_Resident<?php echo $row['id']; ?>"><i class="fa-solid fa-trash"></i></button>
+                                                <!-- <button type="button" class="btn btn-info btn-sm" title="View" data-bs-toggle="modal" data-bs-target="#View_Resident<?php echo $row['id']; ?>"><i class="fa-solid fa-eye"></i></button> -->
+                                                <button type="button" class="btn btn-primary btn-sm" title="Edit" data-bs-toggle="modal" data-bs-target="#Edit_Resident<?php echo $row['id']; ?>">Edit <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm" title="Delete" data-bs-toggle="modal" data-bs-target="#Delete_Resident<?php echo $row['id']; ?>">Delete <i class="fa-solid fa-trash"></i></button>
                                             </form>
                                         </td>
                                         </tr>

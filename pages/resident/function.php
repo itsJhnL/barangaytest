@@ -5,6 +5,15 @@ require_once '../connection.php';
 //Add function
 if(isset($_POST['save_resident']))
 {
+
+  $folderPath = 'images/';
+  $image_parts = explode(";base64,", $_POST['captured_image']);
+  $image_type_aux = explode("images/", $image_parts[0]);
+  $image_type = $image_type_aux[1];
+  $image_base64 = base64_decode($image_parts[1]);
+  $file = $folderPath . uniqid() . '.jpeg';
+  file_put_contents($file, $image_base64);
+
   $firstname = mysqli_real_escape_string($con, $_POST['firstname']);
   $lastname = mysqli_real_escape_string($con, $_POST['lastname']);
   $contactNo = mysqli_real_escape_string($con, $_POST['contactNo']);
@@ -28,7 +37,6 @@ if(isset($_POST['save_resident']))
   $nationality = mysqli_real_escape_string($con, $_POST['nationality']);
   $civilStatus = mysqli_real_escape_string($con, $_POST['civilStatus']);
   $spouseName = mysqli_real_escape_string($con, $_POST['spouseName']);
-  $childrenName = mysqli_real_escape_string($con, $_POST['childrenName']);
   $course = mysqli_real_escape_string($con, $_POST['course']);
   $CSchoolName = mysqli_real_escape_string($con, $_POST['CSchoolName']);
   $CSchoolAddress = mysqli_real_escape_string($con, $_POST['CSchoolAddress']);
@@ -39,7 +47,7 @@ if(isset($_POST['save_resident']))
   $ESchoolName = mysqli_real_escape_string($con, $_POST['ESchoolName']);
   $ESchoolAddress = mysqli_real_escape_string($con, $_POST['ESchoolAddress']);
   $EYearAttended = mysqli_real_escape_string($con, $_POST['EYearAttended']);
-  $capturedImage = mysqli_real_escape_string($con, $_FILES['capturedImage']);
+  $captured_image = $file;
   $BusinessID = mysqli_real_escape_string($con, $_POST['BusinessID']);
   $BusinessNature = mysqli_real_escape_string($con, $_POST['BusinessNature']);
   $BusinessName = mysqli_real_escape_string($con, $_POST['BusinessName']);
@@ -52,8 +60,12 @@ if(isset($_POST['save_resident']))
   $BusinessMunicipality = mysqli_real_escape_string($con, $_POST['BusinessMunicipality']);
   $BusinessProvince = mysqli_real_escape_string($con, $_POST['BusinessProvince']);
 
+
+
+
+
   //quert to add the new data
-  $query = "INSERT INTO `tblresident` (`firstname`, `lastname`, `gender`, `age`, `middlename`, `suffixname`, `birthdate`, `houseNo`, `purok`, `barangay`, `city`, `province`, `contactNo`, `emailAddress`, `motherName`, `fatherName`, `motherContactNo`, `fatherContactNo`, `height`, `weight`, `nationality`, `civilStatus`, `spouseName`, `childrenName`, `course`, `CSchoolName`, `CSchoolAddress`, `CYearAttended`, `HSchoolName`, `HSchoolAddress`, `HYearAttended`, `ESchoolName`, `ESchoolAddress`, `EYearAttended`, `capturedImage`,`BusinessID`,`BusinessNature`,`BusinessName`,`BusinessOwner`,`BusinessOwnerAddress`,`BusinessContactNumber`,`BusinessBldgNo`,`BusinessPurokNo`,`BusinessBarangay`,`BusinessMunicipality`,`BusinessProvince`) VALUES 
+  $query = "INSERT INTO `tblresident` (`firstname`, `lastname`, `gender`, `age`, `middlename`, `suffixname`, `birthdate`, `houseNo`, `purok`, `barangay`, `city`, `province`, `contactNo`, `emailAddress`, `motherName`, `fatherName`, `motherContactNo`, `fatherContactNo`, `height`, `weight`, `nationality`, `civilStatus`, `spouseName`, `course`, `CSchoolName`, `CSchoolAddress`, `CYearAttended`, `HSchoolName`, `HSchoolAddress`, `HYearAttended`, `ESchoolName`, `ESchoolAddress`, `EYearAttended`, `captured_image`,`BusinessID`,`BusinessNature`,`BusinessName`,`BusinessOwner`,`BusinessOwnerAddress`,`BusinessContactNumber`,`BusinessBldgNo`,`BusinessPurokNo`,`BusinessBarangay`,`BusinessMunicipality`,`BusinessProvince`) VALUES 
   (
   '$firstname',
   '$lastname',
@@ -78,7 +90,6 @@ if(isset($_POST['save_resident']))
   '$nationality',
   '$civilStatus',
   '$spouseName',
-  '$childrenName',
   '$course',
   '$CSchoolName',
   '$CSchoolAddress',
@@ -89,7 +100,7 @@ if(isset($_POST['save_resident']))
   '$ESchoolName',
   '$ESchoolAddress',
   '$EYearAttended',
-  '$capturedImage',
+  '$captured_image',
   '$BusinessID',
   '$BusinessNature',
   '$BusinessName',
@@ -120,6 +131,15 @@ if(isset($_POST['save_resident']))
 }
   //Edit function
   if(isset($_POST['update_resident'])){
+
+    $folderPath = 'images/';
+    $image_parts = explode(";base64,", $_POST['captured_image']);
+    $image_type_aux = explode("images/", $image_parts[0]);
+    $image_type = $image_type_aux[1];
+    $image_base64 = base64_decode($image_parts[1]);
+    $file = $folderPath . uniqid() . '.jpeg';
+    file_put_contents($file, $image_base64);
+
     $user_id = mysqli_real_escape_string($con, $_POST['id']);
     $firstname = mysqli_real_escape_string($con, $_POST['firstname']);
     $lastname = mysqli_real_escape_string($con, $_POST['lastname']);
@@ -144,7 +164,6 @@ if(isset($_POST['save_resident']))
     $nationality = mysqli_real_escape_string($con, $_POST['nationality']);
     $civilStatus = mysqli_real_escape_string($con, $_POST['civilStatus']);
     $spouseName = mysqli_real_escape_string($con, $_POST['spouseName']);
-    /* $childrenName = mysqli_real_escape_string($con, $_POST['childrenName']); */
     $course = mysqli_real_escape_string($con, $_POST['course']);
     $CSchoolName = mysqli_real_escape_string($con, $_POST['CSchoolName']);
     $CSchoolAddress = mysqli_real_escape_string($con, $_POST['CSchoolAddress']);
@@ -155,7 +174,7 @@ if(isset($_POST['save_resident']))
     $ESchoolName = mysqli_real_escape_string($con, $_POST['ESchoolName']);
     $ESchoolAddress = mysqli_real_escape_string($con, $_POST['ESchoolAddress']);
     $EYearAttended = mysqli_real_escape_string($con, $_POST['EYearAttended']);
-/*     $capturedImage = mysqli_real_escape_string($con, $_FILES['capturedImage']); */
+    $captured_image = $file;
     $BusinessID = mysqli_real_escape_string($con, $_POST['BusinessID']);
     $BusinessNature = mysqli_real_escape_string($con, $_POST['BusinessNature']);
     $BusinessName = mysqli_real_escape_string($con, $_POST['BusinessName']);
@@ -169,7 +188,7 @@ if(isset($_POST['save_resident']))
     $BusinessProvince = mysqli_real_escape_string($con, $_POST['BusinessProvince']);
  
     // query to update the data
-    $query_run = mysqli_query($con, "UPDATE `tblresident` SET `firstname` = '$firstname',`lastname` = '$lastname', `contactNo` = '$contactNo', `suffixname` = '$suffixname', `gender` = '$gender', `age` = '$age', `birthdate` = '$birthdate', `houseNo` = '$houseNo', `purok` = '$purok', `barangay` = '$barangay', `city` = '$city', `province` = '$province', `middlename` = '$middlename', `emailAddress` = '$emailAddress', `motherName` = '$motherName', `fatherName` = '$fatherName', `motherContactNo` = '$motherContactNo', `fatherContactNo` = '$fatherContactNo', `height` = '$height', `weight` = '$weight', `nationality` = '$nationality', `civilStatus` = '$civilStatus', `spouseName` = '$spouseName', `course` = '$course', `CSchoolName` = '$CSchoolName', `CSchoolAddress` = '$CSchoolAddress', `CYearAttended` = '$CYearAttended', `HSchoolName` = '$HSchoolName', `HSchoolAddress` = '$HSchoolAddress', `HYearAttended` = '$HYearAttended', `ESchoolName` = '$ESchoolName', `ESchoolAddress` = '$ESchoolAddress', `EYearAttended` = '$EYearAttended', `BusinessID` = '$BusinessID', `BusinessNature` = '$BusinessNature', `BusinessName` = '$BusinessName', `BusinessOwner` = '$BusinessOwner', `BusinessOwnerAddress` = '$BusinessOwnerAddress', `BusinessContactNumber` = '$BusinessContactNumber', `BusinessBldgNo` = '$BusinessBldgNo', `BusinessPurokNo` = '$BusinessPurokNo', `BusinessBarangay` = '$BusinessBarangay', `BusinessMunicipality` = '$BusinessMunicipality', `BusinessProvince` = '$BusinessProvince' WHERE `id` = '$user_id'");
+    $query_run = mysqli_query($con, "UPDATE `tblresident` SET `firstname` = '$firstname',`lastname` = '$lastname', `contactNo` = '$contactNo', `suffixname` = '$suffixname', `gender` = '$gender', `age` = '$age', `birthdate` = '$birthdate', `houseNo` = '$houseNo', `purok` = '$purok', `barangay` = '$barangay', `city` = '$city', `province` = '$province', `middlename` = '$middlename', `emailAddress` = '$emailAddress', `motherName` = '$motherName', `fatherName` = '$fatherName', `motherContactNo` = '$motherContactNo', `fatherContactNo` = '$fatherContactNo', `height` = '$height', `weight` = '$weight', `nationality` = '$nationality', `civilStatus` = '$civilStatus', `spouseName` = '$spouseName', `course` = '$course', `CSchoolName` = '$CSchoolName', `CSchoolAddress` = '$CSchoolAddress', `CYearAttended` = '$CYearAttended', `HSchoolName` = '$HSchoolName', `HSchoolAddress` = '$HSchoolAddress', `HYearAttended` = '$HYearAttended', `ESchoolName` = '$ESchoolName', `ESchoolAddress` = '$ESchoolAddress', `EYearAttended` = '$EYearAttended', `captured_image` = '$captured_image', `BusinessID` = '$BusinessID', `BusinessNature` = '$BusinessNature', `BusinessName` = '$BusinessName', `BusinessOwner` = '$BusinessOwner', `BusinessOwnerAddress` = '$BusinessOwnerAddress', `BusinessContactNumber` = '$BusinessContactNumber', `BusinessBldgNo` = '$BusinessBldgNo', `BusinessPurokNo` = '$BusinessPurokNo', `BusinessBarangay` = '$BusinessBarangay', `BusinessMunicipality` = '$BusinessMunicipality', `BusinessProvince` = '$BusinessProvince' WHERE `id` = '$user_id'");
 
     if($query_run)
     {

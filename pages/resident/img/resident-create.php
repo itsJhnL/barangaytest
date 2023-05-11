@@ -27,7 +27,7 @@
               <div class="col-md-2">
                 <label><b>Suffix</b></label>
                 <select class="form-select mt-2" name="suffixname" aria-label="Name Extension">
-                  <option selected></option>
+                  <option selected>NaN</option>
                   <option>Jr.</option>
                   <option>Sr.</option>
                   <option>I</option>
@@ -225,10 +225,11 @@
         <div class="modal-body d-flex flex-column align-items-center text-center">
           <label>Capture live photo</label>
           <div id="my_camera" class="pre_capture_frame border border-dark rounded"></div>
-          <input type="hidden" name="captured_image" id="captured_image_data">
+          <input type="hidden" name="image" id="captured_image_data">
+          <input type="hidden" name="imageval" id="imageval">
           <div class="mt-3 col-md-4">
             <label for="">or</label>
-            <!-- <input id="image_upload" name="" class="form-control input-sm" type="file" /> -->
+            <input id="image_upload" name="image" class="form-control input-sm" type="file" />
           </div>
           <br>
           <div class="row g-2">
@@ -371,7 +372,7 @@
   // Update the age input field
   ageInput.value = age;
   }
-</script>
+  </script>
 
   <!-- Capture -->
   <script language="JavaScript">
@@ -399,8 +400,9 @@
         Webcam.snap( function(data_uri) {
         // display results in page
         document.getElementById('my_camera').innerHTML = 
-        '<img id="my_camera" src="'+data_uri+'"/>';
+        '<img id="after_capture_frame" src="'+data_uri+'"/>';
         $("#captured_image_data").val(data_uri);
+        $("#imageval").val(data_uri);
         });	
     });
 
@@ -420,7 +422,7 @@
     $.ajax({
       type: "POST",
       dataType: "json",
-      url: "function.php",
+      url: "image_upload.php",
       data: {image: base64data},
       success: function(data) { 
       alert(data);

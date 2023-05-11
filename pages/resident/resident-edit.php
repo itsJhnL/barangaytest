@@ -9,9 +9,16 @@
         </div>
         <div class="modal-body">
           <div class="row g-2 mb-2">
-            <div class="text-center d.flex pb-3">
-              <img src="img/template.png<?php /* basename($row['capturedImage']) */ ?>" class="w-auto" height="150" alt="Picture">
+            <div class="d-flex flex-column align-items-center text-center p-3">                            
+              <div id="result" >
+                <!-- <img style="width: 100%; " name="image" class="capture_frame border border-dark rounded" src="images/template.png" required> -->
+                <img src="images/<?php echo basename($row['captured_image']); ?>" name="image" class="capture_frame border border-dark rounded" src="img/template.png" class="w-auto" height="150" alt="Picture">
+              </div>
             </div>
+            <div class="text-center d.flex pb-3">
+              <button type="button"  class="btn btn-info btn-sm" title="Change" id="ChangePicture" data-bs-toggle="modal" data-bs-target="#ChangeImage">Change Profile</button>
+            </div>
+
             <div class="col">
               <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
               <label class="form-label"><b>Last Name</b></label>
@@ -61,71 +68,86 @@
             <div class="col-md-12">
               <label><b>Address</b></label>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-3">
               <input type="text" class="form-control" value="<?php echo $row['houseNo']?>" name="houseNo" placeholder="House Number">
+              <small id="emailHelp" class="form-text text-muted">House No.</small>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-3">
               <input type="text" class="form-control" value="<?php echo $row['purok']?>" name="purok" placeholder="Purok Number">
+              <small id="emailHelp" class="form-text text-muted">Purok No.</small>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6">
               <input class="form-control" value="<?php echo $row['barangay']?>" name="barangay" placeholder="Barangay"/>        
+              <small id="emailHelp" class="form-text text-muted">Barangay</small>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6">
               <input class="form-control" value="<?php echo $row['city']?>" name="city" placeholder="Town/City"/>    
+              <small id="emailHelp" class="form-text text-muted">Town/City</small>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-5">
               <input class="form-control" value="<?php echo $row['province']?>" name="province" placeholder="Province"/>
+              <small id="emailHelp" class="form-text text-muted">Province</small>
             </div>
           </div>
 
           <div class="row g-2">
-            <div class="col-md-12 mb-3">
-                <label><b>Contact Information</b></label>
+            <div class="col-md-12">
+              <label><b>Contact Information</b></label>
             </div>
-            <div class="col-md-6 mb-3">
-                <input type="number" class="form-control" value="<?php echo $row['contactNo']?>" name="contactNo" placeholder="Your Contact Number">
+            <div class="col-md-6">
+              <input type="number" class="form-control" value="<?php echo $row['contactNo']?>" name="contactNo" placeholder="Your Contact Number">
+              <small id="emailHelp" class="form-text text-muted">Contact No.</small>
             </div>
-            <div class="col-md-6 mb-3">
-                <input type="email" class="form-control" value="<?php echo $row['emailAddress']?>" name="emailAddress" placeholder="Your Email Address (Optional)">
+            <div class="col-md-6">
+              <input type="email" class="form-control" value="<?php echo $row['emailAddress']?>" name="emailAddress" placeholder="Your Email Address (Optional)">
+              <small id="emailHelp" class="form-text text-muted">Email Address.</small>
             </div>
-            <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" value="<?php echo $row['motherName']?>" name="motherName" placeholder="Mother's Name">
+            <div class="col-md-6">
+              <input type="text" class="form-control" value="<?php echo $row['motherName']?>" name="motherName" placeholder="Mother's Name">
+              <small id="emailHelp" class="form-text text-muted">Mother's Name.</small>
             </div>
-            <div class="col-md-6 mb-3">
-                <input type="number" class="form-control" value="<?php echo $row['motherContactNo']?>" name="motherContactNo" placeholder="Your Mother's Contact Number">
+            <div class="col-md-6">
+              <input type="number" class="form-control" value="<?php echo $row['motherContactNo']?>" name="motherContactNo" placeholder="Your Mother's Contact Number">
+              <small id="emailHelp" class="form-text text-muted">Contact No.</small>
             </div>
-            <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" value="<?php echo $row['fatherName']?>" name="fatherName" placeholder="Father's Name">
+            <div class="col-md-6">
+              <input type="text" class="form-control" value="<?php echo $row['fatherName']?>" name="fatherName" placeholder="Father's Name">
+              <small id="emailHelp" class="form-text text-muted">Father's Name.</small>
             </div>
-            <div class="col-md-6 mb-3">
-                <input type="number" class="form-control" value="<?php echo $row['fatherContactNo']?>" name="fatherContactNo" placeholder="Your Father's Contact Number">
+            <div class="col-md-6 mb-5">
+              <input type="number" class="form-control" value="<?php echo $row['fatherContactNo']?>" name="fatherContactNo" placeholder="Your Father's Contact Number">
+              <small id="emailHelp" class="form-text text-muted">Contact No.</small>
             </div>
           </div>
 
           <div class="row g-2">
-            <div class="col-md-12 mb-3">
+            <div class="col-md-12">
               <label><b>Additional Information</b></label>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6">
               <input type="text" class="form-control" value="<?php echo $row['height']?>" name="height" placeholder="Height (in cm)">
+              <small id="emailHelp" class="form-text text-muted">Height</small>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6">
               <input type="text" class="form-control" value="<?php echo $row['weight']?>" name="weight" placeholder="Weight (in kg)">
+              <small id="emailHelp" class="form-text text-muted">Weight</small>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6">
               <input type="text" class="form-control" value="<?php echo $row['nationality']?>" name="nationality" placeholder="Nationality">
+              <small id="emailHelp" class="form-text text-muted">Nationality</small>
             </div>
-          </div>
-          <div class="row g-2">
-            <div class="col-md-6 mb-3">
-              <label><b>Civil Status</b></label>
+            <div class="col-md-6">
               <select class="form-select" value="<?php echo $row['civilStatus']?>" name="civilStatus" id="civilStatus" onchange="showSpouseChildrenFields()">
                 <option value="single">Single</option>
                 <option value="married">Married</option>
                 <option value="divorced">Divorced</option>
                 <option value="widowed">Widowed</option>
               </select>
+              <small id="emailHelp" class="form-text text-muted">Civil Status</small>
             </div>
+          </div>
+          <div class="row g-2">
+            
             <div class="col-md-6 mb-2">
               <label><b></b></label>
               <input type="text" class="form-control" value="<?php echo $row['spouseName']?>" id="spouse-name" placeholder="Spouse Name" name="spouseName" style="display: none;">
@@ -141,56 +163,66 @@
 
           <br>
           <!-- Business Info -->
-          <div class="col-md-12 mb-2">
+          <div class="col-md-12">
             <label for="additional-info"><b>Educational Background</b></label>
           </div>
           <hr>
 
           <div class="row g-2">
-            <div class="col-md-12 mb-3">
+            <div class="col-md-12">
                 <label for="additional-info"><b>College</b></label>
             </div>
             <div class="col-md-6">
-                <input type="text" class="form-control" value="<?php echo $row['course']?>" name="course" placeholder="Course">
+              <input type="text" class="form-control" value="<?php echo $row['course']?>" name="course" placeholder="Course">
+              <small id="emailHelp" class="form-text text-muted">Course</small>
             </div>
-            <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" value="<?php echo $row['CSchoolName']?>" name="CSchoolName" placeholder="School Name">
+            <div class="col-md-6">
+              <input type="text" class="form-control" value="<?php echo $row['CSchoolName']?>" name="CSchoolName" placeholder="School Name">
+              <small id="emailHelp" class="form-text text-muted">School Name</small>
             </div>
-            <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" value="<?php echo $row['CSchoolAddress']?>" name="CSchoolAddress" placeholder="School Address">
+            <div class="col-md-6">
+              <input type="text" class="form-control" value="<?php echo $row['CSchoolAddress']?>" name="CSchoolAddress" placeholder="School Address">
+              <small id="emailHelp" class="form-text text-muted">School Address</small>
             </div>
-            <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" value="<?php echo $row['CYearAttended']?>" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016">
+            <div class="col-md-6 mb-4">
+              <input type="text" class="form-control" value="<?php echo $row['CYearAttended']?>" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <small id="emailHelp" class="form-text text-muted">Year attended</small>
             </div>
           </div>
 
           <div class="row g-2">
-            <div class="col-md-12 mb-3">
+            <div class="col-md-12">
               <label for="additional-info"><b>High School</b></label>
             </div>
-            <div class="col mb-3">
+            <div class="col">
               <input type="text" class="form-control" value="<?php echo $row['HSchoolName']?>" name="HSchoolName" placeholder="School Name">
+              <small id="emailHelp" class="form-text text-muted">School Name</small>
             </div>
-            <div class="col mb-3">
+            <div class="col">
               <input type="text" class="form-control" value="<?php echo $row['HSchoolAddress']?>" name="HSchoolAddress" placeholder="School Address">
+              <small id="emailHelp" class="form-text text-muted">School Address</small>
             </div>
-            <div class="col mb-3">
+            <div class="col mb-4">
               <input type="text" class="form-control" value="<?php echo $row['HYearAttended']?>" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <small id="emailHelp" class="form-text text-muted">Year Attended</small>
             </div>
           </div>
 
           <div class="row g-2">
-            <div class="col-md-12 mb-3">
+            <div class="col-md-12">
               <label for="additional-info"><b>Elementary</b></label>
             </div>
-            <div class="col mb-3">
+            <div class="col">
               <input type="text" class="form-control" value="<?php echo $row['ESchoolName']?>" name="ESchoolName" placeholder="School Name">
+              <small id="emailHelp" class="form-text text-muted">School Name</small>
             </div>  
-            <div class="col mb-3">
+            <div class="col">
               <input type="text" class="form-control" value="<?php echo $row['ESchoolAddress']?>" name="ESchoolAddress" placeholder="School Address">
+              <small id="emailHelp" class="form-text text-muted">School Address</small>
             </div>
-            <div class="col mb-3">
+            <div class="col mb-4">
               <input type="text" class="form-control" value="<?php echo $row['EYearAttended']?>" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <small id="emailHelp" class="form-text text-muted">Year</small>
             </div>
           </div>
 
@@ -200,62 +232,93 @@
             <label for="additional-info"><b>Business Information</b></label>
           </div>
           <hr>
-
           <div class="row g-2">
+            <label><b>Business Address</b></label>
             <div class="col-md-6">
-              <label for="">Business ID</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessID']?>" name="BusinessID">
+              <small id="emailHelp" class="form-text text-muted" for="">Business ID</small>
             </div>
             <div class="col-md-6">
-              <label for="">Business Nature</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessNature']?>" name="BusinessNature">
+              <small id="emailHelp" class="form-text text-muted" for="">Business Nature</small>
             </div>
             <div class="col-md-6">
-              <label for="">Business Name</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessName']?>" name="BusinessName">
+              <small id="emailHelp" class="form-text text-muted" for="">Business Name</small>
             </div>
             <div class="col-md-6">
-              <label for="">Business Owner</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessOwner']?>" name="BusinessOwner">
+              <small id="emailHelp" class="form-text text-muted" for="">Business Owner</small>
             </div>
             <div class="col-md-6">
-              <label for="">Owner Address</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessOwnerAddress']?>" name="BusinessOwnerAddress">
+              <small id="emailHelp" class="form-text text-muted" for="">Owner Address</small>
             </div>
-            <div class="col-md-6 mb-2">
-              <label for="">Contact Number</label>
+            <div class="col-md-6">
               <input type="text" class="form-control" value="<?php echo $row['BusinessContactNumber']?>" name="BusinessContactNumber">
+              <small id="emailHelp" class="form-text text-muted" for="">Contact Number</small>
             </div>
             <div class="col-md-12">
-              <label for="">Business Address</label>
             </div>
             <div class="col-md-3">
-              <label for="">Building No.</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessBldgNo']?>" name="BusinessBldgNo">
+              <small id="emailHelp" class="form-text text-muted" for="">Building No.</small>
             </div>
             <div class="col-md-3">
-              <label for="">Purok No.</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessPurokNo']?>" name="BusinessPurokNo">
+              <small id="emailHelp" class="form-text text-muted" for="">Purok No.</small>
             </div>
             <div class="col-md-6">
-              <label for="">Barangay</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessBarangay']?>" name="BusinessBarangay">
+              <small id="emailHelp" class="form-text text-muted" for="">Barangay</small>
             </div>
             <div class="col-md-6">
-              <label for="">Municipality</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessMunicipality']?>" name="BusinessMunicipality">
+              <small id="emailHelp" class="form-text text-muted" for="">Municipality</small>
             </div>
             <div class="col-md-6">
-              <label for="">Province</label>
               <input type="text" class="form-control" value="<?php echo $row['BusinessProvince']?>" name="BusinessProvince">
+              <small id="emailHelp" class="form-text text-muted" for="">Province</small>
             </div>
           </div>
         </div>
         
         <div class="modal-footer float-end">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" name="update_resident" class="btn btn-primary" onclick="saveSnap()">Update</button>
-        </div>     
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onClick="window.location.reload();">Cancel</button>
+          <button type="submit" name="update_resident" class="btn btn-primary" onclick="changeSnap()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Change Capture -->
+  <div class="modal fade" id="ChangeImage" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Change Picture</h5>
+        </div>
+        <div class="modal-body d-flex flex-column align-items-center text-center">
+          <label>Capture live photo</label>
+          <div id="camera" class="pre_capture_frame border border-dark rounded"></div>
+          <input type="hidden" name="captured_image" id="newCaptured">
+          <div class="mt-3 col-md-4">
+            <label for="">or</label>
+            <input id="image_upload" name="" class="form-control input-sm" type="file" />
+          </div>
+          <br>
+          <div class="row g-2">
+            <div class="col">
+              <input type="button" id="replace" class="btn btn-success" value="Capture">
+            </div>
+            <div class="col">
+              <input type=button id="ChangePicture1" class="btn btn-danger"  value="Reset" onClick="Webcam.reset()">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="exitCam" data-bs-target="#Edit_Resident" data-bs-toggle="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="exitCam1" data-bs-target="#Edit_Resident<?php echo $row['id']?>" data-bs-toggle="modal">Done</button>
+        </div>
       </div>
     </div>
   </div>
@@ -325,44 +388,42 @@
 	  jpeg_quality: 90
 	 });	 
 
-     document.getElementById('takepicture').addEventListener('click', function() {
-        Webcam.attach( '#my_camera' );
+     document.getElementById('ChangePicture').addEventListener('click', function() {
+        Webcam.attach( '#camera' );
     });
-    document.getElementById('takepicture1').addEventListener('click', function() {
-        Webcam.attach( '#my_camera' );
-    });
-    document.getElementById('takepicture2').addEventListener('click', function() {
-        Webcam.attach( '#my_camera' );
+    document.getElementById('ChangePicture1').addEventListener('click', function() {
+        Webcam.attach( '#camera' );
     });
 
-
-    document.getElementById('captureBtn').addEventListener('click', function() {
+    document.getElementById('replace').addEventListener('click', function() {
         // take snapshot and get image data
         Webcam.snap( function(data_uri) {
-        // display results in page
-        document.getElementById('my_camera').innerHTML = 
-        '<img id="after_capture_frame" src="'+data_uri+'"/>';
-        $("#captured_image_data").val(data_uri);
-        $("#imageval").val(data_uri);
+        // display preview
+        document.getElementById('camera').innerHTML = 
+        '<img id="capture_frame" src="'+data_uri+'"/>';
+        $("#newCaptured").val(data_uri);
+
+        // Display result
+        document.getElementById('result').innerHTML = 
+        '<img id="capture_frame" src="'+data_uri+'"/>';
+        $("#newCaptured").val(data_uri);
         });	
+        
     });
 
-    document.getElementById('closeCam').addEventListener('click', function() {
+    document.getElementById('exitCam').addEventListener('click', function() {
         Webcam.reset();
     });
-    document.getElementById('closeCam1').addEventListener('click', function() {
-        Webcam.reset();
-    });
-    document.getElementById('closeCam2').addEventListener('click', function() {
+    document.getElementById('exitCam1').addEventListener('click', function() {
         Webcam.reset();
     });
 
-  function saveSnap(){
-	var base64data = $("#captured_image_data").val();
+  function changeSnap(){
+	var base64data = $("#newCaptured").val();
 	 $.ajax({
     type: "POST",
     dataType: "json",
-    url: "image_upload.php",
+    url: "function.php",
     data: {image: base64data},
     success: function(data) { 
     alert(data);
