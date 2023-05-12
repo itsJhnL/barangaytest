@@ -52,16 +52,13 @@
             
             <!-- Contact and Gender -->
             <div class="row g-2 mb-2">
-              <div class="col input-group">
+              <div class="col">
                 <label>Contact No.</label>
-                <div class="input-group">
-                  <div class="input-group-text">+63</div>
-                  <input type="text" class="form-control" name="contactNo" maxlength="11" placeholder="" autocomplete="off" required>
-                </div>
+                <input type="text" class="form-control" name="contactNo" maxlength="11" placeholder="" autocomplete="off" required>
               </div>
               <div class="col">
                 <label>Gender</label>
-                <select class="form-select input-group" name="gender" autocomplete="off" required>
+                <select class="form-select" name="gender" autocomplete="off" required>
                   <option selected disabled value="">Choose an option</option>
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
