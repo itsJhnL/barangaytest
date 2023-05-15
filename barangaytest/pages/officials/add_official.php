@@ -11,9 +11,19 @@
           <!-- Form -->
           <form action="function.php" method="POST">
             <div class="row g-2 mb-2">
-              <!-- <div class="text-center d.flex pb-3">
-                <img src="../../includes/assets/img/talavera_logo.png" class="w-auto" height="150" alt="Logo">
-              </div> -->
+              <div class="text-center d.flex pb-3">
+                <?php 
+
+                  $query = mysqli_query($con, "SELECT image FROM dashboard");
+                  {
+                  while($row = mysqli_fetch_array($query))
+                  echo'
+                  <image src="../settings/img/'.basename($row['image']).'" style="border-radius: 50%" alt="" class="w-auto" height="150">';
+
+                  }
+
+                ?>
+              </div>
               <div class="col">
                 <label >Last Name</label>
                 <input type="text" class="form-control" name="lastname" autocomplete="off" required>

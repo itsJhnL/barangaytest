@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Create Staff Account</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Edit Staff Account</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -11,9 +11,6 @@
           <!-- Form -->
           <form action="code.php" method="POST">
             <div class="row g-2 mb-2">
-              <div class="text-center d.flex pb-3">
-                <img src="../../includes/assets/img/talavera_logo.png" class="w-auto" height="150" alt="Logo">
-              </div>
               <div class="col">
                 <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
                 <label >Last Name</label>
@@ -41,7 +38,7 @@
             <div class="row g-2 mb-2">
               <div class="col">
                 <label>Contact No.</label>
-                <input type="text" class="form-control" name="contactNo" maxlength="11" placeholder="" autocomplete="off" required value="<?php echo $row['contactNo']; ?>">
+                <input type="text" class="form-control" name="contactNo" maxlength="11" placeholder="" autocomplete="off" required value="<?php echo $row['contactNo']; ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
               </div>
               <div class="col">
                 <?php 

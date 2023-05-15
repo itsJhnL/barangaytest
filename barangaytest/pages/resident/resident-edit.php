@@ -101,7 +101,7 @@
               <label><b>Contact Information</b></label>
             </div>
             <div class="col-md-6">
-              <input type="number" class="form-control" value="<?php echo $row['contactNo']?>" name="contactNo" placeholder="Your Contact Number">
+              <input type="text" class="form-control" value="<?php echo $row['contactNo']?>" maxlength="11" name="contactNo" placeholder="Your Contact Number">
               <small id="emailHelp" class="form-text text-muted">Contact No.</small>
             </div>
             <div class="col-md-6">
@@ -113,7 +113,7 @@
               <small id="emailHelp" class="form-text text-muted">Mother's Name.</small>
             </div>
             <div class="col-md-6">
-              <input type="number" class="form-control" value="<?php echo $row['motherContactNo']?>" name="motherContactNo" placeholder="Your Mother's Contact Number">
+              <input type="text" class="form-control" value="<?php echo $row['motherContactNo']?>" maxlength="11" name="motherContactNo" placeholder="Your Mother's Contact Number">
               <small id="emailHelp" class="form-text text-muted">Contact No.</small>
             </div>
             <div class="col-md-6">
@@ -121,7 +121,7 @@
               <small id="emailHelp" class="form-text text-muted">Father's Name.</small>
             </div>
             <div class="col-md-6 mb-5">
-              <input type="number" class="form-control" value="<?php echo $row['fatherContactNo']?>" name="fatherContactNo" placeholder="Your Father's Contact Number">
+              <input type="text" class="form-control" value="<?php echo $row['fatherContactNo']?>" maxlength="11" name="fatherContactNo" placeholder="Your Father's Contact Number">
               <small id="emailHelp" class="form-text text-muted">Contact No.</small>
             </div>
           </div>
@@ -261,7 +261,7 @@
               <small id="emailHelp" class="form-text text-muted" for="">Owner Address</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessContactNumber']?>" name="BusinessContactNumber">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessContactNumber']?>" maxlength="11" name="BusinessContactNumber">
               <small id="emailHelp" class="form-text text-muted" for="">Contact Number</small>
             </div>
             <div class="col-md-12">
@@ -290,8 +290,8 @@
         </div>
         
         <div class="modal-footer float-end">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onClick="window.location.reload();">Cancel</button>
-          <button type="submit" name="update_resident" class="btn btn-primary" onclick="changeSnap()">Update</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick="window.location.reload();">Cancel</button>
+          <button type="submit" name="update_resident" class="button-color btn" onclick="changeSnap()">Update</button>
         </div>
       </div>
     </div>

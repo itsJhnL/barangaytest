@@ -34,7 +34,7 @@ include '../../includes/header.php';
                                     <!-- <th class="col">#</th> -->
                                     <th class="col-3">Resident Name</th>
                                     <th class="col">Age</th>
-                                    <th class="col">Gender</th>
+                                    <!-- <th class="col">Gender</th> -->
                                     <th class="col-4">Address</th>
                                     <th class="col" class="text-center">Action</th>
                                 </tr>
@@ -60,7 +60,6 @@ include '../../includes/header.php';
                                             
                                             <td>$row[lastname] $row[firstname] $row[middlename]</td>
                                             <td>$row[age]</td>
-                                            <td>$row[gender]</td>
                                             <td>$row[houseNo] $row[purok] $row[barangay] $row[city] $row[province]</td>";
                                         ?>
                                             <td class="text-center">

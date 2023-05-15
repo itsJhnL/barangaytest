@@ -11,22 +11,35 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <div class="text-center d.flex pb-3">
+            <?php 
+
+              $query = mysqli_query($con, "SELECT image FROM dashboard");
+              {
+              while($row = mysqli_fetch_array($query))
+              echo'
+              <image src="../settings/img/'.basename($row['image']).'" style="border-radius: 50%" alt="" class="w-auto" height="150">';
+
+              }
+
+            ?>
+          </div>
             <div class="row g-2 mb-2">
               <div class="col">
                 <label class="form-label"><b>Last Name</b></label>
-                <input type="text" class="form-control" name="lastname" autocomplete="off" >
+                <input type="text" class="form-control" name="lastname" autocomplete="off" required>
               </div>
               <div class="col">
                 <label class="form-label"><b>First Name</b></label>
-                <input type="text" class="form-control" name="firstname"  autocomplete="off" >
+                <input type="text" class="form-control" name="firstname" autocomplete="off" required>
               </div>
               <div class="col">
                 <label class="form-label"><b>Middle Name</b></label>
-                <input type="text" class="form-control" name="middlename"  autocomplete="off" >
+                <input type="text" class="form-control" name="middlename" autocomplete="off" required>
               </div>
               <div class="col-md-2">
                 <label><b>Suffix</b></label>
-                <select class="form-select mt-2" name="suffixname" aria-label="Name Extension">
+                <select class="form-select mt-2" name="suffixname" aria-label="Name Extension" >
                   <option selected></option>
                   <option>Jr.</option>
                   <option>Sr.</option>
@@ -41,14 +54,14 @@
             <div class="row g-2">
               <div class="col-md-6 mb-3">
                 <label><b>Gender</b></label>
-                <select class="form-select" name="gender">
+                <select class="form-select" name="gender" autocomplete="off" required>
                   <option value="he">Male</option>
                   <option value="she">Female</option>
                 </select>
               </div>
               <div class="col-md-4 mb-3">
                 <label><b>Birthdate</b></label>
-                <input type="date" class="form-control" id="bday" name="birthdate"  onchange="calculateAge()">
+                <input type="date" class="form-control" id="bday" name="birthdate"  onchange="calculateAge()" autocomplete="off" required>
               </div>
               <div class="col-md-2 mb-3">
                 <label><b>Age</b></label>
@@ -61,19 +74,19 @@
                 <label><b>Address</b></label>
               </div>
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" name="houseNo" placeholder="House Number">
+                <input type="text" class="form-control" name="houseNo" placeholder="House Number" autocomplete="off" required>
               </div>
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" name="purok" placeholder="Purok Number">
+                <input type="text" class="form-control" name="purok" placeholder="Purok Number" autocomplete="off" required>
               </div>
               <div class="col-md-6 mb-3">
-                <input class="form-control" name="barangay" placeholder="Barangay"/>        
+                <input class="form-control" name="barangay" placeholder="Barangay" autocomplete="off" required/>        
               </div>
               <div class="col-md-6 mb-3">
-                <input class="form-control" name="city" placeholder="Town/City"/>    
+                <input class="form-control" name="city" placeholder="Town/City" autocomplete="off" required/>    
               </div>
               <div class="col-md-6 mb-3">
-                <input class="form-control" name="province" placeholder="Province"/>
+                <input class="form-control" name="province" placeholder="Province" autocomplete="off" required/>
               </div>
             </div>
 
@@ -82,22 +95,22 @@
                   <label><b>Contact Information</b></label>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="number" class="form-control" name="contactNo" placeholder="Your Contact Number">
+                  <input type="text" class="form-control" name="contactNo" maxlength="11" placeholder="Your Contact Number" autocomplete="off" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="email" class="form-control" name="emailAddress" placeholder="Your Email Address (Optional)">
+                  <input type="email" class="form-control" name="emailAddress" placeholder="Your Email Address (Optional)" autocomplete="off" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="text" class="form-control" name="motherName" placeholder="Mother's Name">
+                  <input type="text" class="form-control" name="motherName" placeholder="Mother's Name" autocomplete="off" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="number" class="form-control" name="motherContactNo" placeholder="Your Mother's Contact Number">
+                  <input type="text" class="form-control" name="motherContactNo" maxlength="11" placeholder="Your Mother's Contact Number" autocomplete="off" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="text" class="form-control" name="fatherName" placeholder="Father's Name">
+                  <input type="text" class="form-control" name="fatherName" placeholder="Father's Name" autocomplete="off" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="number" class="form-control" name="fatherContactNo" placeholder="Your Father's Contact Number">
+                  <input type="text" class="form-control" name="fatherContactNo" maxlength="11" placeholder="Your Father's Contact Number" autocomplete="off" required>
               </div>
             </div>
 
@@ -106,19 +119,19 @@
                 <label><b>Additional Information</b></label>
               </div>
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" name="height" placeholder="Height (in cm)">
+                <input type="text" class="form-control" name="height" placeholder="Height (in cm)" autocomplete="off" required>
               </div>
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" name="weight" placeholder="Weight (in kg)">
+                <input type="text" class="form-control" name="weight" placeholder="Weight (in kg)" autocomplete="off" required>
               </div>
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" name="nationality" placeholder="Nationality">
+                <input type="text" class="form-control" name="nationality" placeholder="Nationality" autocomplete="off" required>
               </div>
             </div>
             <div class="row g-2">
               <div class="col-md-6 mb-3">
                 <label><b>Civil Status</b></label>
-                <select class="form-select" name="civilStatus" id="civilStatus" onchange="showSpouseChildrenFields()">
+                <select class="form-select" name="civilStatus" id="civilStatus" onchange="showSpouseChildrenFields()" autocomplete="off" required>
                   <option value="single">Single</option>
                   <option value="married">Married</option>
                   <option value="divorced">Divorced</option>
@@ -132,7 +145,7 @@
               <div class="col" id="spouse-children-fields" style="display: none;">
                 <div class="col-md-6 mb-3">
                   <label><b>Number of Children</b></label>
-                  <input type="number" class="form-control" id="num-children" onchange="showChildNameFields()">
+                  <input type="number" class="form-control" id="num-children" onchange="showChildNameFields()" autocomplete="off">
                 </div>
               </div>
               <div id="child-name-fields"></div>
@@ -161,16 +174,16 @@
               <label for="additional-info"><b>College</b></label>
           </div>
           <div class="col-md-6">
-              <input type="text" class="form-control" name="course" placeholder="Course">
+              <input type="text" class="form-control" name="course" placeholder="Course" autocomplete="off">
           </div>
           <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" name="CSchoolName" placeholder="School Name">
+              <input type="text" class="form-control" name="CSchoolName" placeholder="School Name" autocomplete="off">
           </div>
           <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" name="CSchoolAddress" placeholder="School Address">
+              <input type="text" class="form-control" name="CSchoolAddress" placeholder="School Address" autocomplete="off">
           </div>
           <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016" autocomplete="off">
           </div>
           </div>
 
@@ -179,13 +192,13 @@
               <label for="additional-info"><b>High School</b></label>
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="HSchoolName" placeholder="School Name">
+              <input type="text" class="form-control" name="HSchoolName" placeholder="School Name" autocomplete="off">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="HSchoolAddress" placeholder="School Address">
+              <input type="text" class="form-control" name="HSchoolAddress" placeholder="School Address" autocomplete="off">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016" autocomplete="off">
           </div>
           </div>
 
@@ -194,13 +207,13 @@
               <label for="additional-info"><b>Elementary</b></label>
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="ESchoolName" placeholder="School Name">
+              <input type="text" class="form-control" name="ESchoolName" placeholder="School Name" autocomplete="off">
           </div>  
           <div class="col mb-3">
-              <input type="text" class="form-control" name="ESchoolAddress" placeholder="School Address">
+              <input type="text" class="form-control" name="ESchoolAddress" placeholder="School Address" autocomplete="off">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016" autocomplete="off">
           </div>
           </div>
           </div>
@@ -224,7 +237,7 @@
         <div class="modal-body d-flex flex-column align-items-center text-center">
           <label>Capture live photo</label>
           <div id="my_camera" class="pre_capture_frame border border-dark rounded"></div>
-          <input type="hidden" name="captured_image" id="captured_image_data">
+          <input type="hidden" name="captured_image" id="captured_image_data" autocomplete="off">
           <div class="mt-3 col-md-4">
             <label for="">or</label>
             <!-- <input id="image_upload" name="" class="form-control input-sm" type="file" /> -->
@@ -260,50 +273,50 @@
             <div class="row g-2">
               <div class="col-md-6">
                 <label for="">Business ID</label>
-                <input type="text" class="form-control" name="BusinessID">
+                <input type="text" class="form-control" name="BusinessID" autocomplete="off">
               </div>
               <div class="col-md-6">
                 <label for="">Business Nature</label>
-                <input type="text" class="form-control" name="BusinessNature">
+                <input type="text" class="form-control" name="BusinessNature" autocomplete="off">
               </div>
               <div class="col-md-6">
                 <label for="">Business Name</label>
-                <input type="text" class="form-control" name="BusinessName">
+                <input type="text" class="form-control" name="BusinessName" autocomplete="off">
               </div>
               <div class="col-md-6">
                 <label for="">Business Owner</label>
-                <input type="text" class="form-control" name="BusinessOwner">
+                <input type="text" class="form-control" name="BusinessOwner" autocomplete="off">
               </div>
               <div class="col-md-6">
                 <label for="">Owner Address</label>
-                <input type="text" class="form-control" name="BusinessOwnerAddress">
+                <input type="text" class="form-control" name="BusinessOwnerAddress" autocomplete="off">
               </div>
               <div class="col-md-6 mb-2">
                 <label for="">Contact Number</label>
-                <input type="text" class="form-control" name="BusinessContactNumber">
+                <input type="text" class="form-control" maxlength="11" name="BusinessContactNumber" autocomplete="off">
               </div>
               <div class="col-md-12">
                 <label for="">Business Address</label>
               </div>
               <div class="col-md-3">
                 <label for="">Building No.</label>
-                <input type="text" class="form-control" name="BusinessBldgNo">
+                <input type="text" class="form-control" name="BusinessBldgNo" autocomplete="off">
               </div>
               <div class="col-md-3">
                 <label for="">Purok No.</label>
-                <input type="text" class="form-control" name="BusinessPurokNo">
+                <input type="text" class="form-control" name="BusinessPurokNo" autocomplete="off">
               </div>
               <div class="col-md-6">
                 <label for="">Barangay</label>
-                <input type="text" class="form-control" name="BusinessBarangay">
+                <input type="text" class="form-control" name="BusinessBarangay" autocomplete="off">
               </div>
               <div class="col-md-6">
                 <label for="">Municipality</label>
-                <input type="text" class="form-control" name="BusinessMunicipality">
+                <input type="text" class="form-control" name="BusinessMunicipality" autocomplete="off">
               </div>
               <div class="col-md-6">
                 <label for="">Province</label>
-                <input type="text" class="form-control" name="BusinessProvince">
+                <input type="text" class="form-control" name="BusinessProvince" autocomplete="off">
               </div>
             </div>
           </div>

@@ -84,17 +84,19 @@
                                                 <p style="font-size: 20px;">Issued upon the request of the above-mentioned name on this <b><?php date_default_timezone_set('Asia/Tokyo'); $currentDateTime = date('F j, Y'); echo $currentDateTime;?></b><!-- <b>7th</b> day of <b>February</b> Year <b>2023</b> --> for <b>ANY LEGAL PURPOSES.</b></p></br>
                                                 <p style="font-size: 20px; text-align: center;"><b>PERSONAL DETAILS</b></p>
                                                 <p style="font-size: 20px; right: 55px; position: relative;" >Name: <b><?php echo $row['lastname']; ?>, <?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?>.</b></p> 
-                                                <p style="font-size: 20px; margin-top:-20px; right: 55px; position: relative;">Address: <b>PUROK <?php echo $row['purok'];?> Barangay <?php echo $row['barangay'];?>, <?php echo $row['city'];?>, <?php echo $row['province'];?>.</b></p>    
+                                                <p style="font-size: 20px; margin-top:-20px; right: 55px; position: relative;">Address: <b>PUROK <?php echo $row['purok'];?> <?php echo $row['barangay'];?>, <?php echo $row['city'];?>.</b></p>    
                                                 <p style="font-size: 20px; margin-top:-20px; right: 55px; position: relative;">Civil status: <b><?php echo $row['civilStatus']; ?></b>  Sex: <b><?php echo $row['gender']; ?></b></p>
                                                 <p style="font-size: 20px; margin-top:-20px; right: 55px; position: relative;">Place of Birth: <b><?php echo $row['city']; ?><?php echo $row['province']; ?></b></p>
                                                 <p style="font-size: 20px; margin-top:-20px; right: 55px; position: relative;">Height: <b><?php echo $row['height']; ?> cm</b>  Weight: <b><?php echo $row['weight']; ?> KG</b></p>
                                                 <p style="font-size: 20px; margin-top:-20px; right: 55px; position: relative;">Citizenship: <b><?php echo $row['nationality']; ?></b></p>
                                                 <hr style="width:50%; margin-top:-20px; left: 300px; position: relative;"><p style="font-size: 20px; left: 300px; position: relative; margin-top:-15px;">Applicant's Signature</p>
                                             </div>
-
+                                            <label style="padding-top: 63px;margin-left: -827px;">Certified by:</label>
+                                            <label style="padding-bottom: -32px;margin: -382px;">Prepared by:</label>
                                             <div>
+                                            
                                             <div>
-                                                <label style="padding-bottom: 10px">Certified by:</label>
+                                                
                                                 <?php   
                                                     $qry = mysqli_query($con,"SELECT * from tblofficials WHERE status='Active' ");
                                                         while($row=mysqli_fetch_array($qry)){
@@ -110,14 +112,14 @@
                                                 ?>
                                             </div>
                                             
-                                            <div style="margin-top: -135px; margin-left: 38em;">
-                                                <label style="padding-bottom: 10px">Prepared by:</label>
+                                            <div style="margin-top: -156px; margin-left: 38em;">
+                                                
                                                 <?php   
                                                     $qry = mysqli_query($con,"SELECT * from tblofficials WHERE status='Active'  ");
                                                         while($row=mysqli_fetch_array($qry)){
                                                             if($row['position'] == "Barangay Captain"){
                                                             echo '
-                                                                <p style="font-size: 18px; margin-top: 50px">
+                                                                <p style="font-size: 18px; margin-top: 100px">
                                                                     <b>'.strtoupper($row['lastname']).', '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'.<br></b>
                                                                     <span style="text-align: center;">PUNONG BARANGAY</span>
                                                                 </p>

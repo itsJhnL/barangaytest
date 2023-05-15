@@ -14,7 +14,17 @@
           <form action="code.php" method="POST">
             <div class="row g-2 mb-2">
               <div class="text-center d.flex pb-3">
-                <img src="../../includes/assets/img/talavera_logo.png" class="w-auto" height="150" alt="Logo">
+                <?php 
+
+                  $query = mysqli_query($con, "SELECT image FROM dashboard");
+                  {
+                  while($row = mysqli_fetch_array($query))
+                  echo'
+                  <image src="../settings/img/'.basename($row['image']).'" style="border-radius: 50%" alt="" class="w-auto" height="150">';
+
+                  }
+
+                ?>
               </div>
               <div class="col">
                 <label >Last Name</label>
@@ -54,7 +64,7 @@
             <div class="row g-2 mb-2">
               <div class="col">
                 <label>Contact No.</label>
-                <input type="text" class="form-control" name="contactNo" maxlength="11" placeholder="" autocomplete="off" required>
+                <input type="text" class="form-control" name="contactNo" maxlength="11" placeholder="" autocomplete="off" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
               </div>
               <div class="col">
                 <label>Gender</label>

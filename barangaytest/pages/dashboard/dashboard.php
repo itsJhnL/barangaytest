@@ -11,6 +11,7 @@ $about = mysqli_query($con, "SELECT about FROM dashboard WHERE id='id'");
 $query1 = "SELECT * from tblofficials";
 $result = mysqli_query ($con,$query1);
 
+
 $male = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'he';");
 $female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'she';");
 ?>
@@ -28,7 +29,17 @@ $female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'she';");
     </ol> -->
     <div class="row pb-5 g-2">
       <div class="col-sm-2 ps-5 pt-2">
-        <img src="talavera_logo.png" alt="" class="w-auto" height="150">
+      <?php 
+
+      $query = mysqli_query($con, "SELECT image FROM dashboard");
+      {
+        while($row = mysqli_fetch_array($query))
+        echo'
+        <image src="../settings/img/'.basename($row['image']).'" style="border-radius: 50%" alt="" class="w-auto" height="150">';
+
+      }
+
+      ?>
       </div>
       <div class="col-sm-10">
         <div class="input-group">

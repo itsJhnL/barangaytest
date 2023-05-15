@@ -19,7 +19,19 @@
     <div class="container" style="position: sticky">
         <form action="" method="POST">
             <div class="card">
-                <img src="includes/assets/img/talavera_logo.png" alt="">
+                <?php 
+
+                include 'pages/connection.php';
+
+                    $query = mysqli_query($con, "SELECT image FROM dashboard");
+                    {
+                    while($row = mysqli_fetch_array($query))
+                    echo'
+                    <image src="pages/settings/img/'.basename($row['image']).'" style="border-radius: 50%" alt="" class="w-auto" height="150">';
+
+                    }
+
+                ?>
                 <!-- <p>Barangay Information System</p> -->
                 
                 <div class="input-field">
@@ -28,7 +40,7 @@
                 </div>
 
                 <div class="input-field">
-                    <input type="text" name="password" autocomplete="off" required>
+                    <input type="password" name="password" autocomplete="off" required>
                     <span>Password</span>
                 </div>
                 
@@ -64,16 +76,13 @@ if(isset($_POST['LogIn'])) {
     $staff = mysqli_query($con, "SELECT * FROM tblstaff WHERE username='$username' AND password='$password'");
     $result_staff = mysqli_num_rows($staff);
 
-    /* $resident = mysqli_query($con, "SELECT * FROM tblresident WHERE username='$username' AND password='$password'");
-    $result_resident = mysqli_num_rows($resident); */
-
     // Check the query result
     if ($result_admin > 0) 
     {
 
         while($row = mysqli_fetch_array($admin))
         {
-            $_SESSION['role'] = "administrator";
+            $_SESSION['role'] = "Administrator";
             $_SESSION['userid'] = $row['id'];
             $_SESSION['username'] = $row['username'];
         }
@@ -86,31 +95,13 @@ if(isset($_POST['LogIn'])) {
 
         while($row = mysqli_fetch_array($staff))
         {
-            $_SESSION['role'] = "staff";
+            $_SESSION['role'] = $row['firstname'];
+            $_SESSION['staff'] = "staff";
             $_SESSION['userid'] = $row['id'];
             $_SESSION['username'] = $row['username'];
         }
         //if valid login credentials go to
-        header('Location: includes/staff/dashboard.php');
-    }
-    elseif ($result_resident > 0)
-    {
-
-        while($row = mysqli_fetch_array($resident))
-        {
-            $_SESSION['role'] = "resident";
-            $_SESSION['userid'] = $row['id'];
-            $_SESSION['username'] = $row['username'];
-        }
-        //if valid login credentials go to
-        header('Location: includes/resident/dashboard.php');
-    }
-    else {
-        header('Location: login.php');
-    }
-
-    if ($result = 0){
-        echo "the";
+        header('Location: pages/dashboard/dashboard.php');
     }
 }
 

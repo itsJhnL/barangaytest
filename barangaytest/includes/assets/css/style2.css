@@ -22,3 +22,7 @@ background-color: #0A7EC2;
 .text-color {
     color: #fff
 }
+
+.picture {
+    position: fixed;
+}

@@ -37,15 +37,17 @@ include '../../includes/header.php';
                                 </tr>
                             </thead>
                             <tbody>
+
+                            <tr class="text-center">
                                 <?php
-                                    $squery = mysqli_query($con, "SELECT *, concat(lastname, ', ', firstname, ' ',middlename,'.') as fullname FROM tblresident");
+                                    $squery = mysqli_query($con, "SELECT *, concat('#',houseNo, ' PUROK', purok, ' ',barangay,' ',city,' ',province,'') as address FROM tblresident");
                                     while($row = mysqli_fetch_array($squery))
                                     {
                                         echo '
                                         <tr class="text-center">
-                                            <td> '.$row['fullname'].'</td>
+                                            <td> '.$row['lastname'].', '.$row['firstname'].' '.$row['middlename'].'.</td>
                                             <td> '.$row['address'].' </td>
-                                            <td> '.$row['clearnacetype'].' </td>
+                                            <td> '.$row['clearanceType'].' </td>
                                             <td> '.$row['date'].' </td>
                                         </tr>
                                         '; 

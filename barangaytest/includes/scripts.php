@@ -24,7 +24,7 @@
 
         ?>
 
-        <!-- Alt CSS -->
+        <!-- Alternative CSS -->
         <link href="../../includes/assets/css/style2.css" rel="stylesheet" />
         <!-- Bootstrap 5.1.3 bundle -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -32,6 +32,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" ></script>
         <!-- Header and sidenav CSS -->
         <!-- <link rel="stylesheet" href="../../includes/assets/css/styles.css"> -->
+        <!-- FontAwesome -->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Dashboard CSS -->
         <link rel="stylesheet" href="../../includes/assets/css/dashboard.css">
         <!-- Script for toggle button -->
