@@ -26,26 +26,23 @@
 
                 ?>
               </div>
+              <script>
+                function lettersOnly (input) {
+                  var regex = /[^a-z ]/gi;
+                  input.value = input.value.replace (regex, "");
+                }
+              </script>
               <div class="col">
                 <label >Last Name</label>
-                <input type="text" class="form-control" name="lastname" autocomplete="off" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="text" class="form-control" name="lastname" autocomplete="off" onkeyup="lettersOnly(this)" required>
               </div>
               <div class="col">
                 <label >First Name</label>
-                <input type="text" class="form-control" name="firstname"  autocomplete="off" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="text" class="form-control" name="firstname"  autocomplete="off" onkeyup="lettersOnly(this)" required>
               </div>
               <div class="col">
                 <label >Middle Name</label>
-                <input type="text" class="form-control" name="middlename"  autocomplete="off" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="text" class="form-control" name="middlename"  autocomplete="off" onkeyup="lettersOnly(this)" required>
               </div>
             </div>
 
@@ -54,9 +51,6 @@
               <label >Address</label>
               <div class="col">
                 <input type="text" class="form-control" name="address" placeholder="" autocomplete="off" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
               </div>
             </div>
             

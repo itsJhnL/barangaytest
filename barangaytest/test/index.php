@@ -49,14 +49,14 @@
 <div id="box">
     <form action="script.php" method="post">
         <?php
-        include "../../connection.php";
+        include "config.php";
         include_once "Common.php";
         $common = new Common();
         $countries = $common->getCountry($connection);
         ?>
-        <label>Country <span style="color:red">*</span></label>
+        <label>Province <span style="color:red">*</span></label>
         <select name="country" id="countryId" class="form-control" onchange="getStateByCountry();">
-            <option value="">Country</option>
+            <option value="">Province</option>
             <?php
             if ($countries->num_rows > 0 ){
                 while ($country = $countries->fetch_object()) {
@@ -66,14 +66,14 @@
             }
             ?>
         </select>
-        <label>State <span style="color:red">*</span></label>
+        <label>  <span style="color:red">*</span></label>
         <select class="form-control" name="state" id="stateId" onchange="getCityByState();" >
             <option value="">State</option>
         </select>
 
-        <label>City <span style="color:red">*</span></label>
+        <label>City/Town <span style="color:red">*</span></label>
         <select class="form-control" name="city" id="cityDiv">
-            <option value="">City</option>  
+            <option value="">City</option>
         </select>
 
         <input type="submit" value="Submit">

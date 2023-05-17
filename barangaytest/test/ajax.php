@@ -1,5 +1,5 @@
 <?php
-include "../../connection.php";
+include "config.php";
 include_once "Common.php";
 if (isset($_POST['getStateByCountry']) == "getStateByCountry") {
     $countryId = $_POST['countryId'];

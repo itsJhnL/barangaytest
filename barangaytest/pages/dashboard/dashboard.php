@@ -3,17 +3,9 @@
 include '../../includes/header.php';
 include '../../includes/scripts.php';
 
-$query = "SELECT * from dashboard";
-$result = mysqli_query ($con,$query);
 
-$about = mysqli_query($con, "SELECT about FROM dashboard WHERE id='id'");
-
-$query1 = "SELECT * from tblofficials";
-$result = mysqli_query ($con,$query1);
-
-
-$male = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'he';");
-$female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'she';");
+$male = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'Male';");
+$female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'Female';");
 ?>
 
 

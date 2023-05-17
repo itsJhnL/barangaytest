@@ -1,6 +1,7 @@
 <?php include ('function.php'); ?>
 <?php include_once ('../../includes/scripts.php'); ?>
 
+
 <form action="function.php" method="POST">
   <!-- 1st modal Resident Information -->
   <div class="modal fade" id="Add_Resident" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -73,20 +74,30 @@
               <div class="col-md-12">
                 <label><b>Address</b></label>
               </div>
+
               <div class="col-md-6 mb-3">
+                <!-- <input class="form-control" name="province" placeholder="Province" autocomplete="off" required/> -->
+                <select class="form-select" name="province" id="Province">
+                  <option value="" selected disabled>Select Province</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <!-- <input class="form-control" name="city" placeholder="Town/City" autocomplete="off" required/>     -->
+                <select class="form-select" name="city" id="CityTown">
+                  <option value="" selected disabled>Select City/Town</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <!-- <input class="form-control" name="barangay" placeholder="Barangay" autocomplete="off" required/>         -->
+                <select class="form-select" name="barangay" id="Barangay">
+                  <option value="" selected disabled>Select Barangay</option>
+                </select>
+              </div>
+              <div class="col-md-3 mb-3">
                 <input type="text" class="form-control" name="houseNo" placeholder="House Number" autocomplete="off" required>
               </div>
-              <div class="col-md-6 mb-3">
+              <div class="col-md-3 mb-3">
                 <input type="text" class="form-control" name="purok" placeholder="Purok Number" autocomplete="off" required>
-              </div>
-              <div class="col-md-6 mb-3">
-                <input class="form-control" name="barangay" placeholder="Barangay" autocomplete="off" required/>        
-              </div>
-              <div class="col-md-6 mb-3">
-                <input class="form-control" name="city" placeholder="Town/City" autocomplete="off" required/>    
-              </div>
-              <div class="col-md-6 mb-3">
-                <input class="form-control" name="province" placeholder="Province" autocomplete="off" required/>
               </div>
             </div>
 
@@ -385,7 +396,7 @@
 </script>
 
   <!-- Capture -->
-  <script language="JavaScript">
+<script language="JavaScript">
 	 // Configure a few settings and attach camera 250x187
 	 Webcam.set({
 	  width: 600,
@@ -439,3 +450,6 @@
     });
 	}
 </script>
+
+
+<!-- Address dropdown -->

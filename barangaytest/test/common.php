@@ -10,19 +10,19 @@ class Common
 {
   public function getCountry($connection)
   {
-      $mainQuery = "SELECT * FROM bird_countries";
+      $mainQuery = "SELECT * FROM tbl_barangays";
       $result1 = $connection->query($mainQuery) or die("Error in main Query".$connection->error);
       return $result1;
   }
 
   public function getStateByCountry($connection,$countryId){
-      $query = "SELECT * FROM bird_states WHERE countryId='$countryId'";
+      $query = "SELECT * FROM tbl_barangays WHERE countryId='$countryId'";
       $result = $connection->query($query) or die("Error in  Query".$connection->error);
       return $result;
   }
 
   public function getCityByState($connection,$stateId){
-      $query = "SELECT * FROM bird_cities WHERE state_id='$stateId'";
+      $query = "SELECT * FROM tbl_barangays WHERE state_id='$stateId'";
       $result = $connection->query($query) or die("Error in  Query".$connection->error);
       return $result;
   }

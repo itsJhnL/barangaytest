@@ -61,9 +61,6 @@ if(isset($_POST['save_resident']))
   $BusinessProvince = mysqli_real_escape_string($con, $_POST['BusinessProvince']);
 
 
-
-
-
   //quert to add the new data
   $query = "INSERT INTO `tblresident` (`firstname`, `lastname`, `gender`, `age`, `middlename`, `suffixname`, `birthdate`, `houseNo`, `purok`, `barangay`, `city`, `province`, `contactNo`, `emailAddress`, `motherName`, `fatherName`, `motherContactNo`, `fatherContactNo`, `height`, `weight`, `nationality`, `civilStatus`, `spouseName`, `course`, `CSchoolName`, `CSchoolAddress`, `CYearAttended`, `HSchoolName`, `HSchoolAddress`, `HYearAttended`, `ESchoolName`, `ESchoolAddress`, `EYearAttended`, `captured_image`,`BusinessID`,`BusinessNature`,`BusinessName`,`BusinessOwner`,`BusinessOwnerAddress`,`BusinessContactNumber`,`BusinessBldgNo`,`BusinessPurokNo`,`BusinessBarangay`,`BusinessMunicipality`,`BusinessProvince`) VALUES 
   (
@@ -209,5 +206,9 @@ if(isset($_POST['save_resident']))
         exit(0);
     }
   }
+
+  /* Address Combo Box function */
+	
+
 
 ?>
