@@ -1,5 +1,5 @@
-<!-- Edit User Modal -->
-<div class="modal fade" id="Edit_User<?php echo $row['id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- Edit Admin Modal -->
+<div class="modal fade" id="admin<?php echo $row['id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -24,7 +24,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" name="update_User" class="button-color btn">Update</button>
+              <button type="submit" name="update_admin" class="button-color btn">Update</button>
             </div>
           </form>
         </div>

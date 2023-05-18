@@ -11,6 +11,8 @@
             <form action="code.php" method="POST">
 
               <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
+              <input type="hidden" name="firstname" value="<?php echo $row['firstname']?>"/>
+              <input type="hidden" name="lastname" value="<?php echo $row['lastname']?>"/>
 
               <div class="modal-body text-center" style="margin-top: -20px">
                 <i class="bi bi-exclamation-circle fa-8x" style="color: #facea8"></i>

@@ -23,17 +23,32 @@
 
     if(isset($_POST['update_User']))
     {
-        $user_id = mysqli_real_escape_string($con, $_POST['id']);
-        $username = mysqli_real_escape_string($con, $_POST['username']);
-        $password = mysqli_real_escape_string($con, $_POST['password']);
+      $user_id = mysqli_real_escape_string($con, $_POST['id']);
+      $username = mysqli_real_escape_string($con, $_POST['username']);
+      $password = mysqli_real_escape_string($con, $_POST['password']);
 
-        $query_run = mysqli_query($con, "UPDATE `tblstaff` SET `username` = '$username', `password` = '$password' WHERE `id` = '$user_id' ");
+      $query_run = mysqli_query($con, "UPDATE `tblstaff` SET `username` = '$username', `password` = '$password' WHERE `id` = '$user_id' ");
 
-        if($query_run)
-        {
-            header("Location: userAccount.php");
-            exit(0);
-        }
+      if($query_run)
+      {
+          header("Location: userAccount.php");
+          exit(0);
+      }
+    }
+
+    if(isset($_POST['update_admin']))
+    {
+      $user_id = mysqli_real_escape_string($con, $_POST['id']);
+      $username = mysqli_real_escape_string($con, $_POST['username']);
+      $password = mysqli_real_escape_string($con, $_POST['password']);
+
+      $query_run = mysqli_query($con, "UPDATE `tbluser` SET `username` = '$username', `password` = '$password' WHERE `id` = '$user_id' ");
+
+      if($query_run)
+      {
+          header("Location: ../../index.php");
+          exit(0);
+      }
     }
 
     /* $stud_req_no = $_POST['stud_req_check_no'];
@@ -67,4 +82,76 @@
       $_SESSION['message1'] = "Something went wrong, Please Try again.";
         header("location:studentreqchecklist.php");
     } */
+?>
+
+<!-- Function for dashboard image -->
+<?php
+  if(isset($_FILES["fileImg"]["name"]))
+  {
+    $id = $_POST["id"];
+
+    $src = $_FILES["fileImg"]["tmp_name"];
+    $imageName = $_FILES["fileImg"]["name"];
+
+    $target = "img/" . $imageName;
+
+    move_uploaded_file($src, $target);
+
+    $query = "UPDATE dashboard SET image = '$imageName' WHERE id = $id";
+    mysqli_query($con, $query);
+
+    if($query)
+    {
+      header("Location: maintenance.php");
+    }
+
+  }
+?>
+
+<!-- CertL function -->
+<?php
+  if(isset($_FILES["fileImg"]["name"]))
+  {
+    $id = $_POST["id"];
+
+    $src = $_FILES["fileImg"]["tmp_name"];
+    $imageName = $_FILES["fileImg"]["name"];
+
+    $target = "img/" . $imageName;
+
+    move_uploaded_file($src, $target);
+
+    $query = "UPDATE dashboard SET image = '$imageName' WHERE id = $id";
+    mysqli_query($con, $query);
+
+    if($query)
+    {
+      header("Location: maintenance.php");
+    }
+
+  }
+?>
+
+<!-- CertR function -->
+<?php
+  if(isset($_FILES["fileImg"]["name"]))
+  {
+    $id = $_POST["id"];
+
+    $src = $_FILES["fileImg"]["tmp_name"];
+    $imageName = $_FILES["fileImg"]["name"];
+
+    $target = "img/" . $imageName;
+
+    move_uploaded_file($src, $target);
+
+    $query = "UPDATE dashboard SET image = '$imageName' WHERE id = $id";
+    mysqli_query($con, $query);
+
+    if($query)
+    {
+      header("Location: maintenance.php");
+    }
+
+  }
 ?>

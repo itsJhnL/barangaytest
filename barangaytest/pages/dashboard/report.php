@@ -40,7 +40,7 @@ include '../../includes/header.php';
 
                             <tr class="text-center">
                                 <?php
-                                    $squery = mysqli_query($con, "SELECT *, concat('#',houseNo, ' PUROK', purok, ' ',barangay,' ',city,' ',province,'') as address FROM tblresident");
+                                    $squery = mysqli_query($con, "SELECT *, concat('#',houseNo, ' PUROK', purokNo, ' ',barangay,' ',city,' ',province,'') as address FROM tbl_reports");
                                     while($row = mysqli_fetch_array($squery))
                                     {
                                         echo '
@@ -57,14 +57,14 @@ include '../../includes/header.php';
                             </tbody>
                         </table>
 
-<script>
-        window.onload = () => {
-            console.log(document.querySelector("#emp-table > tbody > tr:nth-child(1) > td:nth-child(2) ").innerHTML);
-        };
+                        <script>
+                            window.onload = () => {
+                                console.log(document.querySelector("#emp-table > tbody > tr:nth-child(1) > td:nth-child(2) ").innerHTML);
+                            };
 
-        getUniqueValuesFromColumn()
-        
-</script>
+                            getUniqueValuesFromColumn()
+                                
+                        </script>
                     
                     
                     </div>

@@ -56,8 +56,8 @@
               <div class="col-md-6 mb-3">
                 <label><b>Gender</b></label>
                 <select class="form-select" name="gender" autocomplete="off" required>
-                  <option value="he">Male</option>
-                  <option value="she">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
               </div>
               <div class="col-md-4 mb-3">
@@ -142,7 +142,7 @@
             <div class="row g-2">
               <div class="col-md-6 mb-3">
                 <label><b>Civil Status</b></label>
-                <select class="form-select" name="civilStatus" id="civilStatus" onchange="showSpouseChildrenFields()" autocomplete="off" required>
+                <select class="form-select" name="civilStatus" id="civilStatus" onchange="showSpousANDChildrenFields()" autocomplete="off" required>
                   <option value="single">Single</option>
                   <option value="married">Married</option>
                   <option value="divorced">Divorced</option>
@@ -342,7 +342,7 @@
 </form>
 <!-- Script for Civil status -->
 <script>
-  function showSpouseChildrenFields() {
+  function showSpouseANDChildrenFields() {
     var civilStatus = document.getElementById("civilStatus").value;
     var spouseNameField = document.getElementById("spouse-name");
     var spouseChildrenFields = document.getElementById("spouse-children-fields");
@@ -453,3 +453,60 @@
 
 
 <!-- Address dropdown -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+  	function loadData(type, category_id){
+  		$.ajax({
+  			url : "function.php",
+  			type : "POST",
+  			data: {type : "province"},
+  			success : function(data){
+          $("#Province").append(data);
+  				// if(type == "stateData"){
+  				// 	$("#CityTown").html(data);
+  				// }else {
+  				// 	$("#Province").append(data);
+  				// }
+  				
+  			}
+  		});
+  	}
+
+  	loadData();
+
+    $("#Province").change(function(){
+      console.log($(this).val());
+    })
+
+  	$("#Province").on("change",function(){
+  		var Province = $("#Province").val();
+
+  		if(Province != ""){
+  			loadData("stateData", Province);
+  		}else{
+  			$("#CityTown").html("");
+  		}
+
+  		
+  	})
+
+    loadData();
+
+    $("#Province").change(function(){
+      console.log($(this).val());
+    })
+
+  	$("#Province").on("change",function(){
+  		var Province = $("#Province").val();
+
+  		if(Province != ""){
+  			loadData("stateData", Province);
+  		}else{
+  			$("#CityTown").html("");
+  		}
+
+  		
+  	})
+  });
+</script>

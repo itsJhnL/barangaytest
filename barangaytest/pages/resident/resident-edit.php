@@ -56,8 +56,8 @@
             <div class="col-md-6 mb-3">
               <label><b>Gender</b></label>
               <select class="form-select" name="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </select>
             </div>
             <div class="col-md-4 mb-3">

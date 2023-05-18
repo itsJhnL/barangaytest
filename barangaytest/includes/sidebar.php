@@ -1,5 +1,5 @@
 <?php
-    
+
 echo '
     <div id="layoutSidenav_nav">
         <nav class="sb-sidenav accordion sb-sidenav-dark bg-color-sidenav" id="sidenavAccordion">    

@@ -34,24 +34,22 @@ include '../../includes/scripts.php';
               <tr class="col text-center">
                 <th class="col-sm-1">ID</th>
                 <th class="col-sm-1">User</th>
-                <th class="col-sm-3">Remarks</th>
-                <th class="col-sm-3">Timestamp</th>
-                <th class="col-sm-4">Address</th>
+                <th class="col-sm-2">Date</th>
+                <th class="col-sm-4">Remarks</th>
               
               </tr>
             </thead>
             <tbody>
             <?php
-                $query = mysqli_query($con, "SELECT * , concat(firstname,' ',lastname) as fullname FROM tbl_logs;");
+                $query = mysqli_query($con, "SELECT * FROM tbl_logs;");
                 while($row = mysqli_fetch_array($query))
                 {
                   echo '
-                  <tr>
+                  <tr class="text-center">
                     <td>'.$row['id'].'</td>
                     <td>'.$row['usertype'].'</td>
+                    <td>'.$row['created_at'].'</td>
                     <td>'.$row['remarks'].'</td>
-                    <td>'.$row['timestamp'].'</td>
-                    <td>'.$row['address'].'</td>
                     </tr>
                   ';
                 }

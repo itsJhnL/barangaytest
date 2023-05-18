@@ -62,10 +62,10 @@
   }
 </style>
 
-  <div class="input-group">
-    <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
+<div class="input-group">
+  <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
 
-  <form class="form" id = "form" action="" enctype="multipart/form-data" method="post">
+  <form class="form" id = "form" action="function.php" enctype="multipart/form-data" method="post">
     <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
     <div class="upload">
       <img src="img/<?php echo basename($user['image'])  ?>" id = "image">
@@ -79,7 +79,7 @@
         <i class = "fa fa-times"></i>
       </div>
       <div class="rightRound" id = "confirm" style = "display: none;">
-        <input type="submit" onClick="window.location.reload();">
+        <input type="submit">
         <i class = "fa fa-check" ></i>
       </div>
     </div>
@@ -106,36 +106,19 @@
     }
   </script>
 
-  <?php
-  if(isset($_FILES["fileImg"]["name"])){
-    $id = $_POST["id"];
-
-    $src = $_FILES["fileImg"]["tmp_name"];
-    $imageName = $_FILES["fileImg"]["name"];
-
-    $target = "img/" . $imageName;
-
-    move_uploaded_file($src, $target);
-
-    $query = "UPDATE dashboard SET image = '$imageName' WHERE id = $id";
-    mysqli_query($con, $query);
-
-  }
-?>
-
-<div class="col-sm-10 card bg-light my-3">
-  <div class="card-body">
-    <?php 
+  <div class="col-sm-10 card bg-light my-3">
+    <div class="card-body">
+      <?php 
         $squery = mysqli_query($con, "SELECT * FROM dashboard");
         while($row = mysqli_fetch_array($squery))
         {
         echo '
         <textrea rows="4" cols="50">
-            '.$row['about'].'
+          '.$row['about'].'
         </textarea>
         ';
       ?>
-      
+        
         <div class="float-end">
           <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
           <button type="button" class="btn btn-primary btn-sm" style="font-size: 10px;" title="Edit" data-bs-toggle="modal" data-bs-target="#editAbout"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></button>
@@ -143,8 +126,94 @@
       <?php
       }
 
-      include 'about.php';
-    ?>
+        include 'about.php';
+      ?>
     </div>
   </div>
 </div>
+
+
+<!-- Certificate Left logo -->
+
+<!-- <form class="form" id = "form" action="function.php" enctype="multipart/form-data" method="post">
+  <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+  <div class="upload">
+    <img src="img/<?php echo basename($user['certL'])  ?>" id = "image">
+
+    <div class="rightRound" id = "upload">
+      <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
+      <i class = "fa fa-camera"></i>
+    </div>
+
+    <div class="leftRound" id = "cancel" style = "display: none;">
+      <i class = "fa fa-times"></i>
+    </div>
+    <div class="rightRound" id = "confirm" style = "display: none;">
+      <input type="submit">
+      <i class = "fa fa-check" ></i>
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript">
+  document.getElementById("fileImg").onchange = function(){
+    document.getElementById("image").src = URL.createObjectURL(fileImg.files[0]); // Preview new image
+
+    document.getElementById("cancel").style.display = "block";
+    document.getElementById("confirm").style.display = "block";
+
+    document.getElementById("upload").style.display = "none";
+  }
+
+  var userImage = document.getElementById('image').src;
+  document.getElementById("cancel").onclick = function(){
+    document.getElementById("image").src = userImage; // Back to previous image
+
+    document.getElementById("cancel").style.display = "none";
+    document.getElementById("confirm").style.display = "none";
+
+    document.getElementById("upload").style.display = "block";
+  }
+</script> -->
+
+<!-- Ceriticate Right logo -->
+<!-- <form class="form" id = "form" action="function.php" enctype="multipart/form-data" method="post">
+  <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+  <div class="upload">
+    <img src="img/<?php echo basename($user['certR'])  ?>" id = "image">
+
+    <div class="rightRound" id = "upload">
+      <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
+      <i class = "fa fa-camera"></i>
+    </div>
+
+    <div class="leftRound" id = "cancel" style = "display: none;">
+      <i class = "fa fa-times"></i>
+    </div>
+    <div class="rightRound" id = "confirm" style = "display: none;">
+      <input type="submit">
+      <i class = "fa fa-check" ></i>
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript">
+  document.getElementById("fileImg").onchange = function(){
+    document.getElementById("image").src = URL.createObjectURL(fileImg.files[0]); // Preview new image
+
+    document.getElementById("cancel").style.display = "block";
+    document.getElementById("confirm").style.display = "block";
+
+    document.getElementById("upload").style.display = "none";
+  }
+
+  var userImage = document.getElementById('image').src;
+  document.getElementById("cancel").onclick = function(){
+    document.getElementById("image").src = userImage; // Back to previous image
+
+    document.getElementById("cancel").style.display = "none";
+    document.getElementById("confirm").style.display = "none";
+
+    document.getElementById("upload").style.display = "block";
+  }
+</script> -->

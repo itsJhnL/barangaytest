@@ -33,6 +33,8 @@
                 }
               </script>
               <div class="col">
+              <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
+              <input type="hidden" name="address" value="<?php echo $row['address']?>"/>
                 <label >Last Name</label>
                 <input type="text" class="form-control" name="lastname" autocomplete="off" onkeyup="lettersOnly(this)" required>
               </div>
