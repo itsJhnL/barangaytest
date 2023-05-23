@@ -26,8 +26,30 @@
     <div class="book">
         <div class="page">
             <div style="text-align: center">
-                <div class="topleft"><img src="talavera.png"  style="width:230px; height: 230px;"/></div>
-                <div class="topright"><img src="talavera.png"  style="width:230px; height: 230px;"/></div>
+            <div style="text-align: center">
+            <div class="topleft">
+                <?php 
+
+                    $query = mysqli_query($con, "SELECT image,certL,certR FROM dashboard");
+                        {
+                            while($row = mysqli_fetch_array($query))
+                            echo'
+                            <image src="../../settings/img/'.basename($row['certL']).'" style="width:230px; height: 230px; border-radius: 50%">';
+
+                        }
+                ?>
+            </div>
+            <div class="topright">
+                <?php 
+
+                    $query = mysqli_query($con, "SELECT image,certL,certR FROM dashboard");
+                        {
+                            while($row = mysqli_fetch_array($query))
+                            echo'
+                            <image src="../../settings/img/'.basename($row['certR']).'" style="width:230px; height: 230px; border-radius: 50%">';
+
+                        }
+                ?></div>
                 <div style="font-size: 25px; margin-top: -450px;">                
                     Republic of the Philippines<br>
                     Province of Nueva Ecija<br>
@@ -35,6 +57,7 @@
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
                     <p style="font-size: 45px;"><b>CERTIFICATE OF RESIDENCY</b><p>
+                    <p style="font-size: 20px; margin-top: 50px; right: -320px; position: relative;"><b><?php date_default_timezone_set('Asia/Tokyo'); $currentDateTime = date('F j, Y - g:i:A'); echo $currentDateTime;?></p></b>
                 </div>
             </div>       
 
@@ -62,9 +85,9 @@
                             foreach($query_run as $row)
                             {
                                 ?>
-                                    <p style="font-size: 20px; margin-top: 180px;"><b>SA KINAUUKULAN:</p></b>
+                                    <p style="font-size: 20px; margin-top: 120px;"><b>SA KINAUUKULAN:</p></b>
                                     <p class="intro2"><b>ITO AY ISANG PAGPAPATUNAY</b> na si <b><?php echo $row['firstname']; ?> <?php echo $row['middlename'];?><?php echo $row['lastname'];?></b> ay lehitimo at pirmihang naninirahan dito sa <b>PUROK 5</b> ng Barangay na ito sa loob ng <b>29</b> taon simula noong <b>1994.</b><br></p>
-                                    <p class="intro">Ang pagpapatunay na ito ay iginawad upang maging batayan at gamitin sa pagkuha ng kaukulang serbisyong kanyang kinakailangan. Iginawad ngayong ika- <b>7th ng February 2023,</b> dito sa Tanggapan ng Punong Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
+                                    <p class="intro">Ang pagpapatunay na ito ay iginawad upang maging batayan at gamitin sa pagkuha ng kaukulang serbisyong kanyang kinakailangan. Iginawad ngayong ika- <b><?php date_default_timezone_set('Asia/Tokyo'); $currentDateTime = date('j'); echo $currentDateTime;?> ng <?php date_default_timezone_set('Asia/Tokyo'); $currentDateTime = date('F Y'); echo $currentDateTime;?></b> dito sa Tanggapan ng Punong Barangay Collado, Talavera, Nueva Ecija.</p></br></br></br></br>
 
                                 <?php
                             }
@@ -79,11 +102,11 @@
 
                 
                 <div>
-                    <label style="padding-bottom: 10px">Nagpapatunay ni:</label>
+                    <label style="padding-bottom: 10px">Inihanda ni:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials");
                             while($row=mysqli_fetch_array($qry)){
-                                if($row['position'] == "Barangay Secretary"){
+                                if($row['position'] == "Secretary"){
                                 echo '
                                     <p style="font-size:18px;">
                                         <b>'.strtoupper($row['lastname']).' , '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'.<br></b>
@@ -97,7 +120,7 @@
 
                 
                 <div style="margin-top: -102px; margin-left: 38em;">
-                    <label style="padding-bottom: 10px">Inihanda ni:</label>
+                    <label style="padding-bottom: 10px">Nagpapatunay ni:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials ");
                             while($row=mysqli_fetch_array($qry)){

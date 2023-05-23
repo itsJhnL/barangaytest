@@ -15,15 +15,10 @@
                         <button type="button" class="button-color btn float-start" title="Create" data-bs-toggle="modal" data-bs-target="#Add_Official">
                             New <i class="bi bi-person-fill-add"></i>
                         </button>
-
-                        <!-- search bar -->
-                        <div class="col-4  ms-auto">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Type to search" aria-label="Search" aria-describeby="btnNavbarSearch" id="myInput" onkeyup="myFunction()">
-                        </div>
                     </div>
                     
                     <div class="card-body">
-                        <table class="table table-bordered table-hover table-striped">
+                        <table class="table table-bordered table-hover table-striped" id="myTable">
                             <thead>
                                 <tr class="col text-center my-auto">
                                     <th class="col-2">Position</th> 
@@ -99,8 +94,18 @@
             </div>
         </div>
     </div>
+
+
     
+<!-- Pagination -->
+<script>
+    $(document).ready( function () 
+    {
+        $('#myTable').DataTable();
+    } );
+</script>
 
 <?php 
+include 'pagination/pagination.php';
 include '../../includes/footer.php';
 ?>

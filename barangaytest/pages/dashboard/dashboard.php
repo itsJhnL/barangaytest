@@ -4,14 +4,9 @@ include '../../includes/header.php';
 include '../../includes/scripts.php';
 
 
-$male = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'Male';");
-$female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'Female';");
+$male = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'MALE';");
+$female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'FEMALE';");
 ?>
-
-
-
-
-
   <!-- Dashboard details -->
   <div class="container-fluid px-4">
     <h1 class="my-2">Dashboard</h1>
@@ -100,10 +95,6 @@ $female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'Female';
               <div class="col">
                 <h4>Officials Details</h4>
               </div>
-              <!-- search bar -->
-              <div class="col-4  ms-auto">
-                <input class="form-control mr-sm-2" type="search" placeholder="Type to search" aria-label="Search" aria-describeby="btnNavbarSearch" id="myInput" onkeyup="myFunction()">
-              </div>
             </span>
           </div>
             
@@ -152,29 +143,16 @@ $female = mysqli_query($con, "SELECT * FROM tblresident WHERE gender = 'Female';
       </div>
     </div>
   </div>
-
-  <!-- SEARCH script -->
-  <script>
-    function myFunction() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }       
-      }
-    }
-  </script>
   
+
+<!-- Pagination -->
+<script>
+    $(document).ready( function () 
+    {
+        $('#myTable').DataTable();
+    } );
+</script>
 <?php 
+include 'pagination/pagination.php';
 include '../../includes/footer.php';
 ?>

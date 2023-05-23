@@ -16,16 +16,19 @@ include '../../includes/header.php';
                
                 <div class="card d.flex">
                     <div class="card-header">
-                        
-
-                        <!-- search bar -->
-                        <div class="col-4  ms-auto">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search Name" aria-label="Search" aria-describeby="btnNavbarSearch" id="myInput" onkeyup="myFunction()">
+                        <div class="dropdown">
+                            <button class="button-color btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Filter
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><option class="dropdown-item">By Purok</option></li>
+                                <li><option class="dropdown-item">By Barangay</option></li>
+                            </ul>
                         </div>
                     </div>
                     
                     <div class="card-body">
-                        <table id="myTable" class="table table-bordered table-hover table-striped">
+                        <table id="myTable" class="table table-bordered table-hover table-striped" id="myTable">
                             <thead>
                                 <tr class="col text-center">
                                     <th class="col-md-4">Name</th>
@@ -98,8 +101,15 @@ include '../../includes/header.php';
         }
     </script>
     
-
+<!-- Pagination -->
+<script>
+    $(document).ready( function () 
+    {
+        $('#myTable').DataTable();
+    } );
+</script>
 <?php 
+include 'pagination/pagination.php';
 include '../../includes/footer.php';
 include '../../includes/scripts.php';
 ?>

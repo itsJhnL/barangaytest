@@ -3,6 +3,24 @@
 
 if(isset($_POST['add_official']))
 {
+
+
+  if(isset($_FILES["fileImg"]["name"]))
+  {
+    $id = $_POST["id"];
+
+    $src = $_FILES["fileImg"]["tmp_name"];
+    $imageName = $_FILES["fileImg"]["name"];
+
+    $target = "signature/" . $imageName;
+
+    move_uploaded_file($src, $target);
+
+    $query = "UPDATE tblofficials SET signature = '$imageName' WHERE id = $id";
+    mysqli_query($con, $query);
+
+  }
+
   $position = mysqli_real_escape_string($con, $_POST['position']);
   $lastname = mysqli_real_escape_string($con, $_POST['lastname']);
   $firstname = mysqli_real_escape_string($con, $_POST['firstname']);
@@ -14,9 +32,10 @@ if(isset($_POST['add_official']))
   $status = mysqli_real_escape_string($con, $_POST['status']);
   $email = mysqli_real_escape_string($con, $_POST['email']);
   $gender = mysqli_real_escape_string($con, $_POST['gender']);
+  $signature = mysqli_real_escape_string($con, $_POST['signature']);
 
   // query to insert the data
-  $query = "INSERT INTO `tblofficials` (`position`, `lastname`, `firstname`, `middlename`, `contactNo`, `address`, `start_date`, `end_date`, `status`,  `email`,`gender`)
+  $query = "INSERT INTO `tblofficials` (`position`, `lastname`, `firstname`, `middlename`, `contactNo`, `address`, `start_date`, `end_date`, `status`,  `email`,`gender`, `signature`)
    VALUES 
     ('$position',
     '$lastname',
@@ -28,7 +47,8 @@ if(isset($_POST['add_official']))
     '$end_date',
     '$status',
     '$email',
-    '$gender')";
+    '$gender',
+    '$signature')";
 
   $query_run = mysqli_query($con, $query);
 

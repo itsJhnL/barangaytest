@@ -13,14 +13,10 @@
                 <div class="card d.flex">
                     <div class="card-header">
 
-                        <!-- search bar -->
-                        <div class="col-4  ms-auto">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Type to search" aria-label="Search" aria-describeby="btnNavbarSearch" id="myInput" onkeyup="myFunction()">
-                        </div>
                     </div>
                     
                     <div class="card-body">
-                        <table class="table table-bordered table-hover table-striped text-center">
+                        <table class="table table-bordered table-hover table-striped text-center" id="myTable">
                             <thead>
                                 <tr class="col text-center my-auto">
                                     <th class="col-2">Position</th> 
@@ -84,7 +80,14 @@
         </div>
     </div>
     
-
+<!-- Pagination -->
+<script>
+    $(document).ready( function () 
+    {
+        $('#myTable').DataTable();
+    } );
+</script>
 <?php 
+include 'pagination/pagination.php';
 include '../../includes/footer.php';
 ?>

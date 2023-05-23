@@ -5,7 +5,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Resident's Personal Information</h5>
-          <button type="button" class="btn-close" id="exitCam" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" id="exitCam" data-bs-dismiss="modal" aria-label="Close" onClick="window.location.reload();"></button>
         </div>
         <div class="modal-body">
           <div class="row g-2 mb-2">
@@ -17,31 +17,26 @@
               </div>
             </div>
             <div class="text-center d.flex pb-3">
-              <!-- <button type="button" class="btn btn-info btn-sm" title="Change" id="reuploadPic">Change Profile</button>
-              <button type="button" class="btn btn-success btn-sm" title="Change" id="capture">Take Photo</button> -->
-              <!-- <br>
-              <label for="">or</label>
-              <input id="image_upload" name="" class="form-control input-sm" type="file" /> -->
               <input class="col-md-4" type="hidden" name="captured_image" id="newCaptured">
             </div>
 
             <div class="col">
               <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
               <label class="form-label"><b>Last Name</b></label>
-              <input type="text" class="form-control" value="<?php echo $row['lastname']?>" name="lastname" autocomplete="off" >
+              <input type="text" class="form-control" value="<?php echo $row['lastname']?>" name="lastname" autocomplete="off" onkeyup="lettersOnly(this)" oninput="this.value = this.value.toUpperCase()" >
             </div>
             <div class="col">
               <label class="form-label"><b>First Name</b></label>
-              <input type="text" class="form-control" value="<?php echo $row['firstname']?>" name="firstname"  autocomplete="off" >
+              <input type="text" class="form-control" value="<?php echo $row['firstname']?>" name="firstname"  autocomplete="off" onkeyup="lettersOnly(this)" oninput="this.value = this.value.toUpperCase()" >
             </div>
             <div class="col">
               <label class="form-label"><b>Middle Name</b></label>
-              <input type="text" class="form-control" value="<?php echo $row['middlename']?>" name="middlename"  autocomplete="off" >
+              <input type="text" class="form-control" value="<?php echo $row['middlename']?>" name="middlename"  autocomplete="off" onkeyup="lettersOnly(this)" oninput="this.value = this.value.toUpperCase()" >
             </div>
             <div class="col-md-2">
               <label><b>Suffix</b></label>
               <select class="form-select mt-2" value="<?php echo $row['suffixname']?>" name="suffixname" aria-label="Name Extension">
-                <option selected>NaN</option>
+                <option selected>N/A</option>
                 <option>Jr.</option>
                 <option>Sr.</option>
                 <option>I</option>
@@ -56,13 +51,13 @@
             <div class="col-md-6 mb-3">
               <label><b>Gender</b></label>
               <select class="form-select" name="gender">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
               </select>
             </div>
             <div class="col-md-4 mb-3">
               <label><b>Birthdate</b></label>
-              <input type="date" class="form-control" value="<?php echo $row['birthdate']?>" id="birthday" name="birthdate"  onchange="calcAge()">
+              <input type="date" class="form-control" value="<?php echo $row['birthdate']?>" id="birthday" name="birthdate"  >
             </div>
             <div class="col-md-2 mb-3">
               <label><b>Age</b></label>
@@ -70,33 +65,37 @@
             </div>
           </div>
 
+          
+
           <div class="row g-2">
             <div class="col-md-12">
-              <label><b>Address</b></label>
+              <label>Address</label>
             </div>
-            <div class="col-md-6">
-              <input class="form-control" value="<?php echo $row['province']?>" name="province" placeholder="Province"/>
-              <small id="emailHelp" class="form-text text-muted">Province</small>
+
+            <div class="col-md-6 mb-3">
+              <input type="hidden" name="province" value="<?php echo $row['province']; ?>">
+              <input type="hidden" name="city" value="<?php echo $row['city']; ?>">
+              <input type="hidden" name="barangay" value="<?php echo $row['barangay']; ?>">
+              <select class="form-select" name="province" id="editProvince">
+                <option selected disabled><?php echo $row['province']; ?></option>
+              </select>
             </div>
-            <div class="col-md-6">
-              <input class="form-control" value="<?php echo $row['city']?>" name="city" placeholder="Town/City"/>    
-              <small id="emailHelp" class="form-text text-muted">Town/City</small>
+            <div class="col-md-6 mb-3">
+              <select class="form-select" name="city" id="editCityTown">
+                <option value="<?php echo $row['city']; ?>" selected disabled><?php echo $row['city']; ?></option>
+              </select>
             </div>
-            <div class="col-md-6">
-              <input class="form-control" value="<?php echo $row['barangay']?>" name="barangay" placeholder="Barangay"/>        
-              <small id="emailHelp" class="form-text text-muted">Barangay</small>
+            <div class="col-md-6 mb-3">
+              <select class="form-select" name="barangay" id="editBarangay">
+                <option value="<?php echo $row['barangay']; ?>" selected disabled><?php echo $row['barangay']; ?></option>
+              </select>
             </div>
-            <div class="col-md-3">
-              <input type="text" class="form-control" value="<?php echo $row['houseNo']?>" name="houseNo" placeholder="House Number">
-              <small id="emailHelp" class="form-text text-muted">House No.</small>
+            <div class="col-md-3 mb-3">
+              <input type="text" class="form-control" value="<?php echo $row['houseNo']; ?>" name="houseNo" placeholder="House No" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
             </div>
-            <div class="col-md-3 mb-5">
-              <input type="text" class="form-control" value="<?php echo $row['purok']?>" name="purok" placeholder="Purok Number">
-              <small id="emailHelp" class="form-text text-muted">Purok No.</small>
+            <div class="col-md-3 mb-3">
+              <input type="text" class="form-control" value="<?php echo $row['purok']; ?>" name="purok" placeholder="Purok No" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
             </div>
-            
-            
-            
           </div>
 
           <div class="row g-2">
@@ -104,27 +103,27 @@
               <label><b>Contact Information</b></label>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['contactNo']?>" maxlength="11" name="contactNo" placeholder="Your Contact Number">
+              <input type="text" class="form-control" value="<?php echo $row['contactNo']?>" maxlength="11" name="contactNo" placeholder="Your Contact Number" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted">Contact No.</small>
             </div>
             <div class="col-md-6">
-              <input type="email" class="form-control" value="<?php echo $row['emailAddress']?>" name="emailAddress" placeholder="Your Email Address (Optional)">
+              <input type="email" class="form-control" value="<?php echo $row['emailAddress']?>" name="emailAddress" placeholder="Your Email Address (Optional)" oninput="this.value = this.value.toUpperCase()">
               <small id="emailHelp" class="form-text text-muted">Email Address.</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['motherName']?>" name="motherName" placeholder="Mother's Name">
+              <input type="text" class="form-control" value="<?php echo $row['motherName']?>" name="motherName" placeholder="Mother's Name" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">Mother's Name.</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['motherContactNo']?>" maxlength="11" name="motherContactNo" placeholder="Your Mother's Contact Number">
+              <input type="text" class="form-control" value="<?php echo $row['motherContactNo']?>" maxlength="11" name="motherContactNo" placeholder="Your Mother's Contact Number" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted">Contact No.</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['fatherName']?>" name="fatherName" placeholder="Father's Name">
+              <input type="text" class="form-control" value="<?php echo $row['fatherName']?>" name="fatherName" placeholder="Father's Name" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">Father's Name.</small>
             </div>
             <div class="col-md-6 mb-5">
-              <input type="text" class="form-control" value="<?php echo $row['fatherContactNo']?>" maxlength="11" name="fatherContactNo" placeholder="Your Father's Contact Number">
+              <input type="text" class="form-control" value="<?php echo $row['fatherContactNo']?>" maxlength="11" name="fatherContactNo" placeholder="Your Father's Contact Number" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted">Contact No.</small>
             </div>
           </div>
@@ -134,23 +133,23 @@
               <label><b>Additional Information</b></label>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['height']?>" name="height" placeholder="Height (in cm)">
+              <input type="text" class="form-control" value="<?php echo $row['height']?>" name="height" placeholder="Height (in cm)" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted">Height</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['weight']?>" name="weight" placeholder="Weight (in kg)">
+              <input type="text" class="form-control" value="<?php echo $row['weight']?>" name="weight" placeholder="Weight (in kg)" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted">Weight</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['nationality']?>" name="nationality" placeholder="Nationality">
+              <input type="text" class="form-control" value="<?php echo $row['nationality']?>" name="nationality" placeholder="Nationality" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">Nationality</small>
             </div>
             <div class="col-md-6">
               <select class="form-select" value="<?php echo $row['civilStatus']?>" name="civilStatus" id="civilStatus" onchange="showSpouseChildrenFields()">
-                <option value="single">Single</option>
-                <option value="married">Married</option>
-                <option value="divorced">Divorced</option>
-                <option value="widowed">Widowed</option>
+                <option value="SINGLE">SINGLE</option>
+                <option value="MARRIED">MARRIED</option>
+                <option value="DIVORCED">DIVORCED</option>
+                <option value="WIDOWED">WIDOWED</option>
               </select>
               <small id="emailHelp" class="form-text text-muted">Civil Status</small>
             </div>
@@ -159,12 +158,12 @@
             
             <div class="col-md-6 mb-2">
               <label><b></b></label>
-              <input type="text" class="form-control" value="<?php echo $row['spouseName']?>" id="spouse-name" placeholder="Spouse Name" name="spouseName" style="display: none;">
+              <input type="text" class="form-control" value="<?php echo $row['spouseName']?>" id="spouse-name" placeholder="Spouse Name" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" name="spouseName" style="display: none;">
             </div>
             <div class="col" id="spouse-children-fields" style="display: none;">
               <div class="col-md-6 mb-3">
                 <label><b>Number of Children</b></label>
-                <input type="number" class="form-control" id="num-children" onchange="showChildNameFields()">
+                <input type="number" class="form-control" id="num-children" onchange="showChildNameFields()" oninput="this.value = this.value.toUpperCase()">
               </div>
             </div>
             <div id="child-name-fields"></div>
@@ -182,19 +181,19 @@
                 <label for="additional-info"><b>College</b></label>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['course']?>" name="course" placeholder="Course">
+              <input type="text" class="form-control" value="<?php echo $row['course']?>" name="course" placeholder="Course" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">Course</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['CSchoolName']?>" name="CSchoolName" placeholder="School Name">
+              <input type="text" class="form-control" value="<?php echo $row['CSchoolName']?>" name="CSchoolName" placeholder="School Name" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">School Name</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['CSchoolAddress']?>" name="CSchoolAddress" placeholder="School Address">
+              <input type="text" class="form-control" value="<?php echo $row['CSchoolAddress']?>" name="CSchoolAddress" placeholder="School Address" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">School Address</small>
             </div>
             <div class="col-md-6 mb-4">
-              <input type="text" class="form-control" value="<?php echo $row['CYearAttended']?>" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" value="<?php echo $row['CYearAttended']?>" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted">Year attended</small>
             </div>
           </div>
@@ -204,15 +203,15 @@
               <label for="additional-info"><b>High School</b></label>
             </div>
             <div class="col">
-              <input type="text" class="form-control" value="<?php echo $row['HSchoolName']?>" name="HSchoolName" placeholder="School Name">
+              <input type="text" class="form-control" value="<?php echo $row['HSchoolName']?>" name="HSchoolName" placeholder="School Name" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">School Name</small>
             </div>
             <div class="col">
-              <input type="text" class="form-control" value="<?php echo $row['HSchoolAddress']?>" name="HSchoolAddress" placeholder="School Address">
+              <input type="text" class="form-control" value="<?php echo $row['HSchoolAddress']?>" name="HSchoolAddress" placeholder="School Address" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">School Address</small>
             </div>
             <div class="col mb-4">
-              <input type="text" class="form-control" value="<?php echo $row['HYearAttended']?>" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" value="<?php echo $row['HYearAttended']?>" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted">Year Attended</small>
             </div>
           </div>
@@ -222,15 +221,15 @@
               <label for="additional-info"><b>Elementary</b></label>
             </div>
             <div class="col">
-              <input type="text" class="form-control" value="<?php echo $row['ESchoolName']?>" name="ESchoolName" placeholder="School Name">
+              <input type="text" class="form-control" value="<?php echo $row['ESchoolName']?>" name="ESchoolName" placeholder="School Name" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">School Name</small>
             </div>  
             <div class="col">
-              <input type="text" class="form-control" value="<?php echo $row['ESchoolAddress']?>" name="ESchoolAddress" placeholder="School Address">
+              <input type="text" class="form-control" value="<?php echo $row['ESchoolAddress']?>" name="ESchoolAddress" placeholder="School Address" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted">School Address</small>
             </div>
             <div class="col mb-4">
-              <input type="text" class="form-control" value="<?php echo $row['EYearAttended']?>" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016">
+              <input type="text" class="form-control" value="<?php echo $row['EYearAttended']?>" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted">Year</small>
             </div>
           </div>
@@ -244,49 +243,49 @@
           <div class="row g-2">
             <label><b>Business Address</b></label>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessID']?>" name="BusinessID">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessID']?>" name="BusinessID" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted" for="">Business ID</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessNature']?>" name="BusinessNature">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessNature']?>" name="BusinessNature" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted" for="">Business Nature</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessName']?>" name="BusinessName">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessName']?>" name="BusinessName" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted" for="">Business Name</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessOwner']?>" name="BusinessOwner">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessOwner']?>" name="BusinessOwner" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted" for="">Business Owner</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessOwnerAddress']?>" name="BusinessOwnerAddress">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessOwnerAddress']?>" name="BusinessOwnerAddress" oninput="this.value = this.value.toUpperCase()">
               <small id="emailHelp" class="form-text text-muted" for="">Owner Address</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessContactNumber']?>" maxlength="11" name="BusinessContactNumber">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessContactNumber']?>" maxlength="11" name="BusinessContactNumber" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted" for="">Contact Number</small>
             </div>
             <div class="col-md-12">
             </div>
             <div class="col-md-3">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessBldgNo']?>" name="BusinessBldgNo">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessBldgNo']?>" name="BusinessBldgNo" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted" for="">Building No.</small>
             </div>
             <div class="col-md-3">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessPurokNo']?>" name="BusinessPurokNo">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessPurokNo']?>" name="BusinessPurokNo" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
               <small id="emailHelp" class="form-text text-muted" for="">Purok No.</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessBarangay']?>" name="BusinessBarangay">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessBarangay']?>" name="BusinessBarangay" oninput="this.value = this.value.toUpperCase()">
               <small id="emailHelp" class="form-text text-muted" for="">Barangay</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessMunicipality']?>" name="BusinessMunicipality">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessMunicipality']?>" name="BusinessMunicipality" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted" for="">Municipality</small>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" value="<?php echo $row['BusinessProvince']?>" name="BusinessProvince">
+              <input type="text" class="form-control" value="<?php echo $row['BusinessProvince']?>" name="BusinessProvince" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               <small id="emailHelp" class="form-text text-muted" for="">Province</small>
             </div>
           </div>
@@ -294,14 +293,12 @@
         
         <div class="modal-footer float-end">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick="window.location.reload();">Cancel</button>
-          <button type="submit" name="update_resident" class="button-color btn" onclick="changeSnap()">Update</button>
+          <button type="submit" name="update_resident" class="button-color btn">Update</button>
         </div>
       </div>
     </div>
   </div>
 </form>
-
-<!-- <script src="js/scripts.js"></script> -->
 
 <!-- Script for Civil status -->
 <script>
@@ -340,52 +337,103 @@
 
 <!-- Calculate Age -->
 <script>
-  function calcAge() {
-  // Get the birthdate input field
-  const birthdayInput = document.getElementById("birthday");
-  
-  // Get the age input field
-  const ageInput = document.getElementById("editAge");
-  
-  // Calculate the age based on the birthdate
-  const birthdate = new Date(birthdayInput.value);
-  const now = new Date();
-  const diff = now.getTime() - birthdate.getTime();
-  const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-  
-  // Update the age input field
-  ageInput.value = age;
-  }
+  $("#birthday").on("input",function(){
+    let bdate = $(this).val();
+    let bdateformat = new Date(bdate);
+    let diff_ms =  Date.now() - bdateformat.getTime();
+    let age_dt = new Date(diff_ms);
+    let age = Math.abs(age_dt.getUTCFullYear() - 1970);
+    $("#editAge").val(age);
+  })
 </script>
 
-<!-- Capture -->
-<script>
-    document.getElementById('reuploadPic').addEventListener('click', function() {
-      Webcam.attach( '#camera' );
-  });
+<!-- Address dropdown -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+  	function loadData(type, category_id){
+  		$.ajax({
+  			url : "function.php",
+  			type : "POST",
+  			data: {type : "province"},
+  			success : function(data){
+          $("#editProvince").append(data);
+  				// if(type == "stateData"){
+  				// 	$("#CityTown").html(data);
+  				// }else {
+  				// 	$("#Province").append(data);
+  				// }
+  				
+  			}
+  		});
+  	}
 
-  document.getElementById('capture').addEventListener('click', function() {
-      // take snapshot and get image data
-      Webcam.snap( function(data_uri) {
-      // display preview
-      document.getElementById('camera').innerHTML = 
-      '<img id="capture_frame" src="'+data_uri+'"/>';
-      $("#newCaptured").val(data_uri);
-      });	
-      
-  });
+    function loadCity(province){
+  		$.ajax({
+  			url : "function.php",
+  			type : "POST",
+  			data: {type : "City", province : province},
+  			success : function(data){
+          $("#editCityTown").html("");
+          $("#editCityTown").append(data);
+  				// if(type == "stateData"){
+  				// 	$("#CityTown").html(data);
+  				// }else {
+  				// 	$("#Province").append(data);
+  				// }
+  				
+  			}
+  		});
+  	}
 
+    function loadBarangay(CityTown){
+  		$.ajax({
+  			url : "function.php",
+  			type : "POST",
+  			data: {type : "editBarangay", CityTown : CityTown},
+  			success : function(data){
+          $("#editBarangay").html("");
+          $("#editBarangay").append(data);
+  				// if(type == "stateData"){
+  				// 	$("#CityTown").html(data);
+  				// }else {
+  				// 	$("#Province").append(data);
+  				// }
+  				
+  			}
+  		});
+  	}
 
-  function changeSnap(){
-	var base64data = $("#newCaptured").val();
-	 $.ajax({
-    type: "POST",
-    dataType: "json",
-    url: "function.php",
-    data: {image: base64data},
-    success: function(data) { 
-    alert(data);
-    }
+  	loadData();
+
+  	$("#editProvince").on("change",function(){
+  		var Province = $("#editProvince").val();
+
+  		if(Province != ""){
+  			loadCity(Province);
+  		}else{
+  			$("#City").html("");
+  		}
+  	})
+
+    $("#editCityTown").on("change",function(){
+  		var City = $("#editCityTown").val();
+
+  		if(City != ""){
+  			loadBarangay(City);
+  		}else{
+  			$("#editCityTown").html("");
+  		}
+  	})
+
+    $("#bday").on("input",function(){
+      var bdate = $(this).val();
+      var bdateformat = new Date(bdate);
+      var diff_ms =  Date.now() - bdateformat.getTime();
+      var age_dt = new Date(diff_ms);
+      var age = Math.abs(age_dt.getUTCFullYear() - 1970);
+      $("#age").val(age);
+    })
+
   });
-	}
 </script>

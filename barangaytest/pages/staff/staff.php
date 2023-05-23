@@ -18,11 +18,6 @@
                             <!-- <i class="bi bi-person-add"></i> -->
                             <!-- <i class="bi bi-person-plus"></i> -->
                         </button>
-
-                        <!-- search bar -->
-                        <div class="col-4  ms-auto">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search name..." aria-label="Search" aria-describeby="btnNavbarSearch" id="myInput" onkeyup="myFunction()">
-                        </div>
                     </div>
                     
                     <div class="card-body">
@@ -34,7 +29,6 @@
                                     <th class="col">Contact No.</th>
                                     <th class="col">Gender</th> 
                                     <th class="col">Username</th>
-                                    <th class="col">Password</th>
                                     <th class="col">Action</th>
                                 </tr>
                             </thead>
@@ -42,7 +36,7 @@
                                 <?php
 
 
-                                    $squery = mysqli_query($con, "SELECT * FROM tblstaff");
+                                    $squery = mysqli_query($con, "SELECT *, concat(barangay,', ',City,', ',province,' ') as address FROM tblstaff");
                                     while($row = mysqli_fetch_array($squery))
                                     {
                                     echo '
@@ -51,11 +45,10 @@
                                         <td> '.strtoupper($row['address']).' </td>
                                         <td> '.strtoupper($row['contactNo']).' </td>
                                         <td> '.strtoupper($row['gender']).' </td>
-                                        <td> '.strtoupper($row['username']).' </td>
-                                        <td> ••••• </td>
+                                        <td> '.($row['username']).' </td>
                                         <td>';
                                 ?>
-                                        <form action="code.php" method="POST" class="d-inline">
+                                        <form action="function.php" method="POST" class="d-inline">
                                             <button type="button" class="button-color btn btn-sm" title="View" data-bs-toggle="modal" data-bs-target="#View_Staff<?php echo $row['id']; ?>"><i class="fa-solid fa-eye"></i></button>
                                             <button type="button" class="button-color btn btn-primary btn-sm" title="Edit" data-bs-toggle="modal" data-bs-target="#Edit_Staff<?php echo $row['id']; ?>"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></button>
                                             <button type="button" class="btn btn-danger btn-sm" title="Delete" data-bs-toggle="modal" data-bs-target="#Delete_Staff<?php echo $row['id']; ?>"><i class="fa-solid fa-trash"></i></button>
@@ -80,30 +73,14 @@
         </div>
     </div>
 
+    <!-- Pagination -->
     <script>
-        
-        //Search function
-        function myFunction() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-                } else {
-                tr[i].style.display = "none";
-                }
-            }       
-            }
-        }
+        $(document).ready( function () 
+        {
+            $('#myTable').DataTable();
+        } );
     </script>
-    
-
 <?php 
+include 'pagination/pagination.php';
 include '../../includes/footer.php';
 ?>

@@ -195,23 +195,20 @@ if(isset($_POST['save_resident']))
     $BusinessMunicipality = mysqli_real_escape_string($con, $_POST['BusinessMunicipality']);
     $BusinessProvince = mysqli_real_escape_string($con, $_POST['BusinessProvince']);
 
-    if(isset($_SESSION['role']))
-    {
-      // query to send data to logs
-      $date = date_default_timezone_set('Asia/Tokyo'); 
-      $currentDateTime = date('F j, Y - g:i:A');
     
-      $insert = 'Updated Resident with name of '.$firstname ." " .$lastname;
-      $usertype = 'Staff'; 
-    
-      $query1 = mysqli_query($con, "INSERT INTO `tbl_logs` (`usertype`, `remarks`, `created_at`) VALUES ('$usertype', '$insert', '$currentDateTime')");
-      // mysqli_query($con, $query1);
-    }
  
     // query to update the data
     $query_run = mysqli_query($con, "UPDATE `tblresident` SET `firstname` = '$firstname',`lastname` = '$lastname', `contactNo` = '$contactNo', `suffixname` = '$suffixname', `gender` = '$gender', `age` = '$age', `birthdate` = '$birthdate', `houseNo` = '$houseNo', `purok` = '$purok', `barangay` = '$barangay', `city` = '$city', `province` = '$province', `middlename` = '$middlename', `emailAddress` = '$emailAddress', `motherName` = '$motherName', `fatherName` = '$fatherName', `motherContactNo` = '$motherContactNo', `fatherContactNo` = '$fatherContactNo', `height` = '$height', `weight` = '$weight', `nationality` = '$nationality', `civilStatus` = '$civilStatus', `spouseName` = '$spouseName', `course` = '$course', `CSchoolName` = '$CSchoolNamdddde', `CSchoolAddress` = '$CSchoolAddress', `CYearAttended` = '$CYearAttended', `HSchoolName` = '$HSchoolName', `HSchoolAddress` = '$HSchoolAddress', `HYearAttended` = '$HYearAttended', `ESchoolName` = '$ESchoolName', `ESchoolAddress` = '$ESchoolAddress', `EYearAttended` = '$EYearAttended',  `BusinessID` = '$BusinessID', `BusinessNature` = '$BusinessNature', `BusinessName` = '$BusinessName', `BusinessOwner` = '$BusinessOwner', `BusinessOwnerAddress` = '$BusinessOwnerAddress', `BusinessContactNumber` = '$BusinessContactNumber', `BusinessBldgNo` = '$BusinessBldgNo', `BusinessPurokNo` = '$BusinessPurokNo', `BusinessBarangay` = '$BusinessBarangay', `BusinessMunicipality` = '$BusinessMunicipality', `BusinessProvince` = '$BusinessProvince' WHERE `id` = '$user_id'");
 
+    // query to send data to logs
+    $date = date_default_timezone_set('Asia/Tokyo'); 
+    $currentDateTime = date('F j, Y - g:i:A');
 
+    $insert = 'Updated Resident with name of '.$firstname ." " .$lastname;
+    $usertype = ''.$_SESSION[''].''; 
+
+    $query1 = mysqli_query($con, "INSERT INTO `tbl_logs` (`usertype`, `remarks`, `created_at`) VALUES ('$usertype', '$insert', '$currentDateTime')");
+    // mysqli_query($con, $query1);
 
 
     if($query_run)
@@ -248,7 +245,33 @@ if(isset($_POST['save_resident']))
 
   /* Address Combo Box function */
   $str = "";
-	if(isset($_POST['type'])){
+	if(isset($_POST['type']) && $_POST["type"] == "City"){
+
+    $sql = "SELECT DISTINCT citytown FROM tbl_barangays WHERE province = '{$_POST['province']}'";
+
+		$query = mysqli_query($con,$sql) or die("Query Unsuccessful.");
+
+		$str = "";
+		while($row = mysqli_fetch_assoc($query)){
+		  $str .= "<option value='{$row['citytown']}'>{$row['citytown']}</option>";
+		}
+    echo $str;
+
+		
+	}else if(isset($_POST['type']) && $_POST["type"] == "Barangay"){
+
+    $sql = "SELECT DISTINCT barangay FROM tbl_barangays WHERE CityTown = '{$_POST['CityTown']}'";
+
+		$query = mysqli_query($con,$sql) or die("Query Unsuccessful.");
+
+		$str = "";
+		while($row = mysqli_fetch_assoc($query)){
+		  $str .= "<option value='{$row['barangay']}'>{$row['barangay']}</option>";
+		}
+    echo $str;
+
+		
+	}else if(isset($_POST['type'])){
 
 		$sql = "SELECT distinct province from tbl_barangays order by province";
 
@@ -257,17 +280,6 @@ if(isset($_POST['save_resident']))
 		
 		while($row = mysqli_fetch_assoc($query)){
 		  $str .= "<option value='{$row['province']}'>{$row['province']}</option>";
-		}
-    echo $str;
-	}else if(isset($_POST['type']) && $_POST["type"] == "stateData"){
-
-		$sql = "SELECT * FROM tbl_barangays WHERE country = {$_POST['id']}";
-
-		$query = mysqli_query($con,$sql) or die("Query Unsuccessful.");
-
-		$str = "";
-		while($row = mysqli_fetch_assoc($query)){
-		  $str .= "<option value='{$row['sid']}'>{$row['sname']}</option>";
 		}
     echo $str;
 	}

@@ -26,8 +26,30 @@
     <div class="book">
         <div class="page">
             <div style="text-align: center">
-                <div class="topleft"><img src="talavera.png"  style="width:230px; height: 230px;"/></div>
-                <div class="topright"><img src="talavera.png"  style="width:230px; height: 230px;"/></div>
+            <div style="text-align: center">
+            <div class="topleft">
+                <?php 
+
+                    $query = mysqli_query($con, "SELECT image,certL,certR FROM dashboard");
+                        {
+                            while($row = mysqli_fetch_array($query))
+                            echo'
+                            <image src="../../settings/img/'.basename($row['certL']).'" style="width:230px; height: 230px; border-radius: 50%">';
+
+                        }
+                ?>
+            </div>
+            <div class="topright">
+                <?php 
+
+                    $query = mysqli_query($con, "SELECT image,certL,certR FROM dashboard");
+                        {
+                            while($row = mysqli_fetch_array($query))
+                            echo'
+                            <image src="../../settings/img/'.basename($row['certR']).'" style="width:230px; height: 230px; border-radius: 50%">';
+
+                        }
+                ?></div>
                 <div style="font-size: 25px; margin-top: -450px;">                
                     Republic of the Philippines<br>
                     Province of Nueva Ecija<br>
@@ -79,7 +101,7 @@
 
                 
                 <div>
-                    <label style="padding-bottom: 10px">Nagpapatunay ni:</label>
+                    <label style="padding-bottom: 10px">Inihanda ni:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials");
                             while($row=mysqli_fetch_array($qry)){
@@ -97,7 +119,7 @@
 
                 
                 <div style="margin-top: -102px; margin-left: 38em;">
-                    <label style="padding-bottom: 10px">Inihanda ni:</label>
+                    <label style="padding-bottom: 10px">Nagpapatunay ni:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials ");
                             while($row=mysqli_fetch_array($qry)){

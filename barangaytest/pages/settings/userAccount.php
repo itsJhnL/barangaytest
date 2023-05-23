@@ -24,10 +24,6 @@ include '../../includes/scripts.php';
             <div class="col">
               <h4>Administrator</h4>
             </div>
-            <!-- search bar -->
-            <div class="col-4  ms-auto">
-              <input class="form-control mr-sm-2" type="search" placeholder="Type to search" aria-label="Search" aria-describeby="btnNavbarSearch" id="myInput" onkeyup="myFunction()">
-            </div>
           </span>
         </div>
               
@@ -68,21 +64,18 @@ include '../../includes/scripts.php';
           </table>
         </div>
       </div>
+      <br>
       <div class="card d.flex">
         <div class="card-header">
           <span class="row">
             <div class="col">
               <h4>Staff</h4>
             </div>
-            <!-- search bar -->
-            <div class="col-4  ms-auto">
-              <input class="form-control mr-sm-2" type="search" placeholder="Type to search" aria-label="Search" aria-describeby="btnNavbarSearch" id="myInput" onkeyup="myFunction()">
-            </div>
           </span>
         </div>
           
         <div class="card-body">
-          <table class="table table-bordered table-hover table-striped">
+          <table class="table table-bordered table-hover table-striped" id="myTable">
             <thead>
               <tr class="col text-center">
                 <th class="col">ID</th>
@@ -116,9 +109,6 @@ include '../../includes/scripts.php';
                 include 'user-edit.php'; 
                 }
                 ?>
-                    
-            
-              
             </tbody>
           </table>
         </div>
@@ -129,3 +119,13 @@ include '../../includes/scripts.php';
 </div>
 
 
+<!-- Pagination -->
+<script>
+  $(document).ready( function () 
+  {
+    $('#myTable').DataTable();
+  } );
+</script>
+<?php 
+  include 'pagination/pagination.php';
+?>

@@ -17,15 +17,15 @@
               </div> -->
               <div class="col">
                 <label >Last Name</label>
-                <input type="text" class="form-control" name="lastname" autocomplete="off" required value="<?php echo strtoupper($row['lastname']); ?>">
+                <input type="text" class="form-control" name="lastname" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" required value="<?php echo strtoupper($row['lastname']); ?>">
               </div>
               <div class="col">
                 <label >First Name</label>
-                <input type="text" class="form-control" name="firstname"  autocomplete="off" required value="<?php echo strtoupper($row['firstname']); ?>">
+                <input type="text" class="form-control" name="firstname"  autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" required value="<?php echo strtoupper($row['firstname']); ?>">
               </div>
               <div class="col">
                 <label >Middle Name</label>
-                <input type="text" class="form-control" name="middlename"  autocomplete="off" required value="<?php echo strtoupper($row['middlename']); ?>">
+                <input type="text" class="form-control" name="middlename"  autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" required value="<?php echo strtoupper($row['middlename']); ?>">
               </div>
             </div>
 
@@ -33,7 +33,7 @@
             <div class="row mb-2">
               <div class="col">
                 <label >Address</label>
-                <input type="text" class="form-control" name="address" placeholder="" autocomplete="off" required value="<?php echo strtoupper($row['address']); ?>">
+                <input type="text" class="form-control" name="address" placeholder="" autocomplete="off" oninput="this.value = this.value.toUpperCase()" required value="<?php echo strtoupper($row['address']); ?>">
               </div>
             </div>
             
@@ -72,7 +72,7 @@
               <!-- Email Address -->
               <div class="col-md-12">
                 <label>Email address</label>
-                <input type="email" class="form-control" name="email" placeholder="" autocomplete="off" required value="<?php echo strtoupper($row['email']); ?>">
+                <input type="email" class="form-control" name="email" placeholder="" autocomplete="off" oninput="this.value = this.value.toUpperCase()" required value="<?php echo strtoupper($row['email']); ?>">
               </div>
               </div>
               <!-- Positions -->

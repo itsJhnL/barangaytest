@@ -28,15 +28,15 @@
             <div class="row g-2 mb-2">
               <div class="col">
                 <label class="form-label"><b>Last Name</b></label>
-                <input type="text" class="form-control" name="lastname" autocomplete="off" required>
+                <input type="text" class="form-control" name="lastname" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" required>
               </div>
               <div class="col">
                 <label class="form-label"><b>First Name</b></label>
-                <input type="text" class="form-control" name="firstname" autocomplete="off" required>
+                <input type="text" class="form-control" name="firstname" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" required>
               </div>
               <div class="col">
                 <label class="form-label"><b>Middle Name</b></label>
-                <input type="text" class="form-control" name="middlename" autocomplete="off" required>
+                <input type="text" class="form-control" name="middlename" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" required>
               </div>
               <div class="col-md-2">
                 <label><b>Suffix</b></label>
@@ -56,13 +56,13 @@
               <div class="col-md-6 mb-3">
                 <label><b>Gender</b></label>
                 <select class="form-select" name="gender" autocomplete="off" required>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
+                  <option value="MALE">MALE</option>
+                  <option value="FEMALE">FEMALE</option>
                 </select>
               </div>
               <div class="col-md-4 mb-3">
                 <label><b>Birthdate</b></label>
-                <input type="date" class="form-control" id="bday" name="birthdate"  onchange="calculateAge()" autocomplete="off" required>
+                <input type="date" class="form-control" id="bday" name="birthdate" autocomplete="off" required>
               </div>
               <div class="col-md-2 mb-3">
                 <label><b>Age</b></label>
@@ -76,28 +76,25 @@
               </div>
 
               <div class="col-md-6 mb-3">
-                <!-- <input class="form-control" name="province" placeholder="Province" autocomplete="off" required/> -->
                 <select class="form-select" name="province" id="Province">
                   <option value="" selected disabled>Select Province</option>
                 </select>
               </div>
               <div class="col-md-6 mb-3">
-                <!-- <input class="form-control" name="city" placeholder="Town/City" autocomplete="off" required/>     -->
                 <select class="form-select" name="city" id="CityTown">
                   <option value="" selected disabled>Select City/Town</option>
                 </select>
               </div>
               <div class="col-md-6 mb-3">
-                <!-- <input class="form-control" name="barangay" placeholder="Barangay" autocomplete="off" required/>         -->
                 <select class="form-select" name="barangay" id="Barangay">
                   <option value="" selected disabled>Select Barangay</option>
                 </select>
               </div>
               <div class="col-md-3 mb-3">
-                <input type="text" class="form-control" name="houseNo" placeholder="House Number" autocomplete="off" required>
+                <input type="text" class="form-control" name="houseNo" placeholder="House Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
               </div>
               <div class="col-md-3 mb-3">
-                <input type="text" class="form-control" name="purok" placeholder="Purok Number" autocomplete="off" required>
+                <input type="text" class="form-control" name="purok" placeholder="Purok Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
               </div>
             </div>
 
@@ -106,22 +103,22 @@
                   <label><b>Contact Information</b></label>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="text" class="form-control" name="contactNo" maxlength="11" placeholder="Your Contact Number" autocomplete="off" required>
+                  <input type="text" class="form-control" name="contactNo" maxlength="11" placeholder="Your Contact Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="email" class="form-control" name="emailAddress" placeholder="Your Email Address (Optional)" autocomplete="off" required>
+                  <input type="email" class="form-control" name="emailAddress" placeholder="Your Email Address (Optional)" autocomplete="off" oninput="this.value = this.value.toUpperCase()" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="text" class="form-control" name="motherName" placeholder="Mother's Name" autocomplete="off" required>
+                  <input type="text" class="form-control" name="motherName" placeholder="Mother's Name" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="text" class="form-control" name="motherContactNo" maxlength="11" placeholder="Your Mother's Contact Number" autocomplete="off" required>
+                  <input type="text" class="form-control" name="motherContactNo" maxlength="11" placeholder="Your Mother's Contact Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="text" class="form-control" name="fatherName" placeholder="Father's Name" autocomplete="off" required>
+                  <input type="text" class="form-control" name="fatherName" placeholder="Father's Name" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" required>
               </div>
               <div class="col-md-6 mb-3">
-                  <input type="text" class="form-control" name="fatherContactNo" maxlength="11" placeholder="Your Father's Contact Number" autocomplete="off" required>
+                  <input type="text" class="form-control" name="fatherContactNo" maxlength="11" placeholder="Your Father's Contact Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
               </div>
             </div>
 
@@ -130,33 +127,33 @@
                 <label><b>Additional Information</b></label>
               </div>
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" name="height" placeholder="Height (in cm)" autocomplete="off" required>
+                <input type="text" class="form-control" name="height" placeholder="Height (in cm)"  autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
               </div>
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" name="weight" placeholder="Weight (in kg)" autocomplete="off" required>
+                <input type="text" class="form-control" name="weight" placeholder="Weight (in kg)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
               </div>
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" name="nationality" placeholder="Nationality" autocomplete="off" required>
+                <input type="text" class="form-control" name="nationality" placeholder="Nationality" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" required>
               </div>
             </div>
             <div class="row g-2">
               <div class="col-md-6 mb-3">
                 <label><b>Civil Status</b></label>
                 <select class="form-select" name="civilStatus" id="civilStatus" onchange="showSpousANDChildrenFields()" autocomplete="off" required>
-                  <option value="single">Single</option>
-                  <option value="married">Married</option>
-                  <option value="divorced">Divorced</option>
-                  <option value="widowed">Widowed</option>
+                  <option value="SINGLE">SINGLE</option>
+                  <option value="MARRIED">MARRIED</option>
+                  <option value="DIVORCED">DIVORCED</option>
+                  <option value="WIDOWED">WIDOWED</option>
                 </select>
               </div>
               <div class="col-md-6 mb-2">
                 <label><b></b></label>
-                <input type="text" class="form-control" id="spouse-name" placeholder="Spouse Name" name="spouseName" style="display: none;">
+                <input type="text" class="form-control" id="spouse-name" placeholder="Spouse Name" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)" name="spouseName" style="display: none;">
               </div>
               <div class="col" id="spouse-children-fields" style="display: none;">
                 <div class="col-md-6 mb-3">
                   <label><b>Number of Children</b></label>
-                  <input type="number" class="form-control" id="num-children" onchange="showChildNameFields()" autocomplete="off">
+                  <input type="number" class="form-control" id="num-children" onchange="showChildNameFields()" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
                 </div>
               </div>
               <div id="child-name-fields"></div>
@@ -185,16 +182,16 @@
               <label for="additional-info"><b>College</b></label>
           </div>
           <div class="col-md-6">
-              <input type="text" class="form-control" name="course" placeholder="Course" autocomplete="off">
+              <input type="text" class="form-control" name="course" placeholder="Course" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
           </div>
           <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" name="CSchoolName" placeholder="School Name" autocomplete="off">
+              <input type="text" class="form-control" name="CSchoolName" placeholder="School Name" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
           </div>
           <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" name="CSchoolAddress" placeholder="School Address" autocomplete="off">
+              <input type="text" class="form-control" name="CSchoolAddress" placeholder="School Address" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
           </div>
           <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016" autocomplete="off">
+              <input type="text" class="form-control" name="CYearAttended" placeholder="Year Attended Ex: 2012-2016" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*)\./g, '$1');">
           </div>
           </div>
 
@@ -203,13 +200,13 @@
               <label for="additional-info"><b>High School</b></label>
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="HSchoolName" placeholder="School Name" autocomplete="off">
+              <input type="text" class="form-control" name="HSchoolName" placeholder="School Name" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="HSchoolAddress" placeholder="School Address" autocomplete="off">
+              <input type="text" class="form-control" name="HSchoolAddress" placeholder="School Address" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016" autocomplete="off">
+              <input type="text" class="form-control" name="HYearAttended" placeholder="Year Attended Ex: 2012-2016" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*)\./g, '$1');">
           </div>
           </div>
 
@@ -218,13 +215,13 @@
               <label for="additional-info"><b>Elementary</b></label>
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="ESchoolName" placeholder="School Name" autocomplete="off">
+              <input type="text" class="form-control" name="ESchoolName" placeholder="School Name" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
           </div>  
           <div class="col mb-3">
-              <input type="text" class="form-control" name="ESchoolAddress" placeholder="School Address" autocomplete="off">
+              <input type="text" class="form-control" name="ESchoolAddress" placeholder="School Address" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
           </div>
           <div class="col mb-3">
-              <input type="text" class="form-control" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016" autocomplete="off">
+              <input type="text" class="form-control" name="EYearAttended" placeholder="Year Attended Ex: 2012-2016" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*)\./g, '$1');">
           </div>
           </div>
           </div>
@@ -284,50 +281,50 @@
             <div class="row g-2">
               <div class="col-md-6">
                 <label for="">Business ID</label>
-                <input type="text" class="form-control" name="BusinessID" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessID" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
               </div>
               <div class="col-md-6">
                 <label for="">Business Nature</label>
-                <input type="text" class="form-control" name="BusinessNature" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessNature" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               </div>
               <div class="col-md-6">
                 <label for="">Business Name</label>
-                <input type="text" class="form-control" name="BusinessName" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessName" autocomplete="off" oninput="this.value = this.value.toUpperCase()" >
               </div>
               <div class="col-md-6">
                 <label for="">Business Owner</label>
-                <input type="text" class="form-control" name="BusinessOwner" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessOwner" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               </div>
               <div class="col-md-6">
                 <label for="">Owner Address</label>
-                <input type="text" class="form-control" name="BusinessOwnerAddress" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessOwnerAddress" autocomplete="off" oninput="this.value = this.value.toUpperCase()" >
               </div>
               <div class="col-md-6 mb-2">
                 <label for="">Contact Number</label>
-                <input type="text" class="form-control" maxlength="11" name="BusinessContactNumber" autocomplete="off">
+                <input type="text" class="form-control" maxlength="11" name="BusinessContactNumber" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
               </div>
               <div class="col-md-12">
                 <label for="">Business Address</label>
               </div>
               <div class="col-md-3">
                 <label for="">Building No.</label>
-                <input type="text" class="form-control" name="BusinessBldgNo" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessBldgNo" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
               </div>
               <div class="col-md-3">
                 <label for="">Purok No.</label>
-                <input type="text" class="form-control" name="BusinessPurokNo" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessPurokNo" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
               </div>
               <div class="col-md-6">
                 <label for="">Barangay</label>
-                <input type="text" class="form-control" name="BusinessBarangay" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessBarangay" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               </div>
               <div class="col-md-6">
                 <label for="">Municipality</label>
-                <input type="text" class="form-control" name="BusinessMunicipality" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessMunicipality" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               </div>
               <div class="col-md-6">
                 <label for="">Province</label>
-                <input type="text" class="form-control" name="BusinessProvince" autocomplete="off">
+                <input type="text" class="form-control" name="BusinessProvince" autocomplete="off" oninput="this.value = this.value.toUpperCase()" onkeyup="lettersOnly(this)">
               </div>
             </div>
           </div>
@@ -376,7 +373,8 @@
 
 
 <!-- Calculate Age -->
-<script>
+<script src="js/age.js"></script>
+<!-- <script>
   function calculateAge() {
   // Get the birthdate input field
   const birthdayInput = document.getElementById("bday");
@@ -393,7 +391,7 @@
   // Update the age input field
   ageInput.value = age;
   }
-</script>
+</script> -->
 
   <!-- Capture -->
 <script language="JavaScript">
@@ -473,40 +471,80 @@
   		});
   	}
 
+    function loadCity(province){
+  		$.ajax({
+  			url : "function.php",
+  			type : "POST",
+  			data: {type : "City", province : province},
+  			success : function(data){
+          $("#CityTown").html("");
+          $("#CityTown").append(data);
+  				// if(type == "stateData"){
+  				// 	$("#CityTown").html(data);
+  				// }else {
+  				// 	$("#Province").append(data);
+  				// }
+  				
+  			}
+  		});
+  	}
+
+    function loadBarangay(CityTown){
+  		$.ajax({
+  			url : "function.php",
+  			type : "POST",
+  			data: {type : "Barangay", CityTown : CityTown},
+  			success : function(data){
+          $("#Barangay").html("");
+          $("#Barangay").append(data);
+  				// if(type == "stateData"){
+  				// 	$("#CityTown").html(data);
+  				// }else {
+  				// 	$("#Province").append(data);
+  				// }
+  				
+  			}
+  		});
+  	}
+
   	loadData();
 
-    $("#Province").change(function(){
-      console.log($(this).val());
-    })
-
   	$("#Province").on("change",function(){
   		var Province = $("#Province").val();
 
   		if(Province != ""){
-  			loadData("stateData", Province);
+  			loadCity(Province);
+  		}else{
+  			$("#City").html("");
+  		}
+  	})
+
+    $("#CityTown").on("change",function(){
+  		var City = $("#CityTown").val();
+
+  		if(City != ""){
+  			loadBarangay(City);
   		}else{
   			$("#CityTown").html("");
   		}
-
-  		
   	})
 
-    loadData();
-
-    $("#Province").change(function(){
-      console.log($(this).val());
+    $("#bday").on("input",function(){
+      var bdate = $(this).val();
+      var bdateformat = new Date(bdate);
+      var diff_ms =  Date.now() - bdateformat.getTime();
+      var age_dt = new Date(diff_ms);
+      var age = Math.abs(age_dt.getUTCFullYear() - 1970);
+      $("#age").val(age);
     })
 
-  	$("#Province").on("change",function(){
-  		var Province = $("#Province").val();
-
-  		if(Province != ""){
-  			loadData("stateData", Province);
-  		}else{
-  			$("#CityTown").html("");
-  		}
-
-  		
-  	})
   });
+</script>
+
+<!-- RegEx -->
+<script>
+  function lettersOnly (input) {
+    var regex = /[^a-z ]/gi;
+    input.value = input.value.replace (regex, "");
+  }
 </script>

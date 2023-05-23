@@ -26,8 +26,30 @@
     <div class="book">
         <div class="page">
             <div style="text-align: center">
-                <div class="topleft"><img src="talavera.png"  style="width:230px; height: 230px;"/></div>
-                <div class="topright"><img src="talavera.png"  style="width:230px; height: 230px;"/></div>
+            <div style="text-align: center">
+            <div class="topleft">
+                <?php 
+
+                    $query = mysqli_query($con, "SELECT image,certL,certR FROM dashboard");
+                        {
+                            while($row = mysqli_fetch_array($query))
+                            echo'
+                            <image src="../../settings/img/'.basename($row['certL']).'" style="width:230px; height: 230px; border-radius: 50%">';
+
+                        }
+                ?>
+            </div>
+            <div class="topright">
+                <?php 
+
+                    $query = mysqli_query($con, "SELECT image,certL,certR FROM dashboard");
+                        {
+                            while($row = mysqli_fetch_array($query))
+                            echo'
+                            <image src="../../settings/img/'.basename($row['certR']).'" style="width:230px; height: 230px; border-radius: 50%">';
+
+                        }
+                ?></div>
                 <div style="font-size: 25px; margin-top: -450px;">                
                     Republic of the Philippines<br>
                     Province of Nueva Ecija<br>
@@ -35,6 +57,7 @@
                     <p style="font-size: 32px;"><b>BARANGAY COLLADO</p></b>
                     <p style="font-size: 32px;">Office of the Punong Barangay</p>
                     <p style="font-size: 45px;"><b>CERTIFICATE OF BUSINESS CLOSURE</b><p>
+                    <p style="font-size: 20px; margin-top: 50px; right: -320px; position: relative;"><b><?php date_default_timezone_set('Asia/Tokyo'); $currentDateTime = date('F j, Y - g:i:A'); echo $currentDateTime;?></p></b>
                 </div>
             </div>       
 
@@ -62,10 +85,10 @@
                             foreach($query_run as $row)
                             {
                                 ?>
-                                    <p style="font-size: 20px; margin-top: 180px;"><b>TO WHOM IT MAY CONCERN:</p></b>
+                                    <p style="font-size: 20px; margin-top: 120px;"><b>TO WHOM IT MAY CONCERN:</p></b>
                                     <p class="intro"><b>THIS IS TO CERTIFY</b> that<b> <?php echo $row['firstname']; ?> <?php echo $row['middlename']; ?>. <?php echo $row['lastname'];?>, <?php echo $row['age']; ?> years old,</b> Filipino and a bonafide resisdent of this Barangay is a law abiding citizen with no degregatory record nor any pending case filed before the Barangay Peace and Order Council of this Barangay, <b><?php echo $row['gender']; ?></b> is known to me of having a good moral character.<br></p>
                                     <p class="intro">This certification is issued upon the request of the above mention person for reference whatever legal intent or purpose it may serve.</p></br>
-                                    <p class="intro">Issued this <b>7th</b> day of <b>February 2023,</b> hereat the Office of The Punong Barangay of Barangay Collado, Talavera, Nueva Ecija, Republic of the Philippines.</p></br></br></br></br>
+                                    <p class="intro">Issued this <b><?php date_default_timezone_set('Asia/Tokyo'); $currentDateTime = date('j'); echo $currentDateTime;?></b> day of <b><?php date_default_timezone_set('Asia/Tokyo'); $currentDateTime = date('F Y,'); echo $currentDateTime;?></b> hereat the Office of The Punong Barangay of Barangay Collado, Talavera, Nueva Ecija, Republic of the Philippines.</p></br></br></br></br>
                                 <?php
                             }
                         }
@@ -79,11 +102,11 @@
 
                 
                 <div>
-                    <label style="padding-bottom: 10px">Certified by:</label>
+                    <label style="padding-bottom: 10px">Prepared by:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials");
                             while($row=mysqli_fetch_array($qry)){
-                                if($row['position'] == "Barangay Secretary"){
+                                if($row['position'] == "Secretary"){
                                 echo '
                                     <p style="font-size:18px;">
                                         <b>'.strtoupper($row['lastname']).' , '.strtoupper($row['firstname']).' '.strtoupper($row['middlename']).'.<br></b>
@@ -97,7 +120,7 @@
 
                 
                 <div style="margin-top: -102px; margin-left: 38em;">
-                    <label style="padding-bottom: 10px">Prepared by:</label>
+                    <label style="padding-bottom: 10px">Certified by:</label>
                     <?php   
                         $qry = mysqli_query($con,"SELECT * from tblofficials ");
                             while($row=mysqli_fetch_array($qry)){

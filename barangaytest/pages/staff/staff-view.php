@@ -1,4 +1,4 @@
-<?php include ('code.php'); ?>
+<?php include ('function.php'); ?>
 
 <!-- View Staff Modal -->
 <div class="modal fade" id="View_Staff<?php echo $row['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -29,6 +29,19 @@
                     <p class="form-control">
                         <?php echo $row['address']; ?>
                     </p>    
+                </div>
+                <div class="row mx-auto g-2">
+                    <div class="col">
+                    <label>House No</label>
+                    <p class="form-control">
+                        <?php echo $row['houseNo']; ?>
+                    </p>    
+                    </div>
+                    <div class="col">
+                    <label>Purok No</label>
+                    <p class="form-control">
+                        <?php echo $row['purokNo']; ?>
+                    </p>
                 </div>
                 <div class="row mx-auto g-2">
                     <div class="col">

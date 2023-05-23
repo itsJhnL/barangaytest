@@ -5,6 +5,8 @@ body {
     font: 12pt "Tahoma";
   
 }
+
+
   
   * {
     box-sizing: border-box;
@@ -13,6 +15,7 @@ body {
   
   .page {
     width: 30cm;
+
     min-height: 27.94cm;
     padding: 2cm;
     margin: 1cm auto;
@@ -67,13 +70,13 @@ body {
 }
 
   .topleft {
-    top: -20px;
+    top: -50px;
     left: -360px;
     position: relative;
 }
   
   .topright {
-    top: -248px;
+    top: -278px;
     right: -360px;
     position: relative;
 }
@@ -110,4 +113,3 @@ body {
     position: relative;
 }
 
-  

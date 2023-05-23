@@ -8,7 +8,7 @@
                 </button>
             </div>
 
-            <form action="code.php" method="POST">
+            <form action="function.php" method="POST">
 
               <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
               <input type="hidden" name="firstname" value="<?php echo $row['firstname']?>"/>
